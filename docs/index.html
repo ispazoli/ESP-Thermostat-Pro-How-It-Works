@@ -182,20 +182,31 @@ Wi‑Fi link to ESP32</div>
       <h2 data-i18n="hw_h">5) Hardver áttekintés</h2>
       <p data-i18n="hw_p"></p>
 
-      <div class="two">
-        <div class="figure">
-          <img src="assets/screenshots/Thermostat2.jpg" alt="UI detail"/>
-          <div class="figcap">UI detail</div>
-        </div>
-        <div class="figure" id="esp01Figure">
-          <img src="assets/screenshots/esp01.jpg" alt="ESP-01 relay module">
-          <div id="esp01Fallback" class="figcap" style="display:none">
-            <span data-i18n="hw_note" data-i18n-html="1"></span>
-          </div>
-          <div class="figcap" style="border-top:0; opacity:.75">ESP‑01 relay module (optional photo)</div>
-        </div>
-      </div>
+   <div class="two">
+
+  <div class="figure">
+    <img src="assets/screenshots/Thermostat2.jpg" alt="UI detail">
+    <div class="figcap">UI detail</div>
+  </div>
+
+  <div class="figure" id="esp01Figure">
+
+    <img src="assets/screenshots/esp01.jpg"
+         alt="ESP-01 relay module"
+         onerror="this.style.display='none'; document.getElementById('esp01Fallback').style.display='block';">
+
+    <div id="esp01Fallback" class="figcap" style="display:none; opacity:.75;">
+      ESP-01 relay module (photo not available)
     </div>
+
+    <div class="figcap" style="border-top:0; opacity:.75;">
+      ESP-01 relay module (optional photo)
+    </div>
+
+  </div>
+
+</div>
+
 
     <div class="footer" data-i18n="footer">
       Készült GitHub Pages-hez. A bemutató oldal csak dokumentáció; az éles vezérlő UI az ESP32-n fut.
