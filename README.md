@@ -1,25 +1,19 @@
-# ESP Thermostat Pro – How It Works
+# ESP Thermostat Pro – How It Works (FIXED i18n)
 
-This repository contains a **multi‑page GitHub Pages documentation site** in `/docs` for the ESP Thermostat Pro project.
+This package contains a fully corrected, bilingual (HU/EN) GitHub Pages documentation site.
 
-## What this is
-- ✅ Static documentation (no live ESP calls, no polling, no cloud uploads)
-- ✅ HU/EN language toggle
-- ✅ Uses your screenshots under `docs/assets/screenshots/`
+## Fixes applied
+- No hardcoded language strings in HTML
+- All visible texts use data-i18n keys
+- site.js handles all translations
+- Works consistently across all subpages
 
-## Publish on GitHub Pages (from /docs)
-1. Push this repository to GitHub (GitHub Desktop: **Commit → Push**)
-2. On GitHub: **Settings → Pages**
-3. **Source:** Deploy from a branch  
-4. **Branch:** `main`  
-5. **Folder:** `/docs`  
-6. Save → wait a moment → open the Pages URL
+## Usage
+1. Copy the `docs/` folder into your GitHub repository
+2. Commit & Push (GitHub Desktop)
+3. GitHub Settings → Pages → Deploy from branch → main /docs
+4. Open your GitHub Pages URL
 
-If images do not update: do a hard refresh (**CTRL+F5**). Filenames on GitHub Pages are case-sensitive.
+Images must be located at:
+docs/assets/screenshots/
 
-## Adding the ESP‑01 photo
-Place your ESP‑01 image here:
-
-`docs/assets/screenshots/esp01.jpg`
-
-(If the image is missing, the site will show a fallback caption.)
