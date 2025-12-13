@@ -1,0 +1,23 @@
+title: "ESP Thermostat Pro – How It Works"
+description: "Engineering notes & documentation for ESP Thermostat Pro."
+theme: just-the-docs
+
+# GitHub Pages runs Jekyll for you. Keep it simple.
+color_scheme: dark
+
+# Enable built-in search
+search_enabled: true
+
+# Aux links (top-right)
+aux_links:
+  "GitHub Repository":
+    - "https://github.com/YOUR_USERNAME/YOUR_REPO"
+
+# Mermaid diagrams (Just the Docs supports mermaid via this flag)
+mermaid:
+  version: "10.6.1"
+
+# Footer
+footer_content: "Static documentation for GitHub Pages. The live control UI runs on the ESP32 device."
+
+# Do not use a custom logo for now (keeps it clean)
