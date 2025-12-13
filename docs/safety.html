@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ESP Thermostat Pro – How It Works</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">♨️</div>
+        <div>
+          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
+          <p data-i18n="site_sub"></p>
+          <div class="pills">
+            <span class="pill" data-i18n="badge_static"></span>
+            <span class="pill" data-i18n="badge_dual"></span>
+            <span class="pill" data-i18n="badge_no_cloud"></span>
+          </div>
+          <div class="lang">
+            <button id="langHU" onclick="setLang('hu')">HU</button>
+            <button id="langEN" onclick="setLang('en')">EN</button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
+        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
+        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
+        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
+        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
+        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
+        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
+        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
+        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <button class="mobileToggle" id="navToggle">☰ Menu</button>
+        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
+      </div>
+
+      <div class="container">
+        <div class="hero">
+          <h2 data-i18n="safety_h"></h2>
+          <p data-i18n="safety_h_p" data-i18n-html="1"></p>
+        </div>
+
+        
+<div class="callout">
+  <b>Safety-first:</b> If sensors fail, the system aims for <b>predictability</b>. Comfort is secondary.
+</div>
+
+<div class="section">
+  <h2 data-i18n="safety_steps_h"></h2>
+
+  <div class="steps">
+    <div class="step"><h4>Step 1</h4><p data-i18n="safety_step1" data-i18n-html="1"></p></div>
+    <div class="step"><h4>Step 2</h4><p data-i18n="safety_step2" data-i18n-html="1"></p></div>
+    <div class="step"><h4>Step 3</h4><p data-i18n="safety_step3" data-i18n-html="1"></p></div>
+  </div>
+
+  <div style="height:12px"></div>
+
+  <div class="diagram">
+<pre>
+Sensor OK?
+  ├─ Yes → Normal control (Auto / Manual / Schedule)
+  └─ No  → Soft timeout (use last valid T)
+             ├─ Recovered → back to normal
+             └─ Still bad → Safe‑Heat cycle (ON/OFF minutes)
+                               └─ Freezing outside → Freeze target
+</pre>
+  </div>
+</div>
+
+<div class="section">
+  <h2 data-i18n="safety_cfg_h"></h2>
+  <p data-i18n="safety_cfg_p"></p>
+  <p class="small" style="color:var(--faint)" data-i18n="safety_note" data-i18n-html="1"></p>
+
+  <div class="two">
+    <div class="figure">
+      <img src="assets/screenshots/System2.jpg" alt="Fallback settings">
+      <div class="figcap">System – fallback configuration controls</div>
+    </div>
+    <div class="figure">
+      <img src="assets/screenshots/Diag&Health2.jpg" alt="Fallback badge">
+      <div class="figcap">Diagnostics – fallback / error indicators</div>
+    </div>
+  </div>
+</div>
+
+
+        <div class="footer" data-i18n="footer"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="site.js"></script>
+</body>
+</html>

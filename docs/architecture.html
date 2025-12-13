@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ESP Thermostat Pro – How It Works</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">♨️</div>
+        <div>
+          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
+          <p data-i18n="site_sub"></p>
+          <div class="pills">
+            <span class="pill" data-i18n="badge_static"></span>
+            <span class="pill" data-i18n="badge_dual"></span>
+            <span class="pill" data-i18n="badge_no_cloud"></span>
+          </div>
+          <div class="lang">
+            <button id="langHU" onclick="setLang('hu')">HU</button>
+            <button id="langEN" onclick="setLang('en')">EN</button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
+        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
+        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
+        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
+        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
+        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
+        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
+        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
+        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <button class="mobileToggle" id="navToggle">☰ Menu</button>
+        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
+      </div>
+
+      <div class="container">
+        <div class="hero">
+          <h2 data-i18n="arch_h"></h2>
+          <p data-i18n="arch_h_p" data-i18n-html="1"></p>
+        </div>
+
+        
+<div class="grid">
+  <div class="card">
+    <h3 data-i18n="arch_block1_h"></h3>
+    <p data-i18n="arch_block1_p"></p>
+  </div>
+  <div class="card">
+    <h3 data-i18n="arch_block2_h"></h3>
+    <p data-i18n="arch_block2_p"></p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 data-i18n="arch_block3_h"></h3>
+    <p data-i18n="arch_block3_p"></p>
+  </div>
+  <div class="card">
+    <h3 data-i18n="arch_diagram_h"></h3>
+    <div class="diagram">
+<pre>
+[Room air]                 Wi‑Fi                [Boiler area]
+  DHT22/11  ──> ESP32  <───────────────>  ESP‑01 (ESP8266) ──> Relay ──> Boiler
+
+  • Web UI (local)                           • DS18x20 temperature
+  • Schedule / Advanced schedule             • Relay switching
+  • Pre‑Heat + Learning                      • Simple sensor/relay node
+  • LoS fallback control
+</pre>
+    </div>
+    <p class="small" style="color:var(--faint); margin-top:10px" data-i18n="arch_note"></p>
+  </div>
+</div>
+
+<div class="section" id="hw">
+  <h2>Hardware photos</h2>
+  <p style="color:var(--muted)">Screenshots and photos from your repository.</p>
+
+  <div class="two">
+    <div class="figure">
+      <img src="assets/screenshots/System2.jpg" alt="System details">
+      <div class="figcap">System – detail view</div>
+    </div>
+
+    <div class="figure" id="esp01Figure">
+      <img src="assets/screenshots/esp01.jpg" alt="ESP-01 relay module">
+      <div id="esp01Fallback" class="figcap" style="display:none; opacity:.75;">
+        <span data-i18n="hw_esp01_missing"></span>
+      </div>
+      <div class="figcap" style="border-top:0; opacity:.75;">ESP‑01 relay module (your photo)</div>
+    </div>
+  </div>
+</div>
+
+
+        <div class="footer" data-i18n="footer"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="site.js"></script>
+</body>
+</html>
