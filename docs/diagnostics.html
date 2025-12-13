@@ -1,97 +1,78 @@
 <!doctype html>
-<html lang="hu">
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ESP Thermostat Pro – How It Works</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar">
+  <div class="topbar">
+    <div class="inner">
       <div class="brand">
-        <div class="logo">♨️</div>
+        <div class="logo" aria-hidden="true"></div>
         <div>
-          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
-          <p data-i18n="site_sub"></p>
-          <div class="pills">
-            <span class="pill" data-i18n="badge_static"></span>
-            <span class="pill" data-i18n="badge_dual"></span>
-            <span class="pill" data-i18n="badge_no_cloud"></span>
-          </div>
-          <div class="lang">
-            <button id="langHU" onclick="setLang('hu')">HU</button>
-            <button id="langEN" onclick="setLang('en')">EN</button>
-          </div>
+          <h1>ESP Thermostat Pro</h1>
+          <div class="sub">How It Works • Docs</div>
         </div>
       </div>
 
-      <nav class="nav">
-        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
-        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
-        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
-        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
-        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
-        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
-        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
-        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
-        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-i18n="nav_home">Overview</a>
+        <a href="architecture.html" data-i18n="nav_arch">Architecture</a>
+        <a href="ui.html" data-i18n="nav_ui">UI</a>
+        <a href="control-logic.html" data-i18n="nav_logic">Control Logic</a>
+        <a href="learning.html" data-i18n="nav_learn">Learning</a>
+        <a href="diagnostics.html" data-i18n="nav_diag" class="active">Diagnostics</a>
+        <a href="safety.html" data-i18n="nav_safety">Safety</a>
+        <a href="energy.html" data-i18n="nav_energy">Gas & Energy</a>
+        <a href="pages.html" data-i18n="nav_install">GitHub Pages</a>
       </nav>
-    </aside>
 
-    <main class="main">
-      <div class="topbar">
-        <button class="mobileToggle" id="navToggle">☰ Menu</button>
-        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
+      <div class="controls">
+        <span class="badge" data-i18n="badge_static">Static Docs</span>
+        <span class="badge" data-i18n="badge_dual">ESP32 + ESP-01</span>
+        <button class="btn" id="langBtn" type="button">HU</button>
       </div>
+    </div>
+  </div>
 
-      <div class="container">
-        <div class="hero">
-          <h2 data-i18n="diag_h"></h2>
-          <p data-i18n="diag_h_p" data-i18n-html="1"></p>
+  <main class="wrap">
+    
+    <section class="hero">
+      <h2 data-i18n="diag_h">Diagnostics</h2>
+      <p data-i18n="diag_h_p"></p>
+    </section>
+
+    <div class="grid cols2">
+      <div class="card">
+        <h3 data-i18n="diag_conn_h">Connectivity</h3>
+        <p data-i18n="diag_conn_p">Wi‑Fi RSSI and NTP sync help confirm stable connectivity and correct timekeeping.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="diag_res_h">Resources</h3>
+        <p data-i18n="diag_res_p">CPU load and heap usage show whether the ESP32 is healthy and has enough memory headroom.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <h3 data-i18n="diag_shots_h">Live diagnostics views</h3>
+      <div class="two">
+        <div class="figure">
+          <img src="assets/screenshots/Diag&Health1.jpg" alt="Diagnostics">
+          <div class="figcap" data-i18n="diag_cap_1">Diagnostics – connection, resources, learning</div>
         </div>
-
-        
-<div class="grid">
-  <div class="card">
-    <h3 data-i18n="diag_conn_h"></h3>
-    <p>Wi‑Fi RSSI and NTP sync help confirm stable connectivity and correct timekeeping (important for schedules).</p>
-  </div>
-  <div class="card">
-    <h3 data-i18n="diag_res_h"></h3>
-    <p>CPU load and heap usage show whether the ESP32 is healthy and has enough memory headroom.</p>
-  </div>
-</div>
-
-<div class="section">
-  <h2 data-i18n="diag_shots_h"></h2>
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/Diag&Health1.jpg" alt="Diagnostics">
-      <div class="figcap">Diagnostics – connection, resources, learning</div>
-    </div>
-    <div class="figure">
-      <img src="assets/screenshots/Diag&Health3.jpg" alt="Health">
-      <div class="figcap">Health – indoor/outdoor values and comfort hints</div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2 data-i18n="diag_live_h"></h2>
-  <p data-i18n="diag_live_p"></p>
-
-  <div class="callout" style="margin-top:10px">
-    If you want a <b>static</b> “example log”, add a plain text file under <span class="kbd">docs/assets</span>
-    and embed it as a code block. That keeps the docs safe and offline.
-  </div>
-</div>
-
-
-        <div class="footer" data-i18n="footer"></div>
+        <div class="figure">
+          <img src="assets/screenshots/Diag&Health2.jpg" alt="Logs">
+          <div class="figcap" data-i18n="diag_cap_2">Live console log & analytics</div>
+        </div>
       </div>
-    </main>
-  </div>
+    </section>
+
+    <div class="footer" data-i18n="footer">
+      Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32.
+    </div>
+  </main>
 
   <script src="site.js"></script>
 </body>
