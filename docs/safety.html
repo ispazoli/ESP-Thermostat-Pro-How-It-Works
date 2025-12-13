@@ -1,59 +1,6 @@
-<!doctype html>
-<html lang="hu">
-<head>
-<meta charset="utf-8">
-<title>Biztonság és hibakezelés</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<header>
-  <div class="container">
-    <h1>ESP Thermostat Pro – Működési elv</h1>
-    <div class="badges">
-      <span class="badge">Statikus dokumentáció</span>
-      <span class="badge">Kétvezérlős architektúra</span>
-      <span class="badge">Nincs kötelező felhő</span>
-    </div>
-    <nav>
-      <a href="index.html">Kezdőlap</a>
-      <a href="architecture.html">Architektúra</a>
-      <a href="control-logic.html">Vezérlés</a>
-      <a href="learning.html">Tanulás</a>
-      <a href="safety.html">Biztonság</a>
-      <a href="gas-energy.html">Gáz & Energia</a>
-      <a href="ui-themes.html">Felületek</a>
-      <a href="diagnostics.html">Diagnosztika</a>
-      <a href="setup.html">Telepítés</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-  <h2>Biztonság és hibakezelés (LoS)</h2>
-  <div class="card">
-    <p>
-      Szenzorhiba esetén a rendszer többlépcsős védelmi mechanizmust alkalmaz,
-      hogy elkerülje a fagyást vagy a túlfűtést.
-    </p>
-    <ol>
-      <li>Soft timeout – utolsó érvényes érték használata</li>
-      <li>Safe‑Heat ciklus – időzített fűtési impulzusok</li>
-      <li>Fagyvédelmi célhőmérséklet</li>
-    </ol>
-  </div>
-  <div class="figure">
-    <img src="assets/screenshots/Diag&Health3.jpg" alt="Fallback állapot">
-    <div class="figcap">Fallback és biztonsági állapot kijelzések</div>
-  </div>
-</main>
-
-<footer>
-  <div class="container">
-    Ez az oldal GitHub Pages-en futó, <b>statikus dokumentáció</b>.
-    Az éles vezérlőfelület és logika az ESP32 eszközön működik.
-  </div>
-</footer>
-
-</body>
-</html>
+<!-- ADDED: Safety / LoS visual -->
+<div class="figure">
+  <img src="assets/screenshots/Diag&Health2.jpg" alt="LoS biztonsági állapot">
+  <div class="figcap">LoS fallback állapot megjelenítése</div>
+</div>
