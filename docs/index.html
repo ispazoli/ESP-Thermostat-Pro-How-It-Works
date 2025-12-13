@@ -106,5 +106,14 @@
   </div>
 
   <script src="site.js"></script>
+  <script>
+  // Apply stored language on every page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = localStorage.getItem('lang') || 'en';
+    if (typeof setLang === 'function') {
+      setLang(lang);
+    }
+  });
+</script>
 </body>
 </html>
