@@ -63,7 +63,7 @@
 
   <div class="two">
     <div class="card">
-      <h3>Target selection (Auto)</h3>
+      <h3 data-i18n="ctrl_auto_target_h"></h3>
       <p>
         1) If Advanced Schedule is enabled, use the most recent active point.<br>
         2) Otherwise use Weekday / Weekend schedule blocks.<br>
@@ -72,7 +72,7 @@
       </p>
     </div>
     <div class="card">
-      <h3>Relay decision (Hysteresis)</h3>
+      <h3 data-i18n="ctrl_hyst_h"></h3>
       <p>
         Heating turns <b>ON</b> when measured temperature is below <b>(target − hysteresis)</b>.<br>
         Heating turns <b>OFF</b> when measured temperature reaches/exceeds the target (or within hysteresis depending on mode).<br>
@@ -92,7 +92,7 @@
       <div class="figcap">Thermostat – manual controls area</div>
     </div>
     <div class="card">
-      <h3>Manual target</h3>
+      <h3 data-i18n="ctrl_manual_target_h"></h3>
       <p>
         Manual mode uses a user-set target temperature. The scheduler is still running in the background,
         but manual target is preferred. Safety (LoS) still applies.
@@ -114,7 +114,7 @@
       <div class="figcap">Thermostat – badges (Pre‑Heat / Away / Fallback)</div>
     </div>
     <div class="card">
-      <h3>What Pre‑Heat actually does</h3>
+      <h3 data-i18n="ctrl_preheat_what_h"></h3>
       <p>
         The thermostat estimates how long it needs to heat from current temperature to the next scheduled target.
         It then shifts the effective start time earlier by that amount (with a safety cap).
@@ -130,7 +130,7 @@
 
   <div class="two">
     <div class="card">
-      <h3>How presence is evaluated</h3>
+      <h3 data-i18n="ctrl_presence_h"></h3>
       <p>
         • You provide one or more IP addresses (phones, PCs, routers).<br>
         • The controller periodically pings them.<br>
@@ -155,7 +155,7 @@
       <div class="figcap">System – schedule / advanced schedule controls</div>
     </div>
     <div class="card">
-      <h3>Rules</h3>
+      <h3 data-i18n="ctrl_adv_rules_h"></h3>
       <p>
         • Points are sorted by day + time.<br>
         • The active point is the last enabled point that is not in the future.<br>
@@ -176,7 +176,7 @@
       <div class="figcap">Diagnostics / Health – sensor values</div>
     </div>
     <div class="card">
-      <h3>Why this matters</h3>
+      <h3 data-i18n="ctrl_sensor_why_h"></h3>
       <p>
         Boiler-side temperature can react quickly to heating events and protects the boiler loop.
         Room air temperature better tracks comfort.
