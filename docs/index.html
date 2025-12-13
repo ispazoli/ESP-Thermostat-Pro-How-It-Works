@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ESP Thermostat Pro · Showcase</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div style="font-size:18px">🎛️</div>
+      <div>
+        <div class="h1" data-i18n="title">ESP Thermostat Pro</div>
+        <div class="small" data-i18n="subtitle">GitHub Pages bemutató · valós funkciók · statikus dokumentáció</div>
+      </div>
+      <span class="badge">Apple default</span>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center">
+      <a class="btn" href="#ui">Screenshots</a>
+      <button id="langBtn" class="btn" title="Language">EN</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <div class="card">
+        <h2 data-i18n="intro_h">Mi ez?</h2>
+        <p data-i18n="intro_p">
+          ...
+        </p>
+
+        <div class="hr"></div>
+
+        <h2 data-i18n="quick_h">Gyors áttekintés</h2>
+        <div class="kv">
+          <div class="item">
+            <div class="k" data-i18n="q_hw">Hardver</div>
+            <div class="v" data-i18n="q_hw_v">ESP32 + DHT · ESP‑01 + DS18x20</div>
+          </div>
+          <div class="item">
+            <div class="k" data-i18n="q_ui">Web UI</div>
+            <div class="v" data-i18n="q_ui_v">Apple alap téma + Siemens/Nest</div>
+          </div>
+          <div class="item">
+            <div class="k" data-i18n="q_tabs">Fülek</div>
+            <div class="v" data-i18n="q_tabs_v">Termosztát · Rendszer · Időjárás · Diagnosztika · Ütemterv</div>
+          </div>
+          <div class="item">
+            <div class="k" data-i18n="q_safe">Biztonság</div>
+            <div class="v" data-i18n="q_safe_v">LoS / Fallback · Safe-Heat · fagyvédelem</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="callout">
+            <div class="icon">🧊</div>
+            <div>
+              <b data-i18n="callout_h">Demo mód</b>
+              <p data-i18n="callout_p">...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card toc">
+        <h2 data-i18n="toc_h">Tartalom</h2>
+        <div class="flex">
+          <a class="pill" href="#arch" data-i18n="toc_1">Rendszer felépítése</a>
+          <a class="pill" href="#ui" data-i18n="toc_2">Web UI bemutató</a>
+          <a class="pill" href="#logic" data-i18n="toc_3">Vezérlési logika</a>
+          <a class="pill" href="#safety" data-i18n="toc_4">Biztonság</a>
+          <a class="pill" href="#hw" data-i18n="toc_5">Hardver</a>
+        </div>
+
+        <div class="section">
+          <div class="figure">
+            <img src="assets/screenshots/Apple.jpg" alt="Apple theme"/>
+            <div class="figcap" data-i18n="ui_apple">Apple téma (alap)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="arch" class="section">
+      <h2 data-i18n="arch_h">1) Rendszer felépítése</h2>
+      <p data-i18n="arch_p"></p>
+
+      <div class="two">
+        <div class="card">
+          <h2>ESP32 (Controller)</h2>
+          <p>Web UI · Control logic · DHT sensor</p>
+          <div class="code">ESP32 Dev Module
+DHT (living area)
+Wi‑Fi (LAN)
+Theme: Apple / Siemens / Nest</div>
+        </div>
+        <div class="card">
+          <h2>ESP‑01 (Boiler Relay)</h2>
+          <p>Relay switching · DS18x20 sensor</p>
+          <div class="code">ESP‑01
+Relay output (thermostat loop)
+DS18x20 (near boiler)
+Wi‑Fi link to ESP32</div>
+        </div>
+      </div>
+
+      <div class="section card">
+        <h2>Architecture diagram</h2>
+        <svg viewBox="0 0 980 220" width="100%" height="220" style="border:1px solid var(--sep); border-radius:14px; background:rgba(255,255,255,.02)">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(10,160,255,.55)"/>
+              <stop offset="1" stop-color="rgba(255,149,0,.40)"/>
+            </linearGradient>
+          </defs>
+          <rect x="24" y="40" rx="18" ry="18" width="330" height="140" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.14)"/>
+          <text x="48" y="80" fill="white" font-size="18" font-family="ui-sans-serif">ESP32 Dev Module</text>
+          <text x="48" y="110" fill="rgba(255,255,255,.75)" font-size="14" font-family="ui-monospace">Web UI + Control Logic</text>
+          <text x="48" y="136" fill="rgba(255,255,255,.75)" font-size="14" font-family="ui-monospace">DHT sensor (living)</text>
+
+          <rect x="626" y="40" rx="18" ry="18" width="330" height="140" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.14)"/>
+          <text x="650" y="80" fill="white" font-size="18" font-family="ui-sans-serif">ESP‑01 Relay Module</text>
+          <text x="650" y="110" fill="rgba(255,255,255,.75)" font-size="14" font-family="ui-monospace">Relay → Gas boiler</text>
+          <text x="650" y="136" fill="rgba(255,255,255,.75)" font-size="14" font-family="ui-monospace">DS18x20 (near boiler)</text>
+
+          <path d="M354 110 C 450 110, 530 110, 626 110" stroke="url(#g)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <text x="447" y="96" fill="rgba(255,255,255,.75)" font-size="13" font-family="ui-monospace">Wi‑Fi / LAN</text>
+
+          <rect x="392" y="156" rx="12" ry="12" width="196" height="40" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.14)"/>
+          <text x="410" y="182" fill="rgba(255,255,255,.8)" font-size="13" font-family="ui-monospace">Relay switches thermostat loop</text>
+        </svg>
+      </div>
+    </div>
+
+    <div id="ui" class="section">
+      <h2 data-i18n="ui_h">2) Web UI bemutató (valós képek)</h2>
+      <p data-i18n="ui_p"></p>
+
+      <div class="grid">
+        <div class="figure">
+          <img src="assets/screenshots/Thermostat1.jpg" alt="Dashboard"/>
+          <div class="figcap" data-i18n="ui_dash">Termosztát főképernyő (Dashboard)</div>
+        </div>
+        <div class="figure">
+          <img src="assets/screenshots/System1.jpg" alt="System"/>
+          <div class="figcap" data-i18n="ui_sys">Rendszer / Statisztika / Gáz</div>
+        </div>
+        <div class="figure">
+          <img src="assets/screenshots/Weather.jpg" alt="Weather"/>
+          <div class="figcap" data-i18n="ui_weather">Időjárás & előrejelzés</div>
+        </div>
+
+        <div class="figure">
+          <img src="assets/screenshots/Diag&Health1.jpg" alt="Diagnostics"/>
+          <div class="figcap" data-i18n="ui_diag">Diagnosztika & Health</div>
+        </div>
+        <div class="figure">
+          <img src="assets/screenshots/Night_mode.jpg" alt="Night mode"/>
+          <div class="figcap" data-i18n="ui_night">Éjszakai mód</div>
+        </div>
+        <div class="figure">
+          <img src="assets/screenshots/Siemens.jpg" alt="Siemens theme"/>
+          <div class="figcap">Theme option: Siemens</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="logic" class="section">
+      <h2 data-i18n="logic_h">3) Vezérlési logika – érthetően</h2>
+      <p data-i18n="logic_p"></p>
+      <div class="card" data-i18n="logic_list" data-i18n-html="1"></div>
+    </div>
+
+    <div id="safety" class="section">
+      <h2 data-i18n="safety_h">4) Biztonság és Fallback (LoS)</h2>
+      <p data-i18n="safety_p"></p>
+      <div class="card" data-i18n="safety_list" data-i18n-html="1"></div>
+    </div>
+
+    <div id="hw" class="section">
+      <h2 data-i18n="hw_h">5) Hardver áttekintés</h2>
+      <p data-i18n="hw_p"></p>
+
+      <div class="two">
+        <div class="figure">
+          <img src="assets/screenshots/Thermostat2.jpg" alt="UI detail"/>
+          <div class="figcap">UI detail</div>
+        </div>
+        <div class="figure" id="esp01Figure">
+          <img src="assets/screenshots/esp01.jpg" alt="ESP-01 relay module" onerror="this.style.display='none'; document.getElementById('esp01Fallback').style.display='block';"/>
+          <div id="esp01Fallback" class="figcap" style="display:none">
+            <span data-i18n="hw_note" data-i18n-html="1"></span>
+          </div>
+          <div class="figcap" style="border-top:0; opacity:.75">ESP‑01 relay module (optional photo)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" data-i18n="footer">
+      Készült GitHub Pages-hez. A bemutató oldal csak dokumentáció; az éles vezérlő UI az ESP32-n fut.
+    </div>
+  </div>
+
+  <script src="./site.js"></script>
+</body>
+</html>
