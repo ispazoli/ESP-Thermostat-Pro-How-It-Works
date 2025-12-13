@@ -12,7 +12,7 @@
       <div class="brand">
         <div class="logo">♨️</div>
         <div>
-          <h1 data-i18n="site_title"></h1>
+          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
           <p data-i18n="site_sub"></p>
           <div class="pills">
             <span class="pill" data-i18n="badge_static"></span>
@@ -68,29 +68,29 @@
 </div>
 
 <div class="section">
-  <h2 data-i18n="ui_changes_h"></h2>
+  <h2>What changes with themes?</h2>
   <div class="two">
     <div class="card">
-      <h3 data-i18n="ui_changes_layout_h"></h3>
-      <p data-i18n="ui_changes_layout_p"></p>
+      <h3>Layout & typography</h3>
+      <p>Themes mainly change visual style (spacing, rounded corners, icons). The underlying control logic is identical.</p>
     </div>
     <div class="card">
-      <h3 data-i18n="ui_changes_why_h"></h3>
-      <p data-i18n="ui_changes_why_p"></p>
+      <h3>Why have multiple?</h3>
+      <p>Different users prefer different “feel”: Apple clean, Siemens industrial, Nest cozy. It helps usability without changing behavior.</p>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <h2 data-i18n="ui_sections_h"></h2>
+  <h2>UI screenshots (sections)</h2>
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/Thermostat1.jpg" alt="Thermostat tab">
-      <div class="figcap" data-i18n="cap_tab_thermostat"></div>
+      <div class="figcap">Thermostat tab</div>
     </div>
     <div class="figure">
       <img src="assets/screenshots/Weather.jpg" alt="Weather tab">
-      <div class="figcap" data-i18n="cap_tab_weather"></div>
+      <div class="figcap">Weather tab</div>
     </div>
   </div>
 </div>
@@ -102,14 +102,5 @@
   </div>
 
   <script src="site.js"></script>
-  <script>
-  // Apply stored language on every page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const lang = localStorage.getItem('lang') || 'en';
-    if (typeof setLang === 'function') {
-      setLang(lang);
-    }
-  });
-</script>
 </body>
 </html>

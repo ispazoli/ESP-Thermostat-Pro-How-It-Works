@@ -12,7 +12,7 @@
       <div class="brand">
         <div class="logo">♨️</div>
         <div>
-          <h1 data-i18n="site_title"></h1>
+          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
           <p data-i18n="site_sub"></p>
           <div class="pills">
             <span class="pill" data-i18n="badge_static"></span>
@@ -54,25 +54,25 @@
         
 <div class="grid">
   <div class="card">
-    <h3 data-i18n="diag_conn_h"></h3>
-    <p data-i18n="diag_conn_p"></p>
+    <h3>Connection & time</h3>
+    <p>Wi‑Fi RSSI and NTP sync help confirm stable connectivity and correct timekeeping (important for schedules).</p>
   </div>
   <div class="card">
-    <h3 data-i18n="diag_res_h"></h3>
-    <p data-i18n="diag_res_p"></p>
+    <h3>Resources</h3>
+    <p>CPU load and heap usage show whether the ESP32 is healthy and has enough memory headroom.</p>
   </div>
 </div>
 
 <div class="section">
-  <h2 data-i18n="diag_shots_h"></h2>
+  <h2>Screenshots</h2>
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/Diag&Health1.jpg" alt="Diagnostics">
-      <div class="figcap" data-i18n="cap_diag_conn_res"></div>
+      <div class="figcap">Diagnostics – connection, resources, learning</div>
     </div>
     <div class="figure">
       <img src="assets/screenshots/Diag&Health3.jpg" alt="Health">
-      <div class="figcap" data-i18n="cap_health_comfort"></div>
+      <div class="figcap">Health – indoor/outdoor values and comfort hints</div>
     </div>
   </div>
 </div>
@@ -81,7 +81,10 @@
   <h2 data-i18n="diag_live_h"></h2>
   <p data-i18n="diag_live_p"></p>
 
-  <div class="callout" style="margin-top:10px" data-i18n="diag_static_log" data-i18n-html="1"></div>
+  <div class="callout" style="margin-top:10px">
+    If you want a <b>static</b> “example log”, add a plain text file under <span class="kbd">docs/assets</span>
+    and embed it as a code block. That keeps the docs safe and offline.
+  </div>
 </div>
 
 
@@ -91,14 +94,5 @@
   </div>
 
   <script src="site.js"></script>
-  <script>
-  // Apply stored language on every page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const lang = localStorage.getItem('lang') || 'en';
-    if (typeof setLang === 'function') {
-      setLang(lang);
-    }
-  });
-</script>
 </body>
 </html>

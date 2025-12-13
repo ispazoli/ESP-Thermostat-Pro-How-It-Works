@@ -12,7 +12,7 @@
       <div class="brand">
         <div class="logo">♨️</div>
         <div>
-          <h1 data-i18n="site_title"></h1>
+          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
           <p data-i18n="site_sub"></p>
           <div class="pills">
             <span class="pill" data-i18n="badge_static"></span>
@@ -64,9 +64,15 @@
     </ul>
   </div>
   <div class="card">
-    <h3 data-i18n="home_notes_h"></h3>
-    <p data-i18n="home_notes_p1" data-i18n-html="1"></p>
-    <p data-i18n="home_notes_p2" data-i18n-html="1" style="margin-top:10px; color:var(--faint)"></p>
+    <h3>Project notes</h3>
+    <p>
+      This docs site is designed to live inside your firmware repository under <span class="kbd">/docs</span>.
+      The actual controller UI remains on the ESP32.
+      Use this site to explain the system to others (or future-you).
+    </p>
+    <p style="margin-top:10px; color:var(--faint)">
+      Tip: If images don't show after push → check case-sensitive filenames and do a hard refresh (CTRL+F5).
+    </p>
   </div>
 </div>
 
@@ -77,11 +83,11 @@
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/Thermostat1.jpg" alt="Thermostat main screen">
-      <div class="figcap" data-i18n="cap_thermo_main"></div>
+      <div class="figcap">Thermostat – main screen</div>
     </div>
     <div class="figure">
       <img src="assets/screenshots/Night_mode.jpg" alt="Night mode">
-      <div class="figcap" data-i18n="cap_night_mode"></div>
+      <div class="figcap">Night mode – dark theme / night state</div>
     </div>
   </div>
 
@@ -90,11 +96,11 @@
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/System1.jpg" alt="System page">
-      <div class="figcap" data-i18n="cap_system_settings"></div>
+      <div class="figcap">System – settings & stats</div>
     </div>
     <div class="figure">
       <img src="assets/screenshots/Diag&Health1.jpg" alt="Diagnostics & health">
-      <div class="figcap" data-i18n="cap_diag_health"></div>
+      <div class="figcap">Diagnostics – health & indicators</div>
     </div>
   </div>
 </div>
@@ -106,14 +112,5 @@
   </div>
 
   <script src="site.js"></script>
-  <script>
-  // Apply stored language on every page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const lang = localStorage.getItem('lang') || 'en';
-    if (typeof setLang === 'function') {
-      setLang(lang);
-    }
-  });
-</script>
 </body>
 </html>

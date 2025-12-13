@@ -12,7 +12,7 @@
       <div class="brand">
         <div class="logo">♨️</div>
         <div>
-          <h1 data-i18n="site_title"></h1>
+          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
           <p data-i18n="site_sub"></p>
           <div class="pills">
             <span class="pill" data-i18n="badge_static"></span>
@@ -52,7 +52,10 @@
         </div>
 
         
-<div class="callout" data-i18n="ctrl_callout" data-i18n-html="1"></div>
+<div class="callout">
+  <b>Important:</b> This page describes real control behavior, but it is still documentation.
+  The GitHub Pages site does not include any control buttons or polling loops.
+</div>
 
 <div class="section">
   <h2 data-i18n="ctrl_auto_h"></h2>
@@ -60,12 +63,21 @@
 
   <div class="two">
     <div class="card">
-      <h3 data-i18n="ctrl_auto_target_h"></h3>
-      <p data-i18n="ctrl_auto_target_p" data-i18n-html="1"></p>
+      <h3>Target selection (Auto)</h3>
+      <p>
+        1) If Advanced Schedule is enabled, use the most recent active point.<br>
+        2) Otherwise use Weekday / Weekend schedule blocks.<br>
+        3) If Away mode is active, override target with Away target (see below).<br>
+        4) If LoS fallback is active, override target with fallback target/cycle.
+      </p>
     </div>
     <div class="card">
-      <h3 data-i18n="ctrl_hyst_h"></h3>
-      <p data-i18n="ctrl_hyst_p" data-i18n-html="1"></p>
+      <h3>Relay decision (Hysteresis)</h3>
+      <p>
+        Heating turns <b>ON</b> when measured temperature is below <b>(target − hysteresis)</b>.<br>
+        Heating turns <b>OFF</b> when measured temperature reaches/exceeds the target (or within hysteresis depending on mode).<br>
+        This prevents rapid relay toggling and keeps the system stable.
+      </p>
     </div>
   </div>
 </div>
@@ -77,13 +89,16 @@
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/Thermostat2.jpg" alt="Thermostat UI">
-      <div class="figcap" data-i18n="cap_manual_controls"></div>
+      <div class="figcap">Thermostat – manual controls area</div>
     </div>
     <div class="card">
-      <h3 data-i18n="ctrl_manual_target_h"></h3>
-      <p data-i18n="ctrl_manual_target_p" data-i18n-html="1"></p>
+      <h3>Manual target</h3>
+      <p>
+        Manual mode uses a user-set target temperature. The scheduler is still running in the background,
+        but manual target is preferred. Safety (LoS) still applies.
+      </p>
       <p style="margin-top:10px; color:var(--faint)">
-        <span data-i18n="ctrl_manual_tip"></span>
+        Tip: keep hysteresis reasonable (e.g. 0.2–0.4°C) for relay longevity.
       </p>
     </div>
   </div>
@@ -96,11 +111,15 @@
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/Thermostat3.jpg" alt="Preheat badge">
-      <div class="figcap" data-i18n="cap_badges"></div>
+      <div class="figcap">Thermostat – badges (Pre‑Heat / Away / Fallback)</div>
     </div>
     <div class="card">
-      <h3 data-i18n="ctrl_preheat_what_h"></h3>
-      <p data-i18n="ctrl_preheat_what_p" data-i18n-html="1"></p>
+      <h3>What Pre‑Heat actually does</h3>
+      <p>
+        The thermostat estimates how long it needs to heat from current temperature to the next scheduled target.
+        It then shifts the effective start time earlier by that amount (with a safety cap).
+        This is why the room can be warm <i>exactly</i> at the schedule time, not 30–60 minutes later.
+      </p>
     </div>
   </div>
 </div>
@@ -111,12 +130,17 @@
 
   <div class="two">
     <div class="card">
-      <h3 data-i18n="ctrl_presence_h"></h3>
-      <p data-i18n="ctrl_presence_p" data-i18n-html="1"></p>
+      <h3>How presence is evaluated</h3>
+      <p>
+        • You provide one or more IP addresses (phones, PCs, routers).<br>
+        • The controller periodically pings them.<br>
+        • If none are reachable for the configured timeout → Away becomes active.<br>
+        • Optionally, you can force manual Away mode.
+      </p>
     </div>
     <div class="figure">
       <img src="assets/screenshots/Diag&Health2.jpg" alt="Presence diagnostics">
-      <div class="figcap" data-i18n="cap_presence_ping"></div>
+      <div class="figcap">Diagnostics – presence ping indicator</div>
     </div>
   </div>
 </div>
@@ -128,11 +152,16 @@
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/System1.jpg" alt="Advanced schedule toggle">
-      <div class="figcap" data-i18n="cap_adv_controls"></div>
+      <div class="figcap">System – schedule / advanced schedule controls</div>
     </div>
     <div class="card">
-      <h3 data-i18n="ctrl_adv_rules_h"></h3>
-      <p data-i18n="ctrl_adv_rules_p" data-i18n-html="1"></p>
+      <h3>Rules</h3>
+      <p>
+        • Points are sorted by day + time.<br>
+        • The active point is the last enabled point that is not in the future.<br>
+        • You can store multiple points per day (up to the firmware limit).<br>
+        • Points persist across reboots (NVS).
+      </p>
     </div>
   </div>
 </div>
@@ -144,11 +173,15 @@
   <div class="two">
     <div class="figure">
       <img src="assets/screenshots/Diag&Health3.jpg" alt="Sensors view">
-      <div class="figcap" data-i18n="cap_sensor_values"></div>
+      <div class="figcap">Diagnostics / Health – sensor values</div>
     </div>
     <div class="card">
-      <h3 data-i18n="ctrl_sensor_why_h"></h3>
-      <p data-i18n="ctrl_sensor_why_p" data-i18n-html="1"></p>
+      <h3>Why this matters</h3>
+      <p>
+        Boiler-side temperature can react quickly to heating events and protects the boiler loop.
+        Room air temperature better tracks comfort.
+        Switching or averaging can make the system feel more natural.
+      </p>
     </div>
   </div>
 </div>
@@ -160,14 +193,5 @@
   </div>
 
   <script src="site.js"></script>
-  <script>
-  // Apply stored language on every page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const lang = localStorage.getItem('lang') || 'en';
-    if (typeof setLang === 'function') {
-      setLang(lang);
-    }
-  });
-</script>
 </body>
 </html>
