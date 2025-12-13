@@ -1,116 +1,66 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ESP Thermostat Pro – How It Works</title>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="utf-8">
+<title>ESP Thermostat Pro – Működési elv</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">♨️</div>
-        <div>
-          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
-          <p data-i18n="site_sub"></p>
-          <div class="pills">
-            <span class="pill" data-i18n="badge_static"></span>
-            <span class="pill" data-i18n="badge_dual"></span>
-            <span class="pill" data-i18n="badge_no_cloud"></span>
-          </div>
-          <div class="lang">
-            <button id="langHU" onclick="setLang('hu')">HU</button>
-            <button id="langEN" onclick="setLang('en')">EN</button>
-          </div>
-        </div>
-      </div>
 
-      <nav class="nav">
-        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
-        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
-        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
-        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
-        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
-        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
-        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
-        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
-        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
-      </nav>
-    </aside>
-
-    <main class="main">
-      <div class="topbar">
-        <button class="mobileToggle" id="navToggle">☰ Menu</button>
-        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
-      </div>
-
-      <div class="container">
-        <div class="hero">
-          <h2 data-i18n="home_h"></h2>
-          <p data-i18n="home_h_p" data-i18n-html="1"></p>
-        </div>
-
-        
-<div class="grid">
-  <div class="card">
-    <h3 data-i18n="home_quick_h"></h3>
-    <ul>
-      <li data-i18n="home_q1" data-i18n-html="1"></li>
-      <li data-i18n="home_q2" data-i18n-html="1"></li>
-      <li data-i18n="home_q3" data-i18n-html="1"></li>
-      <li data-i18n="home_q4" data-i18n-html="1"></li>
-      <li data-i18n="home_q5" data-i18n-html="1"></li>
-    </ul>
+<header>
+  <div class="container">
+    <h1>ESP Thermostat Pro – Működési elv</h1>
+    <div class="badges">
+      <span class="badge">Statikus dokumentáció</span>
+      <span class="badge">Kétvezérlős architektúra</span>
+      <span class="badge">Nincs kötelező felhő</span>
+    </div>
+    <nav>
+      <a href="index.html">Kezdőlap</a>
+      <a href="architecture.html">Architektúra</a>
+      <a href="control-logic.html">Vezérlés</a>
+      <a href="learning.html">Tanulás</a>
+      <a href="safety.html">Biztonság</a>
+      <a href="gas-energy.html">Gáz & Energia</a>
+      <a href="ui-themes.html">Felületek</a>
+      <a href="diagnostics.html">Diagnosztika</a>
+      <a href="setup.html">Telepítés</a>
+    </nav>
   </div>
+</header>
+
+<main class="container">
   <div class="card">
-    <h3>Project notes</h3>
     <p>
-      This docs site is designed to live inside your firmware repository under <span class="kbd">/docs</span>.
-      The actual controller UI remains on the ESP32.
-      Use this site to explain the system to others (or future-you).
+      Az <b>ESP Thermostat Pro</b> egy valós környezetben használt, saját fejlesztésű
+      fűtésvezérlő rendszer. Célja a megbízható, átlátható és biztonságos
+      gázkazán-vezérlés, felhőfüggőség nélkül.
     </p>
-    <p style="margin-top:10px; color:var(--faint)">
-      Tip: If images don't show after push → check case-sensitive filenames and do a hard refresh (CTRL+F5).
+    <p>
+      A rendszer két mikrokontrollerre épül:
+      egy <b>ESP32</b> végzi a döntéshozatalt és a webes felületet,
+      míg egy <b>ESP‑01 (ESP8266)</b> relés egység fizikailag kapcsolja a kazánt.
     </p>
   </div>
-</div>
 
-<div class="section">
-  <h2 data-i18n="home_gallery_h"></h2>
-  <p data-i18n="home_gallery_p"></p>
-
-  <div class="two">
+  <div class="grid grid-2">
     <div class="figure">
-      <img src="assets/screenshots/Thermostat1.jpg" alt="Thermostat main screen">
-      <div class="figcap">Thermostat – main screen</div>
+      <img src="assets/screenshots/Thermostat2.jpg" alt="Webes felület">
+      <div class="figcap">Webes termosztát felület – Apple stílus</div>
     </div>
     <div class="figure">
-      <img src="assets/screenshots/Night_mode.jpg" alt="Night mode">
-      <div class="figcap">Night mode – dark theme / night state</div>
+      <img src="assets/screenshots/esp01.jpg" alt="ESP-01 relé modul">
+      <div class="figcap">ESP‑01 relé modul a kazán vezérléséhez</div>
     </div>
   </div>
+</main>
 
-  <div style="height:14px"></div>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/System1.jpg" alt="System page">
-      <div class="figcap">System – settings & stats</div>
-    </div>
-    <div class="figure">
-      <img src="assets/screenshots/Diag&Health1.jpg" alt="Diagnostics & health">
-      <div class="figcap">Diagnostics – health & indicators</div>
-    </div>
+<footer>
+  <div class="container">
+    Ez az oldal GitHub Pages-en futó, <b>statikus dokumentáció</b>.
+    Az éles vezérlőfelület és logika az ESP32 eszközön működik.
   </div>
-</div>
+</footer>
 
-
-        <div class="footer" data-i18n="footer"></div>
-      </div>
-    </main>
-  </div>
-
-  <script src="site.js"></script>
 </body>
 </html>

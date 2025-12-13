@@ -1,111 +1,61 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ESP Thermostat Pro – How It Works</title>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="utf-8">
+<title>Tanulás és előrejelzés</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">♨️</div>
-        <div>
-          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
-          <p data-i18n="site_sub"></p>
-          <div class="pills">
-            <span class="pill" data-i18n="badge_static"></span>
-            <span class="pill" data-i18n="badge_dual"></span>
-            <span class="pill" data-i18n="badge_no_cloud"></span>
-          </div>
-          <div class="lang">
-            <button id="langHU" onclick="setLang('hu')">HU</button>
-            <button id="langEN" onclick="setLang('en')">EN</button>
-          </div>
-        </div>
-      </div>
 
-      <nav class="nav">
-        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
-        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
-        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
-        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
-        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
-        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
-        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
-        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
-        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
-      </nav>
-    </aside>
+<header>
+  <div class="container">
+    <h1>ESP Thermostat Pro – Működési elv</h1>
+    <div class="badges">
+      <span class="badge">Statikus dokumentáció</span>
+      <span class="badge">Kétvezérlős architektúra</span>
+      <span class="badge">Nincs kötelező felhő</span>
+    </div>
+    <nav>
+      <a href="index.html">Kezdőlap</a>
+      <a href="architecture.html">Architektúra</a>
+      <a href="control-logic.html">Vezérlés</a>
+      <a href="learning.html">Tanulás</a>
+      <a href="safety.html">Biztonság</a>
+      <a href="gas-energy.html">Gáz & Energia</a>
+      <a href="ui-themes.html">Felületek</a>
+      <a href="diagnostics.html">Diagnosztika</a>
+      <a href="setup.html">Telepítés</a>
+    </nav>
+  </div>
+</header>
 
-    <main class="main">
-      <div class="topbar">
-        <button class="mobileToggle" id="navToggle">☰ Menu</button>
-        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
-      </div>
-
-      <div class="container">
-        <div class="hero">
-          <h2 data-i18n="learn_h"></h2>
-          <p data-i18n="learn_h_p" data-i18n-html="1"></p>
-        </div>
-
-        
-<div class="grid">
+<main class="container">
+  <h2>Tanulás és előrejelzés</h2>
   <div class="card">
-    <h3 data-i18n="learn_gain_h"></h3>
-    <p data-i18n="learn_gain_p"></p>
+    <p>
+      A termosztát nem „AI”, hanem egy jól definiált tanuló mechanizmus.
+      Méri a kazán felfűtési sebességét és az épület hőveszteségét.
+    </p>
+    <ul>
+      <li>Felfűtési meredekség (°C/óra)</li>
+      <li>Hőveszteségi együttható</li>
+    </ul>
+    <p>
+      Ezek az értékek segítik az előfűtést és a stabil hőmérséklet-tartást.
+    </p>
   </div>
-  <div class="card">
-    <h3 data-i18n="learn_loss_h"></h3>
-    <p data-i18n="learn_loss_p"></p>
+  <div class="figure">
+    <img src="assets/screenshots/Diag&Health2.jpg" alt="Tanulás diagnosztika">
+    <div class="figcap">Tanulási paraméterek diagnosztikai nézete</div>
   </div>
-</div>
+</main>
 
-<div class="section">
-  <h2>Why learning helps (practical)</h2>
-  <div class="two">
-    <div class="card">
-      <h3>Pre‑Heat timing</h3>
-      <p>
-        Without learning, the schedule time means “start heating at 07:00”.
-        With learning, schedule time means “be warm at 07:00”.
-        The controller uses heat-up rate to compute an optimal start time.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Stability</h3>
-      <p>
-        Heat loss estimation helps avoid overshoot/undershoot and makes the control smoother across weather changes.
-        It also makes the system more predictable after big setpoint jumps.
-      </p>
-    </div>
+<footer>
+  <div class="container">
+    Ez az oldal GitHub Pages-en futó, <b>statikus dokumentáció</b>.
+    Az éles vezérlőfelület és logika az ESP32 eszközön működik.
   </div>
-</div>
+</footer>
 
-<div class="section">
-  <h2 data-i18n="learn_ui_h"></h2>
-  <p data-i18n="learn_ui_p"></p>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/Diag&Health1.jpg" alt="Learning gauges">
-      <div class="figcap">Diagnostics – learning gauges</div>
-    </div>
-    <div class="figure">
-      <img src="assets/screenshots/Weather.jpg" alt="Weather tab">
-      <div class="figcap">Weather – inputs that influence real-life behavior</div>
-    </div>
-  </div>
-</div>
-
-
-        <div class="footer" data-i18n="footer"></div>
-      </div>
-    </main>
-  </div>
-
-  <script src="site.js"></script>
 </body>
 </html>

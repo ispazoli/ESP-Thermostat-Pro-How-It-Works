@@ -1,197 +1,65 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ESP Thermostat Pro – How It Works</title>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="utf-8">
+<title>Vezérlési logika</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">♨️</div>
-        <div>
-          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
-          <p data-i18n="site_sub"></p>
-          <div class="pills">
-            <span class="pill" data-i18n="badge_static"></span>
-            <span class="pill" data-i18n="badge_dual"></span>
-            <span class="pill" data-i18n="badge_no_cloud"></span>
-          </div>
-          <div class="lang">
-            <button id="langHU" onclick="setLang('hu')">HU</button>
-            <button id="langEN" onclick="setLang('en')">EN</button>
-          </div>
-        </div>
-      </div>
 
-      <nav class="nav">
-        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
-        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
-        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
-        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
-        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
-        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
-        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
-        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
-        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
-      </nav>
-    </aside>
-
-    <main class="main">
-      <div class="topbar">
-        <button class="mobileToggle" id="navToggle">☰ Menu</button>
-        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
-      </div>
-
-      <div class="container">
-        <div class="hero">
-          <h2 data-i18n="ctrl_h"></h2>
-          <p data-i18n="ctrl_h_p" data-i18n-html="1"></p>
-        </div>
-
-        
-<div class="callout">
-  <b>Important:</b> This page describes real control behavior, but it is still documentation.
-  The GitHub Pages site does not include any control buttons or polling loops.
-</div>
-
-<div class="section">
-  <h2 data-i18n="ctrl_auto_h"></h2>
-  <p data-i18n="ctrl_auto_p"></p>
-
-  <div class="two">
-    <div class="card">
-      <h3>Target selection (Auto)</h3>
-      <p>
-        1) If Advanced Schedule is enabled, use the most recent active point.<br>
-        2) Otherwise use Weekday / Weekend schedule blocks.<br>
-        3) If Away mode is active, override target with Away target (see below).<br>
-        4) If LoS fallback is active, override target with fallback target/cycle.
-      </p>
+<header>
+  <div class="container">
+    <h1>ESP Thermostat Pro – Működési elv</h1>
+    <div class="badges">
+      <span class="badge">Statikus dokumentáció</span>
+      <span class="badge">Kétvezérlős architektúra</span>
+      <span class="badge">Nincs kötelező felhő</span>
     </div>
-    <div class="card">
-      <h3>Relay decision (Hysteresis)</h3>
-      <p>
-        Heating turns <b>ON</b> when measured temperature is below <b>(target − hysteresis)</b>.<br>
-        Heating turns <b>OFF</b> when measured temperature reaches/exceeds the target (or within hysteresis depending on mode).<br>
-        This prevents rapid relay toggling and keeps the system stable.
-      </p>
-    </div>
+    <nav>
+      <a href="index.html">Kezdőlap</a>
+      <a href="architecture.html">Architektúra</a>
+      <a href="control-logic.html">Vezérlés</a>
+      <a href="learning.html">Tanulás</a>
+      <a href="safety.html">Biztonság</a>
+      <a href="gas-energy.html">Gáz & Energia</a>
+      <a href="ui-themes.html">Felületek</a>
+      <a href="diagnostics.html">Diagnosztika</a>
+      <a href="setup.html">Telepítés</a>
+    </nav>
   </div>
-</div>
+</header>
 
-<div class="section">
-  <h2 data-i18n="ctrl_manual_h"></h2>
-  <p data-i18n="ctrl_manual_p"></p>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/Thermostat2.jpg" alt="Thermostat UI">
-      <div class="figcap">Thermostat – manual controls area</div>
-    </div>
-    <div class="card">
-      <h3>Manual target</h3>
-      <p>
-        Manual mode uses a user-set target temperature. The scheduler is still running in the background,
-        but manual target is preferred. Safety (LoS) still applies.
-      </p>
-      <p style="margin-top:10px; color:var(--faint)">
-        Tip: keep hysteresis reasonable (e.g. 0.2–0.4°C) for relay longevity.
-      </p>
-    </div>
+<main class="container">
+  <h2>Vezérlési logika</h2>
+  <div class="card">
+    <p>
+      A termosztát folyamatosan értékeli az aktuális hőmérsékletet,
+      a célértéket és az ütemezést, majd ennek alapján dönt a fűtés
+      be- vagy kikapcsolásáról.
+    </p>
+    <h3>Automatikus mód</h3>
+    <p>
+      Ütemezés alapú vezérlés (hétköznap / hétvége vagy haladó ütemterv),
+      tanuló algoritmussal kiegészítve.
+    </p>
+    <h3>Kézi mód</h3>
+    <p>
+      Fix célhőmérséklet, a logika csak a biztonsági korlátokat érvényesíti.
+    </p>
+    <h3>Előfűtés (Pre‑Heat)</h3>
+    <p>
+      A rendszer a korábbi felfűtési tapasztalatok alapján előbb indítja a
+      kazánt, hogy a kívánt időpontra elérje a célhőmérsékletet.
+    </p>
   </div>
-</div>
+</main>
 
-<div class="section">
-  <h2 data-i18n="ctrl_preheat_h"></h2>
-  <p data-i18n="ctrl_preheat_p"></p>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/Thermostat3.jpg" alt="Preheat badge">
-      <div class="figcap">Thermostat – badges (Pre‑Heat / Away / Fallback)</div>
-    </div>
-    <div class="card">
-      <h3>What Pre‑Heat actually does</h3>
-      <p>
-        The thermostat estimates how long it needs to heat from current temperature to the next scheduled target.
-        It then shifts the effective start time earlier by that amount (with a safety cap).
-        This is why the room can be warm <i>exactly</i> at the schedule time, not 30–60 minutes later.
-      </p>
-    </div>
+<footer>
+  <div class="container">
+    Ez az oldal GitHub Pages-en futó, <b>statikus dokumentáció</b>.
+    Az éles vezérlőfelület és logika az ESP32 eszközön működik.
   </div>
-</div>
+</footer>
 
-<div class="section">
-  <h2 data-i18n="ctrl_away_h"></h2>
-  <p data-i18n="ctrl_away_p"></p>
-
-  <div class="two">
-    <div class="card">
-      <h3>How presence is evaluated</h3>
-      <p>
-        • You provide one or more IP addresses (phones, PCs, routers).<br>
-        • The controller periodically pings them.<br>
-        • If none are reachable for the configured timeout → Away becomes active.<br>
-        • Optionally, you can force manual Away mode.
-      </p>
-    </div>
-    <div class="figure">
-      <img src="assets/screenshots/Diag&Health2.jpg" alt="Presence diagnostics">
-      <div class="figcap">Diagnostics – presence ping indicator</div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2 data-i18n="ctrl_adv_h"></h2>
-  <p data-i18n="ctrl_adv_p"></p>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/System1.jpg" alt="Advanced schedule toggle">
-      <div class="figcap">System – schedule / advanced schedule controls</div>
-    </div>
-    <div class="card">
-      <h3>Rules</h3>
-      <p>
-        • Points are sorted by day + time.<br>
-        • The active point is the last enabled point that is not in the future.<br>
-        • You can store multiple points per day (up to the firmware limit).<br>
-        • Points persist across reboots (NVS).
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2 data-i18n="ctrl_sensor_src_h"></h2>
-  <p data-i18n="ctrl_sensor_src_p"></p>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/Diag&Health3.jpg" alt="Sensors view">
-      <div class="figcap">Diagnostics / Health – sensor values</div>
-    </div>
-    <div class="card">
-      <h3>Why this matters</h3>
-      <p>
-        Boiler-side temperature can react quickly to heating events and protects the boiler loop.
-        Room air temperature better tracks comfort.
-        Switching or averaging can make the system feel more natural.
-      </p>
-    </div>
-  </div>
-</div>
-
-
-        <div class="footer" data-i18n="footer"></div>
-      </div>
-    </main>
-  </div>
-
-  <script src="site.js"></script>
 </body>
 </html>
