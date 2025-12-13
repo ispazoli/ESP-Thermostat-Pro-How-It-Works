@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESP Thermostat Pro – How It Works</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>ESP Thermostat Pro</h1>
+          <div class="sub">How It Works • Docs</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-i18n="nav_home">Overview</a>
+        <a href="architecture.html" data-i18n="nav_arch">Architecture</a>
+        <a href="ui.html" data-i18n="nav_ui">UI</a>
+        <a href="control-logic.html" data-i18n="nav_logic">Control Logic</a>
+        <a href="safety.html" data-i18n="nav_safety">Safety</a>
+        <a href="energy.html" data-i18n="nav_energy">Gas & Energy</a>
+        <a href="pages.html" data-i18n="nav_install">GitHub Pages</a>
+      </nav>
+
+      <div class="controls">
+        <span class="badge" data-i18n="badge_static">Static Docs</span>
+        <span class="badge" data-i18n="badge_dual">ESP32 + ESP-01</span>
+        <button class="btn" id="langBtn" type="button">HU</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    
+<section class="hero">
+  <h2 data-i18n="ui_h">Web interface</h2>
+  <p data-i18n="ui_p"></p>
+</section>
+
+<section class="section">
+  <h3 data-i18n="ui_tabs_h">Tabs</h3>
+  <p data-i18n="ui_tabs_p"></p>
+
+  <div class="two">
+    <div class="figure">
+      <img src="assets/screenshots/Thermostat3.jpg" alt="Thermostat tab">
+      <div class="figcap">Thermostat • control + schedule summary</div>
+    </div>
+    <div class="figure">
+      <img src="assets/screenshots/System1.jpg" alt="System tab">
+      <div class="figcap">System • energy/cost + stats</div>
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:14px;">
+    <div class="figure">
+      <img src="assets/screenshots/Weather.jpg" alt="Weather tab">
+      <div class="figcap">Weather • local conditions + forecast</div>
+    </div>
+    <div class="figure">
+      <img src="assets/screenshots/Diag&Health2.jpg" alt="Diagnostics tab">
+      <div class="figcap">Diagnostics • RSSI/CPU/Heap + learning gauges</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-compare-group>
+  <h3 data-i18n="ui_themes_h">Theme comparison</h3>
+  <p data-i18n="ui_themes_p"></p>
+
+  <div class="tabs">
+    <div class="pill active" data-compare="apple">Apple</div>
+    <div class="pill" data-compare="siemens">Siemens</div>
+    <div class="pill" data-compare="nest">Nest</div>
+  </div>
+
+  <div style="margin-top:12px;">
+    <div class="figure" data-compare-panel="apple" style="display:block;">
+      <img src="assets/screenshots/Apple.jpg" alt="Apple theme">
+      <div class="figcap">Apple (default)</div>
+    </div>
+    <div class="figure" data-compare-panel="siemens" style="display:none;">
+      <img src="assets/screenshots/Siemens.jpg" alt="Siemens theme">
+      <div class="figcap">Siemens (industrial)</div>
+    </div>
+    <div class="figure" data-compare-panel="nest" style="display:none;">
+      <img src="assets/screenshots/Nest.jpg" alt="Nest theme">
+      <div class="figcap">Nest (round / minimal)</div>
+    </div>
+  </div>
+</section>
+
+
+    <div class="footer" data-i18n="footer">
+      Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32.
+    </div>
+  </main>
+
+  <script src="site.js"></script>
+</body>
+</html>

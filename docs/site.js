@@ -1,370 +1,246 @@
-// ESP-Thermostat-Pro-How-It-Works - site.js
-// Static docs i18n + small UI helpers (no live ESP calls).
+/* ESP Thermostat Pro – How It Works (Docs)
+   Static documentation site for GitHub Pages.
+   No live device calls. No cloud uploads. */
 
 const I18N = {
   hu: {
-  "site_title": "ESP Thermostat Pro \u2013 M\u0171k\u00f6d\u00e9si elv",
-  "site_sub": "Dokument\u00e1ci\u00f3 \u00e9s m\u00e9rn\u00f6ki jegyzetek (statikus bemutat\u00f3 oldal)",
-  "nav_home": "Kezd\u0151lap",
-  "nav_arch": "Architekt\u00fara",
-  "nav_ctrl": "Vez\u00e9rl\u00e9si logika",
-  "nav_learn": "Tanul\u00e1s",
-  "nav_safety": "Biztons\u00e1g (LoS)",
-  "nav_gas": "G\u00e1z & energia",
-  "nav_ui": "UI t\u00e9m\u00e1k",
-  "nav_diag": "Diagnosztika",
-  "nav_setup": "GitHub Pages be\u00e1ll\u00edt\u00e1s",
-  "badge_static": "STATIKUS DOKSI",
-  "badge_dual": "K\u00e9t eszk\u00f6z (ESP32 + ESP\u201101)",
-  "badge_no_cloud": "Nincs k\u00f6telez\u0151 felh\u0151",
-  "home_h": "\u00c1ttekint\u00e9s",
-  "home_h_p": "<b>Statikus dokument\u00e1ci\u00f3.</b> Ez a GitHub Pages oldal nem h\u00edv \u00e9l\u0151 ESP API-kat, nem vez\u00e9rli a kaz\u00e1nt, \u00e9s nem k\u00fcld adatot felh\u0151be. A c\u00e9l: \u00e9rthet\u0151en bemutatni, hogyan m\u0171k\u00f6dik a rendszer a val\u00f3s telep\u00edt\u00e9sben.",
-  "home_p1": "Ez a weboldal az ESP Thermostat Pro projektet magyar\u00e1zza el: mit csin\u00e1l, hogyan d\u00f6nt, \u00e9s milyen biztons\u00e1gi mechanizmusokkal v\u00e9di a f\u0171t\u00e9st.",
-  "home_p2": "A val\u00f3s rendszer k\u00e9t mikrokontrollerb\u0151l \u00e1ll: az <b>ESP32 Dev Module</b> futtatja a logik\u00e1t \u00e9s a webes fel\u00fcletet, m\u00edg egy <b>ESP\u201101 (ESP8266)</b> v\u00e9gzi a rel\u00e9s kaz\u00e1nkapcsol\u00e1st \u00e9s a kaz\u00e1n\u2011k\u00f6zeli DS18x20 h\u0151m\u00e9r\u0151 olvas\u00e1s\u00e1t.",
-  "home_quick_h": "Gyors t\u00e9nyek",
-  "home_q1": "<b>F\u0151 vez\u00e9rl\u0151:</b> ESP32 Dev Module + DHT (szoba leveg\u0151 h\u0151m./p\u00e1ra).",
-  "home_q2": "<b>Rel\u00e9 egys\u00e9g:</b> ESP\u201101 (ESP8266) + DS18x20 (kaz\u00e1n-k\u00f6zeli referencia).",
-  "home_q3": "<b>Kapcsolat:</b> Wi\u2011Fi kommunik\u00e1ci\u00f3 a k\u00e9t eszk\u00f6z k\u00f6z\u00f6tt.",
-  "home_q4": "<b>Vez\u00e9rl\u00e9s:</b> Auto/Manual m\u00f3d, \u00fctemez\u00e9s, halad\u00f3 \u00fctemez\u00e9s, jelenl\u00e9t (Away), Pre\u2011Heat, LoS Fallback.",
-  "home_q5": "<b>Energia:</b> napi g\u00e1z MJ \u00e9s Ft becsl\u00e9s rel\u00e9 bekapcsol\u00e1si id\u0151 alapj\u00e1n.",
-  "home_gallery_h": "K\u00e9perny\u0151k\u00e9pek",
-  "home_gallery_p": "Az al\u00e1bbi k\u00e9pek a val\u00f3s UI-b\u00f3l sz\u00e1rmaznak (Apple t\u00e9ma az alap).",
-  "home_notes_h": "Projekt jegyzetek",
-  "home_notes_p1": "Ez a doksi oldal a firmware rep\u00f3ban a <span class=\"kbd\">/docs</span> mapp\u00e1ban \u00e9l. A <b>val\u00f3di vez\u00e9rl\u0151 UI</b> tov\u00e1bbra is az ESP32-n fut.",
-  "home_notes_p2": "Tipp: ha k\u00e9pek nem jelennek meg push ut\u00e1n \u2192 ellen\u0151rizd a f\u00e1jlneveket (kis/nagybet\u0171 sz\u00e1m\u00edt), majd friss\u00edts kem\u00e9nyen (CTRL+F5).",
-  "arch_h": "Rendszerarchitekt\u00fara",
-  "arch_h_p": "\u00c1ttekintj\u00fck a hardver fel\u00e9p\u00edt\u00e9s\u00e9t (ESP32 + ESP\u201101), a szenzorokat (DHT + DS18x20), \u00e9s az adatfolyamot. A c\u00e9l: legyen vil\u00e1gos, mi hol fut, \u00e9s mi\u00e9rt.",
-  "arch_block1_h": "K\u00e9t eszk\u00f6z, k\u00e9t feladat",
-  "arch_block1_p": "Az ESP32 a \u201eagy\u201d: itt fut a vez\u00e9rl\u00e9s, tanul\u00e1s, \u00fctemez\u00e9s \u00e9s a web UI. Az ESP\u201101 a \u201ek\u00e9z\u201d: rel\u00e9vel kapcsolja a kaz\u00e1nt, \u00e9s m\u00e9ri a kaz\u00e1n oldali h\u0151m\u00e9rs\u00e9kletet DS18x20 szenzorral.",
-  "arch_block2_h": "Szenzorok",
-  "arch_block2_p": "A DHT az ESP32-n a szoba leveg\u0151 h\u0151m\u00e9rs\u00e9klet\u00e9t/p\u00e1r\u00e1j\u00e1t adja. A DS18x20 az ESP\u201101-en stabil referencia (kaz\u00e1n-k\u00f6zeli). A vez\u00e9rl\u00e9s forr\u00e1sa v\u00e1laszthat\u00f3 (f\u0151 / nappali / \u00e1tlag / auto k\u00f6vet\u0151).",
-  "arch_block3_h": "Adatfolyam",
-  "arch_block3_p": "A web UI az ESP32 \u00e1llapot\u00e1t jelen\u00edti meg, az ESP32 pedig kommunik\u00e1l a rel\u00e9 egys\u00e9ggel. A GitHub Pages doksiban minden \u00e9l\u0151 h\u00edv\u00e1s ki van kapcsolva.",
-  "arch_diagram_h": "Egyszer\u0171 diagram",
-  "arch_diagram": "<pre>[Szoba leveg\u0151]                 Wi\u2011Fi                [Kaz\u00e1n k\u00f6rny\u00e9ke]\n  DHT22/11  \u2500\u2500> ESP32  <\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500>  ESP\u201101 (ESP8266) \u2500\u2500> Rel\u00e9 \u2500\u2500> Kaz\u00e1n\n\n  \u2022 Web UI (helyi)                           \u2022 DS18x20 h\u0151m\u00e9rs\u00e9klet\n  \u2022 \u00dctemez\u00e9s / Halad\u00f3 \u00fctemez\u00e9s               \u2022 Rel\u00e9 kapcsol\u00e1s\n  \u2022 Pre\u2011Heat + tanul\u00e1s                       \u2022 Egyszer\u0171 szenzor/rel\u00e9 node\n  \u2022 LoS fallback vez\u00e9rl\u00e9s</pre>",
-  "arch_note": "Ha szeretn\u00e9l, ide k\u00e9sz\u00edthet\u00fcnk pontos bek\u00f6t\u00e9si rajzot is (kaz\u00e1n kapcsok / rel\u00e9 / t\u00e1p / szenzorok).",
-  "arch_hw_h": "Hardver fot\u00f3k",
-  "arch_hw_p": "K\u00e9perny\u0151k\u00e9pek \u00e9s fot\u00f3k a rep\u00f3db\u00f3l.",
-  "cap_system_detail": "Rendszer \u2013 r\u00e9szletes n\u00e9zet",
-  "cap_esp01_photo": "ESP\u201101 rel\u00e9 modul (a te fot\u00f3d)",
-  "hw_esp01_missing": "ESP\u201101 rel\u00e9modul (fot\u00f3 nem el\u00e9rhet\u0151)",
-  "ctrl_h": "Vez\u00e9rl\u00e9si logika",
-  "ctrl_h_p": "Itt a <b>d\u00f6nt\u00e9si folyamatot</b> magyar\u00e1zzuk el: Auto/Manual, \u00fctemez\u00e9s, Pre\u2011Heat, Away \u00e9s Halad\u00f3 \u00fctemez\u00e9s. A c\u00e9l: \u00e9rthet\u0151 legyen, mikor mi\u00e9rt indul/le\u00e1ll a f\u0171t\u00e9s.",
-  "ctrl_callout": "<b>Fontos:</b> Ez az oldal a val\u00f3s vez\u00e9rl\u00e9si viselked\u00e9st \u00edrja le, de tov\u00e1bbra is dokument\u00e1ci\u00f3.<br>A GitHub Pages oldal nem tartalmaz vez\u00e9rl\u0151 gombokat \u00e9s nem futtat periodikus lek\u00e9rdez\u00e9seket.",
-  "ctrl_auto_h": "Auto m\u00f3d",
-  "ctrl_auto_p": "Auto m\u00f3dban a c\u00e9lh\u0151m\u00e9rs\u00e9kletet az \u00fctemez\u00e9s (h\u00e9tk\u00f6znap/h\u00e9tv\u00e9ge) vagy a halad\u00f3 \u00fctemez\u00e9s adja. A vez\u00e9rl\u00e9s hiszter\u00e9zist haszn\u00e1l.",
-  "ctrl_auto_target_h": "C\u00e9lh\u0151m\u00e9rs\u00e9klet kiv\u00e1laszt\u00e1s (Auto)",
-  "ctrl_auto_target_p": "1) Ha a Halad\u00f3 \u00fctemez\u00e9s akt\u00edv, a legut\u00f3bbi enged\u00e9lyezett pont a c\u00e9l.<br>2) K\u00fcl\u00f6nben a h\u00e9tk\u00f6znap / h\u00e9tv\u00e9ge blokkok adnak c\u00e9lt.<br>3) Ha Away akt\u00edv, fel\u00fcl\u00edrja a c\u00e9lt az Away c\u00e9l\u00e9rt\u00e9k.<br>4) Ha LoS fallback akt\u00edv, a fallback c\u00e9l/ciklus fel\u00fcl\u00edrhat mindent.",
-  "ctrl_hyst_h": "Rel\u00e9 d\u00f6nt\u00e9s (Hiszter\u00e9zis)",
-  "ctrl_hyst_p": "A f\u0171t\u00e9s <b>BE</b> kapcsol, ha a m\u00e9rt h\u0151m\u00e9rs\u00e9klet a <b>(c\u00e9l \u2212 hiszter\u00e9zis)</b> al\u00e1 esik.<br>A f\u0171t\u00e9s <b>KI</b> kapcsol, ha el\u00e9ri/\u00e1tl\u00e9pi a c\u00e9lt (m\u00f3dt\u00f3l f\u00fcgg\u0151en a s\u00e1von bel\u00fcl).<br>Ez v\u00e9di a rel\u00e9t a gyors kapcsolgat\u00e1st\u00f3l \u00e9s stabilabb\u00e1 teszi a rendszert.",
-  "ctrl_manual_h": "Manual m\u00f3d",
-  "ctrl_manual_p": "K\u00e9zi m\u00f3dban a felhaszn\u00e1l\u00f3 k\u00f6zvetlen\u00fcl \u00e1ll\u00edt c\u00e9lh\u0151m\u00e9rs\u00e9kletet. A biztons\u00e1gi logik\u00e1k (szenzorhiba/LoS) fel\u00fcl\u00edrhatj\u00e1k a norm\u00e1l d\u00f6nt\u00e9st.",
-  "ctrl_manual_target_h": "K\u00e9zi c\u00e9lh\u0151m\u00e9rs\u00e9klet",
-  "ctrl_manual_target_p": "K\u00e9zi m\u00f3dban a felhaszn\u00e1l\u00f3 \u00e1ltal be\u00e1ll\u00edtott c\u00e9lh\u0151m\u00e9rs\u00e9klet \u00e9rv\u00e9nyes. Az \u00fctemez\u00e9s a h\u00e1tt\u00e9rben fut, de a k\u00e9zi c\u00e9l els\u0151bbs\u00e9get \u00e9lvez.<br>A biztons\u00e1gi (LoS) logika tov\u00e1bbra is \u00e9rv\u00e9nyes\u00fcl.",
-  "ctrl_manual_tip": "Tipp: \u00e9rdemes \u00e9sszer\u0171 hiszter\u00e9zist haszn\u00e1lni (pl. 0,2\u20130,4 \u00b0C) a rel\u00e9 \u00e9lettartama miatt.",
-  "ctrl_preheat_h": "Pre\u2011Heat",
-  "ctrl_preheat_p": "A Pre\u2011Heat a \u201ej\u00f3kor legyen meleg\u201d funkci\u00f3: a tanult felf\u0171t\u00e9si sebess\u00e9g alapj\u00e1n a rendszer kisz\u00e1molja, mennyivel kor\u00e1bban kell ind\u00edtani a f\u0171t\u00e9st a k\u00f6vetkez\u0151 \u00fctemez\u00e9si ponthoz.",
-  "ctrl_preheat_what_h": "Mit csin\u00e1l pontosan a Pre\u2011Heat?",
-  "ctrl_preheat_what_p": "A termoszt\u00e1t megbecs\u00fcli, mennyi id\u0151 kell a jelenlegi h\u0151m\u00e9rs\u00e9kletr\u0151l a k\u00f6vetkez\u0151 \u00fctemezett c\u00e9l\u00e9rt\u00e9kig felf\u0171teni.<br>Ez alapj\u00e1n a t\u00e9nyleges ind\u00edt\u00e1st ennyivel kor\u00e1bbra tolja (biztons\u00e1gi korl\u00e1ttal).<br>Ez\u00e9rt lehet a szoba meleg <i>pont</i> az \u00fctemezett id\u0151pontra, nem 30\u201360 perccel k\u00e9s\u0151bb.",
-  "ctrl_away_h": "Away (Jelenl\u00e9t alap\u00fa t\u00e1voll\u00e9t)",
-  "ctrl_away_p": "IP-c\u00edm ping alap\u00fa jelenl\u00e9t. Ha a megadott eszk\u00f6z\u00f6k nem el\u00e9rhet\u0151k a timeout ideig, Away m\u00f3d aktiv\u00e1l\u00f3dik \u00e9s alacsonyabb c\u00e9lh\u0151m\u00e9rs\u00e9kletet haszn\u00e1l (manu\u00e1lis Away c\u00e9l\u00e9rt\u00e9kkel is).",
-  "ctrl_presence_h": "Hogyan m\u0171k\u00f6dik a jelenl\u00e9t (ping)?",
-  "ctrl_presence_p": "\u2022 Megadsz egy vagy t\u00f6bb IP c\u00edmet (telefon, PC, router).<br>\u2022 A vez\u00e9rl\u0151 id\u0151nk\u00e9nt megpingeli \u0151ket.<br>\u2022 Ha egyik sem el\u00e9rhet\u0151 a timeout ideig \u2192 Away aktiv\u00e1l\u00f3dik.<br>\u2022 Opcion\u00e1lisan manu\u00e1lis Away m\u00f3d is k\u00e9nyszer\u00edthet\u0151.",
-  "ctrl_adv_h": "Halad\u00f3 \u00fctemez\u00e9s (7 napos)",
-  "ctrl_adv_p": "T\u00f6bb pont, t\u00f6bb nap: a termoszt\u00e1t a legut\u00f3bbi m\u00faltbeli esem\u00e9ny c\u00e9lj\u00e1t haszn\u00e1lja. A pontok enged\u00e9lyezhet\u0151k/t\u00f6r\u00f6lhet\u0151k, \u00e9s NVS-be ment\u0151dnek.",
-  "ctrl_adv_rules_h": "Szab\u00e1lyok",
-  "ctrl_adv_rules_p": "\u2022 A pontok nap + id\u0151 szerint rendez\u0151dnek.<br>\u2022 Az akt\u00edv pont: a legut\u00f3bbi enged\u00e9lyezett pont, ami nincs a j\u00f6v\u0151ben.<br>\u2022 Egy nap t\u00f6bb pont is lehet (a firmware limitig).<br>\u2022 A pontok \u00fajraind\u00edt\u00e1s ut\u00e1n is megmaradnak (NVS).",
-  "ctrl_sensor_src_h": "Vez\u00e9rl\u0151 szenzor kiv\u00e1laszt\u00e1s",
-  "ctrl_sensor_src_p": "Be\u00e1ll\u00edthat\u00f3, hogy a vez\u00e9rl\u00e9s melyik m\u00e9rt h\u0151m\u00e9rs\u00e9kletre t\u00e1maszkodjon: kaz\u00e1n-k\u00f6zeli (DS18x20), szobai (DHT), \u00e1tlag, vagy automatikus k\u00f6vet\u00e9s.",
-  "ctrl_sensor_why_h": "Mi\u00e9rt fontos ez?",
-  "ctrl_sensor_why_p": "A kaz\u00e1n\u2011k\u00f6zeli h\u0151m\u00e9rs\u00e9klet gyorsabban reag\u00e1l \u00e9s v\u00e9di a kaz\u00e1nk\u00f6rt.<br>A szoba leveg\u0151 h\u0151m\u00e9rs\u00e9klete jobban k\u00f6veti a komfortot.<br>V\u00e1lt\u00e1s/\u00e1tlagol\u00e1s term\u00e9szetesebb \u201e\u00e9rzetet\u201d adhat.",
-  "learn_h": "Tanul\u00e1s \u00e9s el\u0151rejelz\u00e9s",
-  "learn_h_p": "A tanul\u00e1s c\u00e9lja nem \u201eAI\u201d, hanem stabil \u00e9s kisz\u00e1m\u00edthat\u00f3 szab\u00e1lyoz\u00e1s: h\u0151vesztes\u00e9g \u00e9s felf\u0171t\u00e9si sebess\u00e9g becsl\u00e9se, ami seg\u00edt a Pre\u2011Heat-ben \u00e9s a finom d\u00f6nt\u00e9sekben.",
-  "learn_gain_h": "Felf\u0171t\u00e9si sebess\u00e9g (Gain)",
-  "learn_gain_p": "F\u0171t\u00e9s alatt megfigyeli a h\u0151m\u00e9rs\u00e9klet emelked\u00e9s\u00e9t \u00e9s ebb\u0151l becsli a felf\u0171t\u00e9si sebess\u00e9get.",
-  "learn_loss_h": "H\u0151vesztes\u00e9g (Loss)",
-  "learn_loss_p": "H\u0171l\u00e9si szakaszokb\u00f3l becsli, milyen gyorsan cs\u00f6kken a h\u0151m\u00e9rs\u00e9klet.",
-  "learn_ui_h": "Megjelen\u00edt\u00e9s a Diagnosztik\u00e1ban",
-  "learn_ui_p": "A tanult \u00e9rt\u00e9kek a diagnosztikai n\u00e9zetben m\u00e9r\u0151kkel/jelz\u0151kkel jelennek meg.",
-  "learn_practical_h": "Mi\u00e9rt hasznos a tanul\u00e1s (gyakorlatban)",
-  "learn_preheat_h": "Pre\u2011Heat id\u0151z\u00edt\u00e9s",
-  "learn_preheat_p": "Tanul\u00e1s n\u00e9lk\u00fcl a 07:00 azt jelenti: \u201e07:00-kor indul a f\u0171t\u00e9s\u201d.<br>Tanul\u00e1ssal a 07:00 azt jelenti: \u201e07:00-ra legyen meleg\u201d.<br>A vez\u00e9rl\u0151 a tanult felf\u0171t\u00e9si sebess\u00e9gb\u0151l optim\u00e1lis ind\u00edt\u00e1si id\u0151t sz\u00e1mol.",
-  "learn_stability_h": "Stabilit\u00e1s",
-  "learn_stability_p": "A h\u0151vesztes\u00e9g becsl\u00e9s seg\u00edt elker\u00fclni a t\u00falf\u0171t\u00e9st / alulf\u0171t\u00e9st, \u00e9s sim\u00e1bb\u00e1 teszi a szab\u00e1lyoz\u00e1st id\u0151j\u00e1r\u00e1s-v\u00e1ltoz\u00e1sn\u00e1l.",
-  "safety_h": "Biztons\u00e1g \u00e9s LoS Fallback",
-  "safety_h_p": "Szenzorhiba eset\u00e9n a rendszer <b>kisz\u00e1m\u00edthat\u00f3 v\u00e9delmi m\u00f3dba</b> l\u00e9p. Itt bemutatjuk a Soft timeout \u2192 Safe\u2011Heat ciklus \u2192 Fagyv\u00e9delem l\u00e9p\u00e9seket.",
-  "safety_steps_h": "LoS l\u00e9p\u00e9sek (vizu\u00e1lis)",
-  "safety_step_label1": "1. l\u00e9p\u00e9s",
-  "safety_step_label2": "2. l\u00e9p\u00e9s",
-  "safety_step_label3": "3. l\u00e9p\u00e9s",
-  "safety_step1": "<b>1) Soft Timeout:</b> r\u00f6vid ideig m\u00e9g az utols\u00f3 \u00e9rv\u00e9nyes h\u0151m\u00e9rs\u00e9kletet haszn\u00e1lja.",
-  "safety_step2": "<b>2) Safe\u2011Heat ciklus:</b> tart\u00f3s hiba eset\u00e9n ciklikusan f\u0171t (BE / KI percek).",
-  "safety_step3": "<b>3) Fagyv\u00e9delem:</b> hidegben fix c\u00e9lh\u0151m\u00e9rs\u00e9kletre \u00e1ll.",
-  "safety_cfg_h": "Be\u00e1ll\u00edthat\u00f3 param\u00e9terek",
-  "safety_cfg_p": "Soft timeout (mp), Safe\u2011Heat BE/KI (perc), fagyv\u00e9delmi c\u00e9lh\u0151m\u00e9rs\u00e9klet (\u00b0C).",
-  "safety_callout": "<b>Biztons\u00e1g az els\u0151:</b> ha a szenzor hib\u00e1zik, a c\u00e9l a <b>kisz\u00e1m\u00edthat\u00f3s\u00e1g</b>. A komfort ilyenkor m\u00e1sodlagos.",
-  "safety_diagram": "<pre>Sensor OK?\n  \u251c\u2500 Igen \u2192 Norm\u00e1l vez\u00e9rl\u00e9s (Auto / Manual / \u00dctemez\u00e9s)\n  \u2514\u2500 Nem  \u2192 Soft timeout (utols\u00f3 \u00e9rv\u00e9nyes T)\n             \u251c\u2500 Helyre\u00e1llt \u2192 vissza norm\u00e1lra\n             \u2514\u2500 Tov\u00e1bbra is rossz \u2192 Safe\u2011Heat ciklus (BE/KI percek)\n                               \u2514\u2500 Fagyvesz\u00e9ly \u2192 Fix fagyv\u00e9delmi c\u00e9l</pre>",
-  "gas_h": "G\u00e1z & energia becsl\u00e9s",
-  "gas_h_p": "A napi f\u0171t\u00e9si id\u0151 alapj\u00e1n a rendszer MJ \u00e9s Ft becsl\u00e9st k\u00e9sz\u00edt. Nem m\u00e9r\u0151\u00f3ra, hanem trend \u00e9s \u00f6sszehasonl\u00edt\u00e1s \u2014 hasznos finomhangol\u00e1sn\u00e1l.",
-  "gas_logic_h": "MJ \u00e9s Ft logika",
-  "gas_logic_p": "Rel\u00e9 BE id\u0151 + be\u00e1ll\u00edtott f\u0171t\u0151\u00e9rt\u00e9k (MJ/m\u00b3) + \u00e1r (Ft/MJ). A param\u00e9terek az UI-ban m\u00f3dos\u00edthat\u00f3k.",
-  "gas_today_h": "Napi \u00f6sszegz\u00e9s",
-  "gas_today_p": "Mai MJ, becs\u00fclt m\u00b3 \u00e9s mai k\u00f6lts\u00e9g jelenik meg. A napi sz\u00e1ml\u00e1l\u00f3k NVS-ben t\u00e1rol\u00f3dnak.",
-  "gas_limits_h": "Korl\u00e1tok",
-  "gas_limits_p": "A becsl\u00e9s pontoss\u00e1ga a kaz\u00e1n teljes\u00edtm\u00e9ny\u00e9t\u0151l \u00e9s a rel\u00e9\u2013fogyaszt\u00e1s korrel\u00e1ci\u00f3t\u00f3l f\u00fcgg. Trendfigyel\u00e9sre kiv\u00e1l\u00f3.",
-  "gas_practical_h": "Gyakorlati haszn\u00e1lat",
-  "gas_compare_h": "Napok \u00f6sszehasonl\u00edt\u00e1sa",
-  "gas_compare_p": "MJ/Ft becsl\u00e9ssel j\u00f3l \u00f6ssze tudsz hasonl\u00edtani \u201ehasonl\u00f3 id\u0151j\u00e1r\u00e1s\u00fa\u201d napokat, \u00e9s visszaellen\u0151rizni a finomhangol\u00e1st (hiszter\u00e9zis, pre\u2011heat, \u00fctemez\u00e9s).",
-  "gas_detect_h": "Anom\u00e1li\u00e1k \u00e9szlel\u00e9se",
-  "gas_detect_p": "Ha hirtelen megugrik a napi energia, az jelezhet beragadt rel\u00e9t, szenzor driftet vagy \u00fctemez\u00e9si hib\u00e1t.",
-  "ui_h": "UI t\u00e9m\u00e1k \u00f6sszehasonl\u00edt\u00e1sa",
-  "ui_h_p": "H\u00e1rom t\u00e9ma: Apple (alap), Siemens, Nest. Itt egym\u00e1s mellett mutatjuk a st\u00edlusokat a felt\u00f6lt\u00f6tt k\u00e9pekkel.",
-  "ui_apple": "Apple t\u00e9ma (alap)",
-  "ui_siemens": "Siemens t\u00e9ma",
-  "ui_nest": "Nest t\u00e9ma",
-  "ui_changes_h": "Mit v\u00e1ltoztat a t\u00e9ma?",
-  "ui_changes_layout_h": "Elrendez\u00e9s \u00e9s tipogr\u00e1fia",
-  "ui_changes_layout_p": "A t\u00e9m\u00e1k f\u0151leg a vizu\u00e1lis st\u00edlust m\u00f3dos\u00edtj\u00e1k (t\u00e9rk\u00f6z\u00f6k, lekerek\u00edt\u00e9sek, ikonok). A vez\u00e9rl\u00e9si logika ugyanaz marad.",
-  "ui_changes_why_h": "Mi\u00e9rt j\u00f3 a t\u00f6bb t\u00e9ma?",
-  "ui_changes_why_p": "M\u00e1s felhaszn\u00e1l\u00f3k m\u00e1s \u201e\u00e9rzetet\u201d szeretnek: Apple letisztult, Siemens ipari, Nest otthonos. Haszn\u00e1lhat\u00f3s\u00e1got jav\u00edt, viselked\u00e9st nem v\u00e1ltoztat.",
-  "ui_sections_h": "UI k\u00e9pek (szekci\u00f3k)",
-  "cap_tab_thermostat": "Termoszt\u00e1t f\u00fcl",
-  "cap_tab_weather": "Id\u0151j\u00e1r\u00e1s f\u00fcl",
-  "diag_h": "Diagnosztika & eg\u00e9szs\u00e9g",
-  "diag_h_p": "Wi\u2011Fi RSSI, NTP, CPU/heap, jelenl\u00e9t ping, tanul\u00e1si \u00e9rt\u00e9kek \u00e9s fallback \u00e1llapotok. A c\u00e9l: gyorsan l\u00e1sd, \u201eminden rendben van-e\u201d.",
-  "diag_conn_h": "Kapcsolat \u00e9s id\u0151",
-  "diag_conn_p": "A Wi\u2011Fi RSSI \u00e9s az NTP szinkron seg\u00edt ellen\u0151rizni a stabil kapcsolatot \u00e9s a pontos id\u0151t (fontos az \u00fctemez\u00e9shez).",
-  "diag_res_h": "Er\u0151forr\u00e1sok",
-  "diag_res_p": "A CPU terhel\u00e9s \u00e9s a heap haszn\u00e1lat megmutatja, hogy az ESP32 eg\u00e9szs\u00e9ges-e \u00e9s van-e mem\u00f3ria tartal\u00e9k.",
-  "diag_shots_h": "K\u00e9perny\u0151k\u00e9pek",
-  "diag_live_h": "Mi\u00e9rt nincs \u201eLive log\u201d a GitHub Pages oldalon?",
-  "diag_live_p": "Mert ez dokument\u00e1ci\u00f3: minden akt\u00edv lek\u00e9r\u00e9s le van tiltva.",
-  "cap_diag_conn_res": "Diagnosztika \u2013 kapcsolat, er\u0151forr\u00e1s, tanul\u00e1s",
-  "cap_health_comfort": "Health \u2013 belt\u00e9ri/k\u00fclt\u00e9ri \u00e9rt\u00e9kek \u00e9s komfort tippek",
-  "setup_h": "GitHub Pages be\u00e1ll\u00edt\u00e1s (l\u00e9p\u00e9sr\u0151l l\u00e9p\u00e9sre)",
-  "setup_h_p": "Ez a weboldal <b>/docs</b> mapp\u00e1b\u00f3l publik\u00e1lhat\u00f3. K\u00f6vesd a l\u00e9p\u00e9seket GitHub Desktop + GitHub Pages be\u00e1ll\u00edt\u00e1ssal.",
-  "setup_s1_h": "1) Repo strukt\u00fara",
-  "setup_s1_p": "A repo gy\u00f6ker\u00e9ben legyen <b>docs/</b> mappa (ebben van az index.html).",
-  "setup_s2_h": "2) GitHub Desktop \u2013 commit & push",
-  "setup_s2_p": "M\u00e1sold be a docs mapp\u00e1t, commitold, majd pushold.",
-  "setup_s3_h": "3) GitHub Pages bekapcsol\u00e1sa",
-  "setup_s3_p": "Settings \u2192 Pages \u2192 Deploy from a branch \u2192 main \u2192 /docs \u2192 Save.",
-  "setup_tip_h": "Tipp: ha nem friss\u00fcl",
-  "setup_tip_p": "CTRL+F5 hard reload, vagy a Pages oldalon Save \u00fajra. 1\u20133 perc k\u00e9s\u00e9s norm\u00e1lis.",
-  "setup_template_h": "\u201eTemplate\u201d opci\u00f3 (nem k\u00f6telez\u0151)",
-  "setup_template_p": "Ehhez a projekthez <i>nem kell</i> k\u00fcl\u00f6n GitHub Pages template, mert ez a doksi m\u00e1r tartalmaz egy k\u00e9sz docs\u2011layoutot.",
-  "footer": "K\u00e9sz\u00fclt GitHub Pages-hez. A bemutat\u00f3 oldal csak dokument\u00e1ci\u00f3; az \u00e9les vez\u00e9rl\u0151 UI az ESP32-n fut.",
-  "safety_note": "Megjegyz\u00e9s: a konkr\u00e9t param\u00e9terek (Soft timeout, Safe\u2011Heat ciklus, fagyv\u00e9delmi c\u00e9l) az UI-ban \u00e1ll\u00edthat\u00f3k."
-},
+    title: "ESP Thermostat Pro – Működési elv",
+    subtitle: "Mérnöki jegyzetek + érthető magyarázat. A GitHub Pages oldal statikus dokumentáció, nem vezérli az eszközt.",
+    badge_static: "Static Docs",
+    badge_no_cloud: "No forced cloud",
+    badge_dual: "ESP32 + ESP-01",
+    nav_home: "Áttekintés",
+    nav_arch: "Architektúra",
+    nav_ui: "Felület",
+    nav_logic: "Vezérlés",
+    nav_safety: "Biztonság",
+    nav_energy: "Gáz & energia",
+    nav_install: "GitHub Pages",
+    lang: "EN",
+
+    home_h: "Áttekintés",
+    home_p1: "Ez az oldal az <b>ESP Thermostat Pro</b> rendszer működését mutatja be képekkel és lépésről lépésre. Nem marketing, hanem valódi működés: <b>ESP32 Dev Module</b> a vezérlő és web UI, a kazánt pedig egy <b>ESP-01 (ESP8266) relémodul</b> kapcsolja, a kazánoldalon <b>DS18x20</b> szenzorral. A szobában az ESP32 oldalon <b>DHT</b> mér.",
+    home_p2: "A dokumentáció célja: a rendszer átlátható legyen (mi miért van), és bárki vissza tudja követni a döntési logikát (Auto/Manual, Preheat, Away, Advanced schedule, LoS fallback).",
+    quick_h: "Gyors tények",
+    q1k: "Fő vezérlő", q1v: "ESP32 Dev Module (Web UI + vezérlés + DHT)",
+    q2k: "Kazán kapcsolás", q2v: "ESP-01 (ESP8266) relé kimenet",
+    q3k: "Kazánoldali szenzor", q3v: "DS18x20 (vezetékes)",
+    q4k: "Cél", q4v: "Biztonságos, helyi, magyarázható fűtésvezérlés",
+    note_static_t: "Fontos",
+    note_static_b: "A GitHub Pages verzió <b>statikus</b> bemutató. Nincs élő ESP-hívás, nincs log letöltés, nincs ThingSpeak/Sheets feltöltés.",
+    shots_h: "Képernyőképek (valós UI)",
+    shots_p: "A következő oldalak a programod tényleges felületéről készült képekre épülnek.",
+
+    arch_h: "Rendszerarchitektúra",
+    arch_p: "Két eszköz, két feladat. Az ESP32 a 'agy' (UI + logika), az ESP-01 a 'kéz' (relé a kazánhoz).",
+    arch_hw_h: "Hardver blokkvázlat",
+    arch_hw_p: "A Wi‑Fi kapcsolat csak parancs / státusz kommunikációra szolgál. A kazán kapcsolás fizikailag az ESP‑01 relén történik.",
+    arch_flow_h: "Adatút",
+    arch_flow_p: "A vezérlés alapja a kiválasztott szenzor (Fő/DHT/Átlag/Auto). A célhőmérsékletet az ütemezés, a manuális beállítás, vagy az okos módok módosíthatják.",
+
+    ui_h: "Web felület",
+    ui_p: "A UI 'mobile-first' szemlélettel készült. Cél: egyértelmű állapotok, gyors beavatkozás, és diagnosztika egy helyen.",
+    ui_tabs_h: "Fülek",
+    ui_tabs_p: "A bemutató a termosztát, rendszer, időjárás, diagnosztika és ütemezés oldalak logikáját magyarázza.",
+    ui_themes_h: "Témák összehasonlítása",
+    ui_themes_p: "Apple az alap téma, de Siemens és Nest stílus is elérhető. A működés ugyanaz, csak a megjelenés változik.",
+
+    logic_h: "Vezérlési logika (A+B: érthető + mérnöki)",
+    logic_p: "Ebben a részben végigmegyünk azon, hogyan dönt a rendszer: mikor fűt, mikor nem, és mi történik speciális helyzetekben.",
+    logic_auto_h: "Auto vs Manual",
+    logic_auto_p: "<b>Auto:</b> az ütemezés (simple vagy advanced) és az okos módok adják a célhőmérsékletet. <b>Manual:</b> a felhasználó beállít egy célt (és opcionálisan eco/boost módot).",
+    logic_preheat_h: "Preheat (előfűtés)",
+    logic_preheat_p: "A preheat célja, hogy <i>ne késve</i> érje el a ház a célhőmérsékletet. Ehhez a rendszer a korábbi felfűtési sebességből (tanult slope) becsül, és a fűtést korábban indíthatja.",
+    logic_away_h: "Away (jelenlét alapú takarék)",
+    logic_away_p: "Az Away mód IP-címek pingelésével becsli, van‑e valaki otthon. Ha nincs elérhető eszköz az időtúllépésen túl, a célhőmérséklet eco értékre csökken.",
+    logic_adv_h: "Advanced Schedule (7 napos pontok)",
+    logic_adv_p: "A haladó ütemezés legfeljebb 21 pontot kezel. A termosztát mindig a legutóbbi <i>múltbeli</i> pontot használja. Így stabil és jól követhető a viselkedés.",
+    logic_src_h: "Vezérlő szenzor kiválasztása",
+    logic_src_p: "Fő szenzor (kazán), DHT (szoba), Átlag, vagy Auto (nappal DHT, éjjel fő). Ezzel a szabályozás valóban a kívánt térhez igazítható.",
+
+    safety_h: "Biztonság és LoS (Sensor Loss) védelem",
+    safety_p: "Gázkazán vezérlésnél a legfontosabb: hiba esetén is legyen kiszámítható és biztonságos működés.",
+    safety_los_h: "LoS lépések (vizuálisan)",
+    safety_los_p: "A logika három lépcsőben reagál: 1) Soft timeout, 2) Safe‑Heat duty cycle, 3) Fagyvédelmi célhőmérséklet (tartós hiba esetén).",
+    safety_why_h: "Miért így?",
+    safety_why_p: "A cél nem a 'maximális fűtés', hanem hogy a rendszer ne hagyja elfagyni a házat, és ne fűtsön kontroll nélkül, amíg a hiba javításra nem kerül.",
+
+    energy_h: "Gáz & energia becslés",
+    energy_p: "A rendszer gáz MJ és költség számítást is támogat. Ez becslés: a relé be/ki idők és a beállított paraméterek alapján ad napi összképet.",
+    energy_mj_h: "MJ logika",
+    energy_mj_p: "A fűtőérték (MJ/m³) és az ár (Ft/m³) paraméterezhető. A napi összegzés segít követni a trendeket (időjárás, szokások, beállítások hatása).",
+    energy_cycles_h: "Ciklusok és fűtési idő",
+    energy_cycles_p: "A ciklusszámláló és fűtési idő együtt jól jelzi, hogy a szabályozás mennyire 'darabolja' a kazánt, és segít finomhangolni a hiszterézist / TPI jellegű működést.",
+
+    install_h: "GitHub Pages beállítás (lépésről lépésre)",
+    install_p: "A dokumentáció statikus HTML/CSS/JS. Nem kell semmilyen build, csak a /docs mappa.",
+    install_steps: [
+      "A repo-ban legyen benne a <b>/docs</b> mappa (ezt a ZIP biztosítja).",
+      "GitHub → <b>Settings</b> → <b>Pages</b>.",
+      "Source: <b>Deploy from a branch</b>.",
+      "Branch: <b>main</b>, Folder: <b>/docs</b> → Save.",
+      "Nyisd meg a kapott URL-t. Frissítéshez néha <b>CTRL+F5</b> kell (cache)."
+    ],
+    install_template_h: "Template megjegyzés",
+    install_template_p: "Ha szeretnél, használhatsz Jekyll template-et (pl. Cayman), de ennél a projektnél a statikus site előnye: teljes kontroll és 0 függőség.",
+
+    footer: "Készült GitHub Pages-hez. A bemutató oldal csak dokumentáció; az éles vezérlő UI az ESP32-n fut."
+  },
+
   en: {
-  "site_title": "ESP Thermostat Pro \u2013 How It Works",
-  "site_sub": "Documentation & engineering notes (static demo site)",
-  "nav_home": "Home",
-  "nav_arch": "Architecture",
-  "nav_ctrl": "Control Logic",
-  "nav_learn": "Learning",
-  "nav_safety": "Safety (LoS)",
-  "nav_gas": "Gas & Energy",
-  "nav_ui": "UI Themes",
-  "nav_diag": "Diagnostics",
-  "nav_setup": "GitHub Pages Setup",
-  "badge_static": "STATIC DOCS",
-  "badge_dual": "Dual device (ESP32 + ESP\u201101)",
-  "badge_no_cloud": "No mandatory cloud",
-  "home_h": "Overview",
-  "home_h_p": "<b>Static documentation.</b> This GitHub Pages site does not call live ESP APIs, does not control the boiler, and does not upload to cloud services. Goal: explain how the real system works.",
-  "home_p1": "This website explains the ESP Thermostat Pro project: what it does, how decisions are made, and which safety mechanisms protect heating control.",
-  "home_p2": "The real system consists of two microcontrollers: the <b>ESP32 Dev Module</b> runs the logic and the web UI, while an <b>ESP\u201101 (ESP8266)</b> unit performs relay-based boiler switching and reads a boiler-side DS18x20 temperature sensor.",
-  "home_quick_h": "Quick facts",
-  "home_q1": "<b>Main controller:</b> ESP32 Dev Module + DHT (room air temp/humidity).",
-  "home_q2": "<b>Relay unit:</b> ESP\u201101 (ESP8266) + DS18x20 (boiler-side reference).",
-  "home_q3": "<b>Link:</b> Wi\u2011Fi communication between the devices.",
-  "home_q4": "<b>Control:</b> Auto/Manual, schedules, advanced schedule, presence-based Away, Pre\u2011Heat, LoS Fallback.",
-  "home_q5": "<b>Energy:</b> daily gas MJ and HUF estimate from relay ON time.",
-  "home_gallery_h": "Screenshots",
-  "home_gallery_p": "The images below are captured from the real UI (Apple theme is the default).",
-  "home_notes_h": "Project notes",
-  "home_notes_p1": "This docs site is designed to live inside your firmware repository under <span class=\"kbd\">/docs</span>. The <b>real controller UI</b> stays on the ESP32.",
-  "home_notes_p2": "Tip: If images don\u2019t show after push \u2192 check case\u2011sensitive filenames and do a hard refresh (CTRL+F5).",
-  "arch_h": "System architecture",
-  "arch_h_p": "We cover the hardware split (ESP32 + ESP\u201101), sensors (DHT + DS18x20), and basic data flow. The goal is clarity: what runs where and why.",
-  "arch_block1_h": "Two devices, two responsibilities",
-  "arch_block1_p": "The ESP32 is the \u201cbrain\u201d: control, learning, schedules and the web UI live here. The ESP\u201101 is the \u201chand\u201d: it switches the boiler relay and measures boiler-side temperature with a DS18x20 sensor.",
-  "arch_block2_h": "Sensors",
-  "arch_block2_p": "The ESP32\u2019s DHT provides room air temperature/humidity. The ESP\u201101\u2019s DS18x20 provides a stable reference (near the boiler). The control source can be selected (main / living / average / auto-follow).",
-  "arch_block3_h": "Data flow",
-  "arch_block3_p": "The web UI displays ESP32 state; the ESP32 exchanges state with the relay unit. On GitHub Pages, all live calls are disabled.",
-  "arch_diagram_h": "Simple diagram",
-  "arch_diagram": "<pre>[Room air]                 Wi\u2011Fi                [Boiler area]\n  DHT22/11  \u2500\u2500> ESP32  <\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500>  ESP\u201101 (ESP8266) \u2500\u2500> Relay \u2500\u2500> Boiler\n\n  \u2022 Web UI (local)                           \u2022 DS18x20 temperature\n  \u2022 Schedule / Advanced schedule             \u2022 Relay switching\n  \u2022 Pre\u2011Heat + Learning                      \u2022 Simple sensor/relay node\n  \u2022 LoS fallback control</pre>",
-  "arch_note": "If you want, we can add an exact wiring diagram (boiler terminals / relay / power / sensors).",
-  "arch_hw_h": "Hardware photos",
-  "arch_hw_p": "Screenshots and photos from your repository.",
-  "cap_system_detail": "System \u2013 detail view",
-  "cap_esp01_photo": "ESP\u201101 relay module (your photo)",
-  "hw_esp01_missing": "ESP\u201101 relay module (photo not available)",
-  "ctrl_h": "Control logic",
-  "ctrl_h_p": "We explain the <b>decision path</b>: Auto/Manual, schedules, Pre\u2011Heat, Away and Advanced Schedule. Goal: understand why heating starts/stops.",
-  "ctrl_callout": "<b>Important:</b> This page describes real control behavior, but it is still documentation.<br>The GitHub Pages site does not include any control buttons or polling loops.",
-  "ctrl_auto_h": "Auto mode",
-  "ctrl_auto_p": "In Auto mode, target comes from schedule or advanced schedule. Control uses hysteresis.",
-  "ctrl_auto_target_h": "Target selection (Auto)",
-  "ctrl_auto_target_p": "1) If Advanced Schedule is enabled, use the most recent active point.<br>2) Otherwise use Weekday / Weekend schedule blocks.<br>3) If Away mode is active, override target with Away target.<br>4) If LoS fallback is active, override with fallback target/cycle.",
-  "ctrl_hyst_h": "Relay decision (Hysteresis)",
-  "ctrl_hyst_p": "Heating turns <b>ON</b> when measured temperature is below <b>(target \u2212 hysteresis)</b>.<br>Heating turns <b>OFF</b> when it reaches/exceeds target (or within the band depending on mode).<br>This prevents rapid relay toggling and keeps the system stable.",
-  "ctrl_manual_h": "Manual mode",
-  "ctrl_manual_p": "Manual mode sets target directly. Safety logic (sensor/LoS) can override for protection.",
-  "ctrl_manual_target_h": "Manual target",
-  "ctrl_manual_target_p": "Manual mode uses a user\u2011set target temperature. The scheduler still runs in the background, but manual target is preferred.<br>Safety (LoS) still applies.",
-  "ctrl_manual_tip": "Tip: keep hysteresis reasonable (e.g. 0.2\u20130.4\u00b0C) for relay longevity.",
-  "ctrl_preheat_h": "Pre\u2011Heat",
-  "ctrl_preheat_p": "Pre\u2011Heat ensures comfort at the scheduled time by starting earlier based on learned heat-up rate.",
-  "ctrl_preheat_what_h": "What Pre\u2011Heat actually does",
-  "ctrl_preheat_what_p": "The thermostat estimates how long it needs to heat from current temperature to the next scheduled target.<br>It then shifts the effective start time earlier by that amount (with a safety cap).<br>This is why the room can be warm <i>exactly</i> at the schedule time, not 30\u201360 minutes later.",
-  "ctrl_away_h": "Away (presence-based)",
-  "ctrl_away_p": "Presence inferred by pinging configured IPs. If none are reachable for the timeout, Away activates and uses a lower target (optionally manual Away target).",
-  "ctrl_presence_h": "How presence is evaluated",
-  "ctrl_presence_p": "\u2022 Provide one or more IP addresses (phones, PCs, router).<br>\u2022 The controller periodically pings them.<br>\u2022 If none are reachable for the timeout \u2192 Away becomes active.<br>\u2022 Optionally you can force manual Away mode.",
-  "ctrl_adv_h": "Advanced schedule (7-day)",
-  "ctrl_adv_p": "Multiple setpoints across 7 days. The thermostat uses the most recent event that has already passed. Points are stored in NVS.",
-  "ctrl_adv_rules_h": "Rules",
-  "ctrl_adv_rules_p": "\u2022 Points are sorted by day + time.<br>\u2022 Active point is the last enabled point that is not in the future.<br>\u2022 Multiple points per day are supported (up to firmware limit).<br>\u2022 Points persist across reboots (NVS).",
-  "ctrl_sensor_src_h": "Selecting the control sensor",
-  "ctrl_sensor_src_p": "Control can use boiler-side sensor, room sensor (DHT), average, or auto-follow.",
-  "ctrl_sensor_why_h": "Why this matters",
-  "ctrl_sensor_why_p": "Boiler\u2011side temperature reacts quickly and protects the boiler loop.<br>Room air temperature tracks comfort better.<br>Switching or averaging can make the system feel more natural.",
-  "learn_h": "Learning & prediction",
-  "learn_h_p": "Not marketing \u201cAI\u201d. Learning estimates heat-up rate and heat loss, supporting Pre\u2011Heat and stable decisions.",
-  "learn_gain_h": "Heat-up rate (Gain)",
-  "learn_gain_p": "Observes temperature increase during heating to estimate an effective heat-up rate.",
-  "learn_loss_h": "Heat loss (Loss)",
-  "learn_loss_p": "Uses cooling periods to estimate how quickly temperature falls.",
-  "learn_ui_h": "Displayed in Diagnostics",
-  "learn_ui_p": "Learned values are shown as gauges/indicators in the diagnostics view.",
-  "learn_practical_h": "Why learning helps (practical)",
-  "learn_preheat_h": "Pre\u2011Heat timing",
-  "learn_preheat_p": "Without learning, schedule time means \u201cstart heating at 07:00\u201d.<br>With learning, it means \u201cbe warm at 07:00\u201d.<br>The controller uses heat\u2011up rate to compute an optimal start time.",
-  "learn_stability_h": "Stability",
-  "learn_stability_p": "Heat loss estimation helps avoid overshoot/undershoot and makes control smoother across weather changes.",
-  "safety_h": "Safety & LoS fallback",
-  "safety_h_p": "On sensor failure the system enters a <b>predictable safety mode</b>. We show Soft timeout \u2192 Safe\u2011Heat cycle \u2192 Freeze protection.",
-  "safety_steps_h": "LoS steps (visual)",
-  "safety_step_label1": "Step 1",
-  "safety_step_label2": "Step 2",
-  "safety_step_label3": "Step 3",
-  "safety_step1": "<b>1) Soft timeout:</b> temporarily reuse the last valid temperature.",
-  "safety_step2": "<b>2) Safe\u2011Heat cycle:</b> if it persists, heat in an ON/OFF cycle.",
-  "safety_step3": "<b>3) Freeze protection:</b> in freezing conditions use a fixed target.",
-  "safety_cfg_h": "Configurable parameters",
-  "safety_cfg_p": "Soft timeout (s), Safe\u2011Heat ON/OFF (min), freeze target (\u00b0C).",
-  "safety_callout": "<b>Safety first:</b> if sensors fail, the system aims for <b>predictability</b>. Comfort is secondary.",
-  "safety_diagram": "<pre>Sensor OK?\n  \u251c\u2500 Yes \u2192 Normal control (Auto / Manual / Schedule)\n  \u2514\u2500 No  \u2192 Soft timeout (use last valid T)\n             \u251c\u2500 Recovered \u2192 back to normal\n             \u2514\u2500 Still bad \u2192 Safe\u2011Heat cycle (ON/OFF minutes)\n                               \u2514\u2500 Freezing outside \u2192 Freeze target</pre>",
-  "gas_h": "Gas & energy estimation",
-  "gas_h_p": "From daily heating ON time the system estimates MJ and cost. Not a meter \u2014 a trend and comparison tool, useful for tuning.",
-  "gas_logic_h": "MJ and cost logic",
-  "gas_logic_p": "Relay ON time + heating value (MJ/m\u00b3) + price (HUF/MJ). Adjustable in UI.",
-  "gas_today_h": "Daily summary",
-  "gas_today_p": "Shows today MJ, estimated m\u00b3, and today cost. Stored in NVS.",
-  "gas_limits_h": "Limitations",
-  "gas_limits_p": "Accuracy depends on boiler power and correlation between relay ON time and gas use. Great for trends.",
-  "gas_practical_h": "Practical use",
-  "gas_compare_h": "Compare days",
-  "gas_compare_p": "Use the MJ/HUF estimate to compare \u201csimilar weather\u201d days and validate tuning (hysteresis, pre\u2011heat, schedule).",
-  "gas_detect_h": "Detect anomalies",
-  "gas_detect_p": "A sudden jump in daily energy can indicate a stuck relay, sensor drift, or a schedule issue.",
-  "ui_h": "UI themes comparison",
-  "ui_h_p": "Three themes: Apple (default), Siemens, Nest. Shown side-by-side using your screenshots.",
-  "ui_apple": "Apple theme (default)",
-  "ui_siemens": "Siemens theme",
-  "ui_nest": "Nest theme",
-  "ui_changes_h": "What changes with themes?",
-  "ui_changes_layout_h": "Layout & typography",
-  "ui_changes_layout_p": "Themes mainly change visual style (spacing, rounded corners, icons). The underlying control logic is identical.",
-  "ui_changes_why_h": "Why have multiple?",
-  "ui_changes_why_p": "Different users prefer different \u201cfeel\u201d: Apple clean, Siemens industrial, Nest cozy. It improves usability without changing behavior.",
-  "ui_sections_h": "UI screenshots (sections)",
-  "cap_tab_thermostat": "Thermostat tab",
-  "cap_tab_weather": "Weather tab",
-  "diag_h": "Diagnostics & health",
-  "diag_h_p": "Wi\u2011Fi RSSI, NTP, CPU/heap, presence ping, learned values and fallback status. Goal: quickly see if everything is OK.",
-  "diag_conn_h": "Connection & time",
-  "diag_conn_p": "Wi\u2011Fi RSSI and NTP sync help confirm stable connectivity and correct timekeeping (important for schedules).",
-  "diag_res_h": "Resources",
-  "diag_res_p": "CPU load and heap usage show whether the ESP32 is healthy and has enough memory headroom.",
-  "diag_shots_h": "Screenshots",
-  "diag_live_h": "Why no \u201cLive log\u201d on GitHub Pages?",
-  "diag_live_p": "Because this is documentation: all active polling is disabled.",
-  "cap_diag_conn_res": "Diagnostics \u2013 connection, resources, learning",
-  "cap_health_comfort": "Health \u2013 indoor/outdoor values and comfort hints",
-  "setup_h": "GitHub Pages setup (step-by-step)",
-  "setup_h_p": "This site publishes from <b>/docs</b>. Follow the steps using GitHub Desktop and GitHub Pages settings.",
-  "setup_s1_h": "1) Repository structure",
-  "setup_s1_p": "Repository root contains <b>docs/</b> folder (with index.html).",
-  "setup_s2_h": "2) GitHub Desktop \u2013 commit & push",
-  "setup_s2_p": "Copy docs folder, commit, then push.",
-  "setup_s3_h": "3) Enable GitHub Pages",
-  "setup_s3_p": "Settings \u2192 Pages \u2192 Deploy from a branch \u2192 main \u2192 /docs \u2192 Save.",
-  "setup_tip_h": "Tip: if it doesn\u2019t refresh",
-  "setup_tip_p": "CTRL+F5 hard reload, or re-save Pages settings. 1\u20133 min lag is normal.",
-  "setup_template_h": "\u201cTemplate\u201d option (optional)",
-  "setup_template_p": "You <i>don\u2019t need</i> a GitHub Pages template because this docs layout is already included.",
-  "footer": "Built for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32.",
-  "safety_note": "Note: The exact parameters (soft timeout, Safe\u2011Heat cycle, freeze target) are configurable in the UI."
-}
+    title: "ESP Thermostat Pro – How It Works",
+    subtitle: "Engineering notes + friendly explanations. This GitHub Pages site is static documentation and does not control the device.",
+    badge_static: "Static Docs",
+    badge_no_cloud: "No forced cloud",
+    badge_dual: "ESP32 + ESP-01",
+    nav_home: "Overview",
+    nav_arch: "Architecture",
+    nav_ui: "UI",
+    nav_logic: "Control Logic",
+    nav_safety: "Safety",
+    nav_energy: "Gas & Energy",
+    nav_install: "GitHub Pages",
+    lang: "HU",
+
+    home_h: "Overview",
+    home_p1: "This site explains the <b>ESP Thermostat Pro</b> system with real screenshots and step-by-step reasoning. The design matches your setup: an <b>ESP32 Dev Module</b> as the main controller + web UI (with a <b>DHT</b> sensor), and an <b>ESP-01 (ESP8266)</b> remote relay module switching the boiler, with a <b>DS18x20</b> sensor near the boiler.",
+    home_p2: "The purpose is clarity: what each feature does, why it exists, and how the decision logic works (Auto/Manual, Preheat, Away, Advanced schedule, LoS fallback).",
+    quick_h: "Quick facts",
+    q1k: "Main controller", q1v: "ESP32 Dev Module (Web UI + logic + DHT)",
+    q2k: "Boiler switching", q2v: "ESP-01 (ESP8266) relay output",
+    q3k: "Boiler-side sensor", q3v: "DS18x20 (wired)",
+    q4k: "Goal", q4v: "Safe, local, explainable heating control",
+    note_static_t: "Important",
+    note_static_b: "The GitHub Pages site is a <b>static</b> demo. No live ESP calls, no log downloads, no ThingSpeak/Sheets uploads.",
+    shots_h: "Screenshots (real UI)",
+    shots_p: "All pages below are based on your project's actual UI screenshots.",
+
+    arch_h: "System architecture",
+    arch_p: "Two devices, two roles. The ESP32 is the 'brain' (UI + logic), and the ESP‑01 is the 'hand' (relay to the boiler).",
+    arch_hw_h: "Hardware block diagram",
+    arch_hw_p: "Wi‑Fi is used only for commands/status exchange. Physical boiler switching happens on the ESP‑01 relay.",
+    arch_flow_h: "Data flow",
+    arch_flow_p: "Control is driven by the selected sensor source (Main/DHT/Average/Auto). The target temperature comes from schedule, manual setting, and/or smart modifiers.",
+
+    ui_h: "Web interface",
+    ui_p: "The UI is designed mobile-first: clear states, quick actions, and diagnostics in one place.",
+    ui_tabs_h: "Tabs",
+    ui_tabs_p: "This documentation explains the Thermostat, System, Weather, Diagnostics and Schedule tabs and how they relate to backend decisions.",
+    ui_themes_h: "Theme comparison",
+    ui_themes_p: "Apple is the default theme, with Siemens and Nest styles available. Behavior stays identical; only visuals change.",
+
+    logic_h: "Control logic (A+B: friendly + engineering)",
+    logic_p: "Here we walk through how the controller decides: when to heat, when not to, and what happens in special cases.",
+    logic_auto_h: "Auto vs Manual",
+    logic_auto_p: "<b>Auto:</b> schedule (simple or advanced) defines targets, smart modes may adjust them. <b>Manual:</b> user sets a target (optionally eco/boost).",
+    logic_preheat_h: "Preheat",
+    logic_preheat_p: "Preheat prevents arriving late to the target temperature. The system estimates warm-up time using learned heat-up rate (slope) and may start heating earlier.",
+    logic_away_h: "Away (presence-based eco)",
+    logic_away_p: "Away mode pings configured IP addresses. If nobody is reachable beyond the timeout, target temperature drops to an eco value.",
+    logic_adv_h: "Advanced Schedule (7-day points)",
+    logic_adv_p: "Advanced schedule supports up to 21 points. The thermostat uses the last point that has already passed, which keeps behavior stable and predictable.",
+    logic_src_h: "Control sensor source",
+    logic_src_p: "Main (boiler-side), DHT (room air), Average, or Auto (day: DHT, night: main). This makes control match the real comfort zone.",
+
+    safety_h: "Safety & LoS (Sensor Loss) protection",
+    safety_p: "With gas boiler control, the top priority is predictable and safe behavior even during faults.",
+    safety_los_h: "LoS steps (visual)",
+    safety_los_p: "Three-stage response: 1) Soft timeout, 2) Safe‑Heat duty cycle, 3) Freeze-protect target for prolonged failure.",
+    safety_why_h: "Why this approach?",
+    safety_why_p: "The goal is not 'maximum heating', but preventing freeze risk without uncontrolled heating until the fault is fixed.",
+
+    energy_h: "Gas & energy estimation",
+    energy_p: "The system includes gas MJ and cost estimation. It is an estimate: based on relay ON/OFF time and configured parameters, it gives a daily overview.",
+    energy_mj_h: "MJ logic",
+    energy_mj_p: "Heating value (MJ/m³) and price (Ft/m³) are configurable. Daily totals help track trends (weather, habits, tuning changes).",
+    energy_cycles_h: "Cycles and heating time",
+    energy_cycles_p: "Cycle count and heating time together show how 'choppy' the control is and help tune hysteresis / TPI-like behavior.",
+
+    install_h: "GitHub Pages setup (step-by-step)",
+    install_p: "This documentation is static HTML/CSS/JS. No build required—only the /docs folder.",
+    install_steps: [
+      "Make sure the repo contains the <b>/docs</b> folder (this ZIP includes it).",
+      "On GitHub: <b>Settings</b> → <b>Pages</b>.",
+      "Source: <b>Deploy from a branch</b>.",
+      "Branch: <b>main</b>, Folder: <b>/docs</b> → Save.",
+      "Open the provided URL. If updates don't show, use <b>CTRL+F5</b> (cache)."
+    ],
+    install_template_h: "Template note",
+    install_template_p: "You can use a Jekyll theme (e.g., Cayman) if you prefer, but for this project a static site keeps full control with zero dependencies.",
+
+    footer: "Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32."
+  }
 };
 
-function applyI18n(lang) {
-  const dict = I18N[lang] || I18N.en;
+function getLang(){
+  const stored = localStorage.getItem("lang");
+  if(stored === "hu" || stored === "en") return stored;
+  // default: English
+  return "en";
+}
 
-  // set html lang attribute
-  document.documentElement.lang = lang;
+function setLang(lang){
+  localStorage.setItem("lang", lang);
+  applyLang();
+}
 
-  // translate all nodes
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const val = dict[key];
-    if (val === undefined) return;
+function applyLang(){
+  const L = getLang();
+  const t = I18N[L];
 
-    const asHtml = (el.getAttribute('data-i18n-html') === '1') || (typeof val === 'string' && val.includes('<'));
-    if (asHtml) el.innerHTML = val;
+  document.documentElement.lang = L;
+
+  // Text nodes by data-i18n
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    const val = t[key];
+    if(val === undefined) return;
+    if(el.getAttribute("data-i18n-html")==="1") el.innerHTML = val;
     else el.textContent = val;
   });
 
-  // set active state on buttons
-  const bHU = document.getElementById('langHU');
-  const bEN = document.getElementById('langEN');
-  if (bHU && bEN) {
-    bHU.classList.toggle('active', lang === 'hu');
-    bEN.classList.toggle('active', lang === 'en');
+  // Arrays
+  const stepsEl = document.getElementById("installSteps");
+  if(stepsEl && Array.isArray(t.install_steps)){
+    stepsEl.innerHTML = t.install_steps.map(s=>`<li>${s}</li>`).join("");
   }
+
+  // Language button label (show other language)
+  const langBtn = document.getElementById("langBtn");
+  if(langBtn) langBtn.textContent = t.lang;
+
+  // Title
+  document.title = t.title;
 }
 
-function setLang(lang) {
-  localStorage.setItem('lang', lang);
-  applyI18n(lang);
-}
-
-// Mobile nav
-function initNavToggle() {
-  const btn = document.getElementById('navToggle');
-  const sidebar = document.querySelector('.sidebar');
-  if (!btn || !sidebar) return;
-  btn.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
+function setActiveNav(){
+  const path = location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav a").forEach(a=>{
+    const href = a.getAttribute("href");
+    const active = (href === path) || (path === "" && href === "index.html");
+    a.classList.toggle("active", active);
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initNavToggle();
-  const lang = localStorage.getItem('lang') || 'hu';
-  applyI18n(lang);
+document.addEventListener("DOMContentLoaded", ()=>{
+  setActiveNav();
+  applyLang();
+  document.getElementById("langBtn")?.addEventListener("click", ()=>{
+    const L = getLang();
+    setLang(L === "en" ? "hu" : "en");
+  });
 
-  // ESP-01 photo fallback (if file missing)
-  const espImg = document.querySelector('#esp01Figure img');
-  const fb = document.getElementById('esp01Fallback');
-  if (espImg && fb) {
-    espImg.addEventListener('error', () => {
-      espImg.style.display = 'none';
-      fb.style.display = 'block';
+  // UI theme compare tabs
+  document.querySelectorAll("[data-compare]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const group = btn.closest("[data-compare-group]");
+      if(!group) return;
+      group.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
+      btn.classList.add("active");
+      const show = btn.getAttribute("data-compare");
+      group.querySelectorAll("[data-compare-panel]").forEach(p=>{
+        p.style.display = (p.getAttribute("data-compare-panel") === show) ? "block" : "none";
+      });
     });
-  }
+  });
 });

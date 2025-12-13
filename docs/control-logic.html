@@ -1,196 +1,100 @@
 <!doctype html>
-<html lang="hu">
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ESP Thermostat Pro – How It Works</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar">
+  <div class="topbar">
+    <div class="inner">
       <div class="brand">
-        <div class="logo">♨️</div>
+        <div class="logo" aria-hidden="true"></div>
         <div>
-          <h1 data-i18n="site_title">ESP Thermostat Pro – How It Works</h1>
-          <p data-i18n="site_sub"></p>
-          <div class="pills">
-            <span class="pill" data-i18n="badge_static"></span>
-            <span class="pill" data-i18n="badge_dual"></span>
-            <span class="pill" data-i18n="badge_no_cloud"></span>
-          </div>
-          <div class="lang">
-            <button id="langHU" onclick="setLang('hu')">HU</button>
-            <button id="langEN" onclick="setLang('en')">EN</button>
-          </div>
+          <h1>ESP Thermostat Pro</h1>
+          <div class="sub">How It Works • Docs</div>
         </div>
       </div>
 
-      <nav class="nav">
-        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
-        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
-        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
-        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
-        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
-        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
-        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
-        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
-        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-i18n="nav_home">Overview</a>
+        <a href="architecture.html" data-i18n="nav_arch">Architecture</a>
+        <a href="ui.html" data-i18n="nav_ui">UI</a>
+        <a href="control-logic.html" data-i18n="nav_logic">Control Logic</a>
+        <a href="safety.html" data-i18n="nav_safety">Safety</a>
+        <a href="energy.html" data-i18n="nav_energy">Gas & Energy</a>
+        <a href="pages.html" data-i18n="nav_install">GitHub Pages</a>
       </nav>
-    </aside>
 
-    <main class="main">
-      <div class="topbar">
-        <button class="mobileToggle" id="navToggle">☰ Menu</button>
-        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
+      <div class="controls">
+        <span class="badge" data-i18n="badge_static">Static Docs</span>
+        <span class="badge" data-i18n="badge_dual">ESP32 + ESP-01</span>
+        <button class="btn" id="langBtn" type="button">HU</button>
       </div>
-
-      <div class="container">
-        <div class="hero">
-          <h2 data-i18n="ctrl_h"></h2>
-          <p data-i18n="ctrl_h_p" data-i18n-html="1"></p>
-        </div>
-
-        
-<div class="callout">
-  <b>Important:</b> This page describes real control behavior, but it is still documentation.
-  The GitHub Pages site does not include any control buttons or polling loops.
-</div>
-
-<div class="section">
-  <h2 data-i18n="ctrl_auto_h"></h2>
-  <p data-i18n="ctrl_auto_p"></p>
-
-  <div class="two">
-    <div class="card">
-      <h3 data-i18n="ctrl_auto_target_h"></h3>
-      <p>
-        1) If Advanced Schedule is enabled, use the most recent active point.<br>
-        2) Otherwise use Weekday / Weekend schedule blocks.<br>
-        3) If Away mode is active, override target with Away target (see below).<br>
-        4) If LoS fallback is active, override target with fallback target/cycle.
-      </p>
-    </div>
-    <div class="card">
-      <h3 data-i18n="ctrl_hyst_h"></h3>
-      <p>
-        Heating turns <b>ON</b> when measured temperature is below <b>(target − hysteresis)</b>.<br>
-        Heating turns <b>OFF</b> when measured temperature reaches/exceeds the target (or within hysteresis depending on mode).<br>
-        This prevents rapid relay toggling and keeps the system stable.
-      </p>
     </div>
   </div>
-</div>
 
-<div class="section">
-  <h2 data-i18n="ctrl_manual_h"></h2>
-  <p data-i18n="ctrl_manual_p"></p>
+  <main class="wrap">
+    
+<section class="hero">
+  <h2 data-i18n="logic_h">Control logic</h2>
+  <p data-i18n="logic_p"></p>
+</section>
 
-  <div class="two">
+<div class="card">
+  <h3 data-i18n="logic_auto_h">Auto vs Manual</h3>
+  <p data-i18n="logic_auto_p" data-i18n-html="1"></p>
+  <div class="hr"></div>
+
+  <h3 data-i18n="logic_src_h">Control sensor source</h3>
+  <p data-i18n="logic_src_p"></p>
+
+  <div class="two" style="margin-top:12px;">
     <div class="figure">
-      <img src="assets/screenshots/Thermostat2.jpg" alt="Thermostat UI">
-      <div class="figcap">Thermostat – manual controls area</div>
-    </div>
-    <div class="card">
-      <h3 data-i18n="ctrl_manual_target_h"></h3>
-      <p>
-        Manual mode uses a user-set target temperature. The scheduler is still running in the background,
-        but manual target is preferred. Safety (LoS) still applies.
-      </p>
-      <p style="margin-top:10px; color:var(--faint)">
-        Tip: keep hysteresis reasonable (e.g. 0.2–0.4°C) for relay longevity.
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2 data-i18n="ctrl_preheat_h"></h2>
-  <p data-i18n="ctrl_preheat_p"></p>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/Thermostat3.jpg" alt="Preheat badge">
-      <div class="figcap">Thermostat – badges (Pre‑Heat / Away / Fallback)</div>
-    </div>
-    <div class="card">
-      <h3 data-i18n="ctrl_preheat_what_h"></h3>
-      <p>
-        The thermostat estimates how long it needs to heat from current temperature to the next scheduled target.
-        It then shifts the effective start time earlier by that amount (with a safety cap).
-        This is why the room can be warm <i>exactly</i> at the schedule time, not 30–60 minutes later.
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2 data-i18n="ctrl_away_h"></h2>
-  <p data-i18n="ctrl_away_p"></p>
-
-  <div class="two">
-    <div class="card">
-      <h3 data-i18n="ctrl_presence_h"></h3>
-      <p>
-        • You provide one or more IP addresses (phones, PCs, routers).<br>
-        • The controller periodically pings them.<br>
-        • If none are reachable for the configured timeout → Away becomes active.<br>
-        • Optionally, you can force manual Away mode.
-      </p>
+      <img src="assets/screenshots/Diag&Health1.jpg" alt="Sensor selection / health">
+      <div class="figcap">Sensor source & health indicators</div>
     </div>
     <div class="figure">
-      <img src="assets/screenshots/Diag&Health2.jpg" alt="Presence diagnostics">
-      <div class="figcap">Diagnostics – presence ping indicator</div>
+      <img src="assets/screenshots/Thermostat2.jpg" alt="Schedule + chart">
+      <div class="figcap">Scheduling & temperature history chart</div>
     </div>
   </div>
 </div>
 
-<div class="section">
-  <h2 data-i18n="ctrl_adv_h"></h2>
-  <p data-i18n="ctrl_adv_p"></p>
+<section class="section">
+  <div class="card">
+    <h3 data-i18n="logic_preheat_h">Preheat</h3>
+    <p data-i18n="logic_preheat_p"></p>
+    <ul class="list">
+      <li><b>Human view:</b> “Start a bit earlier so it’s warm by 06:00.”</li>
+      <li><b>Engineering view:</b> warm-up estimate uses learned slope (°C/h) + current delta to target.</li>
+    </ul>
 
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/System1.jpg" alt="Advanced schedule toggle">
-      <div class="figcap">System – schedule / advanced schedule controls</div>
-    </div>
-    <div class="card">
-      <h3 data-i18n="ctrl_adv_rules_h"></h3>
-      <p>
-        • Points are sorted by day + time.<br>
-        • The active point is the last enabled point that is not in the future.<br>
-        • You can store multiple points per day (up to the firmware limit).<br>
-        • Points persist across reboots (NVS).
-      </p>
-    </div>
-  </div>
-</div>
+    <div class="hr"></div>
+    <h3 data-i18n="logic_away_h">Away</h3>
+    <p data-i18n="logic_away_p"></p>
+    <ul class="list">
+      <li>IP list is configurable.</li>
+      <li>Timeout prevents flicker when Wi‑Fi briefly drops.</li>
+      <li>Manual Away is available as an explicit override.</li>
+    </ul>
 
-<div class="section">
-  <h2 data-i18n="ctrl_sensor_src_h"></h2>
-  <p data-i18n="ctrl_sensor_src_p"></p>
-
-  <div class="two">
-    <div class="figure">
-      <img src="assets/screenshots/Diag&Health3.jpg" alt="Sensors view">
-      <div class="figcap">Diagnostics / Health – sensor values</div>
-    </div>
-    <div class="card">
-      <h3 data-i18n="ctrl_sensor_why_h"></h3>
-      <p>
-        Boiler-side temperature can react quickly to heating events and protects the boiler loop.
-        Room air temperature better tracks comfort.
-        Switching or averaging can make the system feel more natural.
-      </p>
+    <div class="hr"></div>
+    <h3 data-i18n="logic_adv_h">Advanced Schedule</h3>
+    <p data-i18n="logic_adv_p"></p>
+    <div class="code">
+Rule: use the last schedule point that is in the past.
+This makes target temperature deterministic and stable.
     </div>
   </div>
-</div>
+</section>
 
 
-        <div class="footer" data-i18n="footer"></div>
-      </div>
-    </main>
-  </div>
+    <div class="footer" data-i18n="footer">
+      Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32.
+    </div>
+  </main>
 
   <script src="site.js"></script>
 </body>

@@ -1,31 +1,18 @@
 # ESP Thermostat Pro – How It Works
 
-This repository contains a **GitHub Pages** documentation site in `docs/`.
+This repository contains a **GitHub Pages** documentation site under `/docs`.
 
-## Publish on GitHub Pages (GitHub Desktop friendly)
+## What this is
+A **static** documentation website explaining the real system:
+- ESP32 Dev Module: web UI + control logic + DHT sensor
+- ESP-01 (ESP8266): relay to the gas boiler + DS18x20 sensor
 
-1. Copy the `docs/` folder into your repository (root).
-2. Commit & Push with GitHub Desktop.
-3. On GitHub: **Settings → Pages**
-   - **Source:** Deploy from a branch
-   - **Branch:** `main`
-   - **Folder:** `/docs`
-   - Save
+## Enable GitHub Pages
+GitHub → **Settings** → **Pages**  
+Source: **Deploy from a branch**  
+Branch: **main**  
+Folder: **/docs**
 
-After a minute your site should be available under:
-
-`https://<username>.github.io/<repo>/`
-
-## Language (HU/EN)
-
-Use the **HU / EN** buttons in the left sidebar.  
-The selection is saved in `localStorage` and applied on every page.
-
-## Note
-
-This is **documentation only**:
-- No live ESP API calls
-- No ThingSpeak / Spreadsheet uploads
-- No polling loops
-
-The real controller UI runs on your ESP32.
+## Notes
+- The Pages site is **documentation only** (no live ESP calls, no cloud uploads).
+- Place your real ESP-01 photo as: `docs/assets/screenshots/esp01.jpg` (the ZIP includes a placeholder).
