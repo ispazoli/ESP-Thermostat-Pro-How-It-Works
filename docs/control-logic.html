@@ -1,10 +1,164 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ESP Thermostat Pro – How It Works</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">♨️</div>
+        <div>
+          <h1 data-i18n="site_title"></h1>
+          <p data-i18n="site_sub"></p>
+          <div class="pills">
+            <span class="pill" data-i18n="badge_static"></span>
+            <span class="pill" data-i18n="badge_dual"></span>
+            <span class="pill" data-i18n="badge_no_cloud"></span>
+          </div>
+          <div class="lang">
+            <button id="langHU" onclick="setLang('hu')">HU</button>
+            <button id="langEN" onclick="setLang('en')">EN</button>
+          </div>
+        </div>
+      </div>
 
-<!-- ADDED: Control logic visuals -->
-<div class="figure">
-  <img src="assets/screenshots/Thermostat2.jpg" alt="Automata és kézi vezérlés">
-  <div class="figcap">Auto / Manual / Pre-Heat működés</div>
+      <nav class="nav">
+        <a href="index.html">🏠 <span data-i18n="nav_home"></span></a>
+        <a href="architecture.html">🧩 <span data-i18n="nav_arch"></span></a>
+        <a href="control-logic.html">🧠 <span data-i18n="nav_ctrl"></span></a>
+        <a href="learning.html">📈 <span data-i18n="nav_learn"></span></a>
+        <a href="safety.html">🛡️ <span data-i18n="nav_safety"></span></a>
+        <a href="gas-energy.html">⛽ <span data-i18n="nav_gas"></span></a>
+        <a href="ui-themes.html">🎨 <span data-i18n="nav_ui"></span></a>
+        <a href="diagnostics.html">🧪 <span data-i18n="nav_diag"></span></a>
+        <a href="setup.html">🚀 <span data-i18n="nav_setup"></span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <button class="mobileToggle" id="navToggle">☰ Menu</button>
+        <div class="breadcrumb">ESP‑Thermostat‑Pro‑How‑It‑Works</div>
+      </div>
+
+      <div class="container">
+        <div class="hero">
+          <h2 data-i18n="ctrl_h"></h2>
+          <p data-i18n="ctrl_h_p" data-i18n-html="1"></p>
+        </div>
+
+        
+<div class="callout" data-i18n="ctrl_callout" data-i18n-html="1"></div>
+
+<div class="section">
+  <h2 data-i18n="ctrl_auto_h"></h2>
+  <p data-i18n="ctrl_auto_p"></p>
+
+  <div class="two">
+    <div class="card">
+      <h3 data-i18n="ctrl_auto_target_h"></h3>
+      <p data-i18n="ctrl_auto_target_p" data-i18n-html="1"></p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="ctrl_hyst_h"></h3>
+      <p data-i18n="ctrl_hyst_p" data-i18n-html="1"></p>
+    </div>
+  </div>
 </div>
-<div class="figure">
-  <img src="assets/screenshots/Thermostat3.jpg" alt="Ütemezés">
-  <div class="figcap">Advanced Schedule és Away mód</div>
+
+<div class="section">
+  <h2 data-i18n="ctrl_manual_h"></h2>
+  <p data-i18n="ctrl_manual_p"></p>
+
+  <div class="two">
+    <div class="figure">
+      <img src="assets/screenshots/Thermostat2.jpg" alt="Thermostat UI">
+      <div class="figcap" data-i18n="cap_manual_controls"></div>
+    </div>
+    <div class="card">
+      <h3 data-i18n="ctrl_manual_target_h"></h3>
+      <p data-i18n="ctrl_manual_target_p" data-i18n-html="1"></p>
+      <p style="margin-top:10px; color:var(--faint)">
+        <span data-i18n="ctrl_manual_tip"></span>
+      </p>
+    </div>
+  </div>
 </div>
+
+<div class="section">
+  <h2 data-i18n="ctrl_preheat_h"></h2>
+  <p data-i18n="ctrl_preheat_p"></p>
+
+  <div class="two">
+    <div class="figure">
+      <img src="assets/screenshots/Thermostat3.jpg" alt="Preheat badge">
+      <div class="figcap" data-i18n="cap_badges"></div>
+    </div>
+    <div class="card">
+      <h3 data-i18n="ctrl_preheat_what_h"></h3>
+      <p data-i18n="ctrl_preheat_what_p" data-i18n-html="1"></p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 data-i18n="ctrl_away_h"></h2>
+  <p data-i18n="ctrl_away_p"></p>
+
+  <div class="two">
+    <div class="card">
+      <h3 data-i18n="ctrl_presence_h"></h3>
+      <p data-i18n="ctrl_presence_p" data-i18n-html="1"></p>
+    </div>
+    <div class="figure">
+      <img src="assets/screenshots/Diag&Health2.jpg" alt="Presence diagnostics">
+      <div class="figcap" data-i18n="cap_presence_ping"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 data-i18n="ctrl_adv_h"></h2>
+  <p data-i18n="ctrl_adv_p"></p>
+
+  <div class="two">
+    <div class="figure">
+      <img src="assets/screenshots/System1.jpg" alt="Advanced schedule toggle">
+      <div class="figcap" data-i18n="cap_adv_controls"></div>
+    </div>
+    <div class="card">
+      <h3 data-i18n="ctrl_adv_rules_h"></h3>
+      <p data-i18n="ctrl_adv_rules_p" data-i18n-html="1"></p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 data-i18n="ctrl_sensor_src_h"></h2>
+  <p data-i18n="ctrl_sensor_src_p"></p>
+
+  <div class="two">
+    <div class="figure">
+      <img src="assets/screenshots/Diag&Health3.jpg" alt="Sensors view">
+      <div class="figcap" data-i18n="cap_sensor_values"></div>
+    </div>
+    <div class="card">
+      <h3 data-i18n="ctrl_sensor_why_h"></h3>
+      <p data-i18n="ctrl_sensor_why_p" data-i18n-html="1"></p>
+    </div>
+  </div>
+</div>
+
+
+        <div class="footer" data-i18n="footer"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="site.js"></script>
+</body>
+</html>

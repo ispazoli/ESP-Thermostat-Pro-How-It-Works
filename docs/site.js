@@ -106,7 +106,90 @@ const I18N = {
   "setup_tip_h": "Tipp: ha nem frissül",
   "setup_tip_p": "CTRL+F5 hard reload, vagy a Pages oldalon Save újra. 1–3 perc késés normális.",
   "hw_esp01_missing": "ESP-01 relémodul (fotó nem elérhető)",
-  "footer": "Készült GitHub Pages-hez. A bemutató oldal csak dokumentáció; az éles vezérlő UI az ESP32-n fut."
+  "footer": "Készült GitHub Pages-hez. A bemutató oldal csak dokumentáció; az éles vezérlő UI az ESP32-n fut.",
+  "home_notes_h": "Projekt jegyzetek",
+  "home_notes_p1": "Ez a doksi oldal a firmware repóban a <span class=\"kbd\">/docs</span> mappában él. A <b>valódi vezérlő UI</b> továbbra is az ESP32-n fut.",
+  "home_notes_p2": "Tipp: ha képek nem jelennek meg push után → ellenőrizd a fájlneveket (kis/nagybetű számít), majd frissíts keményen (CTRL+F5).",
+  "cap_thermo_main": "Termosztát – fő nézet",
+  "cap_night_mode": "Éjszakai mód – sötét téma / éjszakai állapot",
+  "cap_system_settings": "Rendszer – beállítások és statisztika",
+  "cap_diag_health": "Diagnosztika – egészség és jelzések",
+  "gas_practical_h": "Gyakorlati használat",
+  "gas_compare_h": "Napok összehasonlítása",
+  "gas_compare_p": "MJ/Ft becsléssel jól össze tudsz hasonlítani „hasonló időjárású” napokat, és visszaellenőrizni a finomhangolást (hiszterézis, pre‑heat, ütemezés).",
+  "gas_detect_h": "Anomáliák észlelése",
+  "gas_detect_p": "Ha hirtelen megugrik a napi energia, az jelezhet beragadt relét, szenzor driftet vagy ütemezési hibát.",
+  "cap_gas_settings": "Rendszer – gáz MJ és ár beállítások",
+  "cap_daily_summary": "Rendszer – napi MJ / költség összegzés",
+  "learn_practical_h": "Miért hasznos a tanulás (gyakorlatban)",
+  "learn_preheat_h": "Pre‑Heat időzítés",
+  "learn_preheat_p": "Tanulás nélkül a 07:00 azt jelenti: „07:00-kor indul a fűtés”.<br>Tanulással a 07:00 azt jelenti: „07:00-ra legyen meleg”.<br>A vezérlő a tanult felfűtési sebességből optimális indítási időt számol.",
+  "learn_stability_h": "Stabilitás",
+  "learn_stability_p": "A hőveszteség becslés segít elkerülni a túlfűtést / alulfűtést, és simábbá teszi a szabályozást időjárás-változásnál.<br>Nagy célhőmérséklet ugrások után is kiszámíthatóbb viselkedést ad.",
+  "cap_learn_gauges": "Diagnosztika – tanulási mérők",
+  "cap_weather_influences": "Időjárás – bemenetek, amik a valós viselkedést befolyásolják",
+  "safety_callout": "<b>Biztonság az első:</b> ha a szenzor hibázik, a cél a <b>kiszámíthatóság</b>. A komfort ilyenkor másodlagos.",
+  "safety_step_label1": "1. lépés",
+  "safety_step_label2": "2. lépés",
+  "safety_step_label3": "3. lépés",
+  "safety_diagram": "<pre>Sensor OK?
+  ├─ Igen → Normál vezérlés (Auto / Manual / Ütemezés)
+  └─ Nem  → Soft timeout (utolsó érvényes T)
+             ├─ Helyreállt → vissza normálra
+             └─ Továbbra is rossz → Safe‑Heat ciklus (BE/KI percek)
+                               └─ Fagyveszély → Fix fagyvédelmi cél</pre>",
+  "cap_fallback_config": "Rendszer – fallback konfiguráció",
+  "cap_fallback_badge": "Diagnosztika – fallback / hiba jelzések",
+  "setup_template_h": "„Template” opció (nem kötelező)",
+  "setup_template_p": "Ehhez a projekthez <i>nem kell</i> külön GitHub Pages template, mert ez a doksi már tartalmaz egy kész docs‑layoutot.<br>Ha mégis template‑szerű workflow-t szeretnél: hozz létre egy új repót, majd másold bele ezt a <span class=\"kbd\">/docs</span> mappát.<br>A Pages beállítás ugyanaz: publikálás <span class=\"kbd\">main /docs</span>-ból.",
+  "ui_changes_h": "Mit változtat a téma?",
+  "ui_changes_layout_h": "Elrendezés és tipográfia",
+  "ui_changes_layout_p": "A témák főleg a vizuális stílust módosítják (térközök, lekerekítések, ikonok). A vezérlési logika ugyanaz marad.",
+  "ui_changes_why_h": "Miért jó a több téma?",
+  "ui_changes_why_p": "Más felhasználók más „érzetet” szeretnek: Apple letisztult, Siemens ipari, Nest otthonos. Használhatóságot javít, viselkedést nem változtat.",
+  "ui_sections_h": "UI képek (szekciók)",
+  "cap_tab_thermostat": "Termosztát fül",
+  "cap_tab_weather": "Időjárás fül",
+  "arch_hw_h": "Hardver fotók",
+  "arch_hw_p": "Képernyőképek és fotók a repódból.",
+  "arch_diagram": "<pre>[Szoba levegő]                 Wi‑Fi                [Kazán környéke]
+  DHT22/11  ──> ESP32  <───────────────>  ESP‑01 (ESP8266) ──> Relé ──> Kazán
+
+  • Web UI (helyi)                           • DS18x20 hőmérséklet
+  • Ütemezés / Haladó ütemezés               • Relé kapcsolás
+  • Pre‑Heat + tanulás                       • Egyszerű szenzor/relé node
+  • LoS fallback vezérlés</pre>",
+  "cap_system_detail": "Rendszer – részletes nézet",
+  "cap_esp01_photo": "ESP‑01 relé modul (a te fotód)",
+  "ctrl_callout": "<b>Fontos:</b> Ez az oldal a valós vezérlési viselkedést írja le, de továbbra is dokumentáció.<br>A GitHub Pages oldal nem tartalmaz vezérlő gombokat és nem futtat periodikus lekérdezéseket.",
+  "ctrl_auto_target_h": "Célhőmérséklet kiválasztás (Auto)",
+  "ctrl_auto_target_p": "1) Ha a Haladó ütemezés aktív, a legutóbbi engedélyezett pont a cél.<br>2) Különben a hétköznap / hétvége blokkok adnak célt.<br>3) Ha Away aktív, felülírja a célt az Away célérték.<br>4) Ha LoS fallback aktív, a fallback cél/ciklus felülírhat mindent.",
+  "ctrl_hyst_h": "Relé döntés (Hiszterézis)",
+  "ctrl_hyst_p": "A fűtés <b>BE</b> kapcsol, ha a mért hőmérséklet a <b>(cél − hiszterézis)</b> alá esik.<br>A fűtés <b>KI</b> kapcsol, ha eléri/átlépi a célt (módtól függően a sávon belül).<br>Ez védi a relét a gyors kapcsolgatástól és stabilabbá teszi a rendszert.",
+  "cap_manual_controls": "Termosztát – kézi vezérlés terület",
+  "ctrl_manual_target_h": "Kézi célhőmérséklet",
+  "ctrl_manual_target_p": "Kézi módban a felhasználó által beállított célhőmérséklet érvényes. Az ütemezés a háttérben fut, de a kézi cél elsőbbséget élvez.<br>A biztonsági (LoS) logika továbbra is érvényesül.",
+  "ctrl_manual_tip": "Tipp: érdemes ésszerű hiszterézist használni (pl. 0,2–0,4 °C) a relé élettartama miatt.",
+  "cap_badges": "Termosztát – badge-ek (Pre‑Heat / Away / Fallback)",
+  "ctrl_preheat_what_h": "Mit csinál pontosan a Pre‑Heat?",
+  "ctrl_preheat_what_p": "A termosztát megbecsüli, mennyi idő kell a jelenlegi hőmérsékletről a következő ütemezett célértékig felfűteni.<br>Ez alapján a tényleges indítást ennyivel korábbra tolja (biztonsági korláttal).<br>Ezért lehet a szoba meleg <i>pont</i> az ütemezett időpontra, nem 30–60 perccel később.",
+  "ctrl_presence_h": "Hogyan működik a jelenlét (ping)?",
+  "ctrl_presence_p": "• Megadsz egy vagy több IP címet (telefon, PC, router).<br>• A vezérlő időnként megpingeli őket.<br>• Ha egyik sem elérhető a timeout ideig → Away aktiválódik.<br>• Opcionálisan manuális Away mód is kényszeríthető.",
+  "cap_presence_ping": "Diagnosztika – jelenlét ping jelző",
+  "cap_adv_controls": "Rendszer – ütemezés / haladó ütemezés vezérlők",
+  "ctrl_adv_rules_h": "Szabályok",
+  "ctrl_adv_rules_p": "• A pontok nap + idő szerint rendeződnek.<br>• Az aktív pont: a legutóbbi engedélyezett pont, ami nincs a jövőben.<br>• Egy nap több pont is lehet (a firmware limitig).<br>• A pontok újraindítás után is megmaradnak (NVS).",
+  "cap_sensor_values": "Diagnosztika / Health – szenzor értékek",
+  "ctrl_sensor_why_h": "Miért fontos ez?",
+  "ctrl_sensor_why_p": "A kazán-közeli hőmérséklet gyorsabban reagál és védi a kazánkört.<br>A szoba levegő hőmérséklete jobban követi a komfortot.<br>Váltás/átlagolás természetesebb „érzetet” adhat.",
+  "diag_conn_h": "Kapcsolat és idő",
+  "diag_conn_p": "A Wi‑Fi RSSI és az NTP szinkron segít ellenőrizni a stabil kapcsolatot és a pontos időt (fontos az ütemezéshez).",
+  "diag_res_h": "Erőforrások",
+  "diag_res_p": "A CPU terhelés és a heap használat megmutatja, hogy az ESP32 egészséges-e és van-e memória tartalék.",
+  "diag_shots_h": "Képernyőképek",
+  "cap_diag_conn_res": "Diagnosztika – kapcsolat, erőforrás, tanulás",
+  "cap_health_comfort": "Health – beltéri/kültéri értékek és komfort tippek",
+  "diag_static_log": "Ha szeretnél <b>statikus</b> „példa log”-ot, tegyél egy sima szövegfájlt a <span class=\"kbd\">docs/assets</span> alá, és illeszd be kódként. Így a doksi biztonságos és offline marad."
 },
   en: {
   "site_title": "ESP Thermostat Pro – How It Works",
@@ -231,8 +314,91 @@ function applyI18n(lang) {
     const v = dict[key];
     if (v === undefined) return;
     if (isHtml) el.innerHTML = v;
-    else el.textContent = v;
-  });
+    else el.textContent = v;,
+  "home_notes_h": "Project notes",
+  "home_notes_p1": "This docs site is designed to live inside your firmware repository under <span class=\"kbd\">/docs</span>. The <b>real controller UI</b> stays on the ESP32.",
+  "home_notes_p2": "Tip: If images don’t show after push → check case‑sensitive filenames and do a hard refresh (CTRL+F5).",
+  "cap_thermo_main": "Thermostat – main screen",
+  "cap_night_mode": "Night mode – dark theme / night state",
+  "cap_system_settings": "System – settings & stats",
+  "cap_diag_health": "Diagnostics – health & indicators",
+  "gas_practical_h": "Practical use",
+  "gas_compare_h": "Compare days",
+  "gas_compare_p": "Use the MJ/HUF estimate to compare “similar weather” days and validate tuning (hysteresis, pre‑heat, schedule).",
+  "gas_detect_h": "Detect anomalies",
+  "gas_detect_p": "A sudden jump in daily energy can indicate a stuck relay, sensor drift, or a schedule issue.",
+  "cap_gas_settings": "System – gas MJ and price settings",
+  "cap_daily_summary": "System – daily MJ / cost summary",
+  "learn_practical_h": "Why learning helps (practical)",
+  "learn_preheat_h": "Pre‑Heat timing",
+  "learn_preheat_p": "Without learning, schedule time means “start heating at 07:00”.<br>With learning, it means “be warm at 07:00”.<br>The controller uses heat‑up rate to compute an optimal start time.",
+  "learn_stability_h": "Stability",
+  "learn_stability_p": "Heat loss estimation helps avoid overshoot/undershoot and makes control smoother across weather changes.<br>It also makes the system more predictable after big setpoint jumps.",
+  "cap_learn_gauges": "Diagnostics – learning gauges",
+  "cap_weather_influences": "Weather – inputs that influence real-life behavior",
+  "safety_callout": "<b>Safety first:</b> if sensors fail, the system aims for <b>predictability</b>. Comfort is secondary.",
+  "safety_step_label1": "Step 1",
+  "safety_step_label2": "Step 2",
+  "safety_step_label3": "Step 3",
+  "safety_diagram": "<pre>Sensor OK?
+  ├─ Yes → Normal control (Auto / Manual / Schedule)
+  └─ No  → Soft timeout (use last valid T)
+             ├─ Recovered → back to normal
+             └─ Still bad → Safe‑Heat cycle (ON/OFF minutes)
+                               └─ Freezing outside → Freeze target</pre>",
+  "cap_fallback_config": "System – fallback configuration controls",
+  "cap_fallback_badge": "Diagnostics – fallback / error indicators",
+  "setup_template_h": "“Template” option (optional)",
+  "setup_template_p": "You <i>don’t need</i> a GitHub Pages template because this site already includes a ready‑to‑publish docs layout.<br>If you still want a template workflow: create a new repo, then copy this <span class=\"kbd\">/docs</span> folder into it.<br>The Pages setting stays the same: publish from <span class=\"kbd\">main /docs</span>.",
+  "ui_changes_h": "What changes with themes?",
+  "ui_changes_layout_h": "Layout & typography",
+  "ui_changes_layout_p": "Themes mainly change visual style (spacing, rounded corners, icons). The underlying control logic is identical.",
+  "ui_changes_why_h": "Why have multiple?",
+  "ui_changes_why_p": "Different users prefer different “feel”: Apple clean, Siemens industrial, Nest cozy. It improves usability without changing behavior.",
+  "ui_sections_h": "UI screenshots (sections)",
+  "cap_tab_thermostat": "Thermostat tab",
+  "cap_tab_weather": "Weather tab",
+  "arch_hw_h": "Hardware photos",
+  "arch_hw_p": "Screenshots and photos from your repository.",
+  "arch_diagram": "<pre>[Room air]                 Wi‑Fi                [Boiler area]
+  DHT22/11  ──> ESP32  <───────────────>  ESP‑01 (ESP8266) ──> Relay ──> Boiler
+
+  • Web UI (local)                           • DS18x20 temperature
+  • Schedule / Advanced schedule             • Relay switching
+  • Pre‑Heat + Learning                      • Simple sensor/relay node
+  • LoS fallback control</pre>",
+  "cap_system_detail": "System – detail view",
+  "cap_esp01_photo": "ESP‑01 relay module (your photo)",
+  "ctrl_callout": "<b>Important:</b> This page describes real control behavior, but it is still documentation.<br>The GitHub Pages site does not include any control buttons or polling loops.",
+  "ctrl_auto_target_h": "Target selection (Auto)",
+  "ctrl_auto_target_p": "1) If Advanced Schedule is enabled, use the most recent active point.<br>2) Otherwise use Weekday / Weekend schedule blocks.<br>3) If Away mode is active, override target with Away target.<br>4) If LoS fallback is active, override with fallback target/cycle.",
+  "ctrl_hyst_h": "Relay decision (Hysteresis)",
+  "ctrl_hyst_p": "Heating turns <b>ON</b> when measured temperature is below <b>(target − hysteresis)</b>.<br>Heating turns <b>OFF</b> when it reaches/exceeds target (or within the band depending on mode).<br>This prevents rapid relay toggling and keeps the system stable.",
+  "cap_manual_controls": "Thermostat – manual controls area",
+  "ctrl_manual_target_h": "Manual target",
+  "ctrl_manual_target_p": "Manual mode uses a user‑set target temperature. The scheduler still runs in the background, but manual target is preferred.<br>Safety (LoS) still applies.",
+  "ctrl_manual_tip": "Tip: keep hysteresis reasonable (e.g. 0.2–0.4°C) for relay longevity.",
+  "cap_badges": "Thermostat – badges (Pre‑Heat / Away / Fallback)",
+  "ctrl_preheat_what_h": "What Pre‑Heat actually does",
+  "ctrl_preheat_what_p": "The thermostat estimates how long it needs to heat from current temperature to the next scheduled target.<br>It then shifts the effective start time earlier by that amount (with a safety cap).<br>This is why the room can be warm <i>exactly</i> at the schedule time, not 30–60 minutes later.",
+  "ctrl_presence_h": "How presence is evaluated",
+  "ctrl_presence_p": "• You provide one or more IP addresses (phones, PCs, routers).<br>• The controller periodically pings them.<br>• If none are reachable for the configured timeout → Away becomes active.<br>• Optionally you can force manual Away mode.",
+  "cap_presence_ping": "Diagnostics – presence ping indicator",
+  "cap_adv_controls": "System – schedule / advanced schedule controls",
+  "ctrl_adv_rules_h": "Rules",
+  "ctrl_adv_rules_p": "• Points are sorted by day + time.<br>• Active point is the last enabled point that is not in the future.<br>• Multiple points per day are supported (up to firmware limit).<br>• Points persist across reboots (NVS).",
+  "cap_sensor_values": "Diagnostics / Health – sensor values",
+  "ctrl_sensor_why_h": "Why this matters",
+  "ctrl_sensor_why_p": "Boiler‑side temperature reacts quickly and protects the boiler loop.<br>Room air temperature tracks comfort better.<br>Switching or averaging can make the system feel more natural.",
+  "diag_conn_h": "Connection & time",
+  "diag_conn_p": "Wi‑Fi RSSI and NTP sync help confirm stable connectivity and correct timekeeping (important for schedules).",
+  "diag_res_h": "Resources",
+  "diag_res_p": "CPU load and heap usage show whether the ESP32 is healthy and has enough memory headroom.",
+  "diag_shots_h": "Screenshots",
+  "cap_diag_conn_res": "Diagnostics – connection, resources, learning",
+  "cap_health_comfort": "Health – indoor/outdoor values and comfort hints",
+  "diag_static_log": "If you want a <b>static</b> “example log”, add a plain text file under <span class=\"kbd\">docs/assets</span> and embed it as a code block. That keeps the docs safe and offline."
+});
 }
 
 function updateLangButtons(lang) {
