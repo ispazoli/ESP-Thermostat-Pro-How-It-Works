@@ -20,7 +20,7 @@ without external cloud dependency for core operation.
 
 A full, illustrated explanation of the system is available as a **static documentation site**:
 
-👉 **https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/**
+👉 **(https://ispazoli.github.io/ESP-Thermostat-Pro-How-It-Works/)**
 
 The documentation explains:
 - system architecture and hardware layout
