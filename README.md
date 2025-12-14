@@ -12,7 +12,3 @@ GitHub → **Settings** → **Pages**
 Source: **Deploy from a branch**  
 Branch: **main**  
 Folder: **/docs**
-
-## Notes
-- The Pages site is **documentation only** (no live ESP calls, no cloud uploads).
-- Place your real ESP-01 photo as: `docs/assets/screenshots/esp01.jpg` (the ZIP includes a placeholder).
