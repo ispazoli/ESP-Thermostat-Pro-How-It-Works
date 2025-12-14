@@ -9,6 +9,8 @@ const I18N = {
     badge_static: "Static Docs",
     badge_no_cloud: "No forced cloud",
     badge_dual: "ESP32 + ESP-01",
+    
+    // Navigáció menüpontok
     nav_home: "Áttekintés",
     nav_arch: "Architektúra",
     nav_ui: "Felület",
@@ -16,8 +18,13 @@ const I18N = {
     nav_safety: "Biztonság",
     nav_energy: "Gáz & energia",
     nav_install: "GitHub Pages",
-	nav_learn: "Tanulás",
-    
+    nav_learn: "Tanulás",
+
+    // Lapozó gombok (ÚJ)
+    lbl_prev: "Előző oldal",
+    lbl_next: "Következő oldal",
+
+    // --- Diagnosztika ---
     diag_h: "Diagnosztika",
     diag_h_p: "A rendszer folyamatosan figyeli saját egészségét és a környezeti változókat.",
     diag_conn_h: "Kapcsolat",
@@ -28,6 +35,7 @@ const I18N = {
     diag_cap_1: "Diagnosztika – kapcsolat, erőforrások, tanulás",
     diag_cap_2: "Élő konzol log és analitika",
 
+    // --- Tanulás ---
     learn_h: "Okos tanulás",
     learn_h_p: "A termosztát idővel megtanulja az épület fizikáját, hogy pontosabb és takarékosabb legyen.",
     learn_gain_h: "Felfűtési sebesség (°C/h)",
@@ -40,6 +48,7 @@ const I18N = {
     learn_ui_h: "Megjelenés a felületen",
     learn_ui_p: "A tanult paraméterek (meredek, hőveszteség) és az időjárási adatok nyomon követhetők a Diagnosztika és Időjárás füleken.",
 
+    // --- Témák és Nyelv ---
     theme_apple: "Apple",
     theme_siemens: "Siemens",
     theme_nest: "Nest",
@@ -48,6 +57,7 @@ const I18N = {
     theme_cap_nest: "Nest (kerek / minimál)",
     lang: "EN",
 
+    // --- Home ---
     home_h: "Áttekintés",
     home_p1: "Ez az oldal az <b>ESP Thermostat Pro</b> rendszer működését mutatja be képekkel és lépésről lépésre. Nem marketing, hanem valódi működés: <b>ESP32 Dev Module</b> a vezérlő és web UI, a kazánt pedig egy <b>ESP-01 (ESP8266) relémodul</b> kapcsolja, a kazánoldalon <b>DS18x20</b> szenzorral. A szobában az ESP32 oldalon <b>DHT</b> mér.",
     home_p2: "A dokumentáció célja: a rendszer átlátható legyen (mi miért van), és bárki vissza tudja követni a döntési logikát (Auto/Manual, Preheat, Away, Advanced schedule, LoS fallback).",
@@ -61,6 +71,7 @@ const I18N = {
     shots_h: "Képernyőképek (valós UI)",
     shots_p: "A következő oldalak a programod tényleges felületéről készült képekre épülnek.",
 
+    // --- Architektúra ---
     arch_h: "Rendszerarchitektúra",
     arch_p: "Két eszköz, két feladat. Az ESP32 a 'agy' (UI + logika), az ESP-01 a 'kéz' (relé a kazánhoz).",
     arch_hw_h: "Hardver blokkvázlat",
@@ -70,21 +81,21 @@ const I18N = {
     arch_photos_h: "Hardver fotók",
     arch_cap_esp32: "ESP32 Dev Module (A fő vezérlő)",
     arch_cap_esp01: "ESP-01 Relé modul (Kazánhoz)",
-	
-	"card_inputs_h": "Bemenetek",
-    "card_inputs_1": "Szobalevegő: DHT (ESP32)",
-    "card_inputs_2": "Kazánoldal: DS18x20 (ESP-01)",
-    "card_inputs_3": "Kültéri: opcionális / számított",
-    "card_decision_h": "Döntés",
-    "card_dec_1": "Célhőmérséklet (időrend/kézi)",
-    "card_dec_2": "Szenzorforrás kiválasztása",
-    "card_dec_3": "Okos módosítók (Előfűtés, Távol)",
-    "card_dec_4": "Biztonsági feltételek (Jelvesztés)",
-    "card_act_h": "Végrehajtás",
-    "card_act_1": "Az ESP32 dönt a KI/BE állapotról",
-    "card_act_2": "Az ESP‑01 kapcsolja a relét",
-    "card_act_3": "Állapot megjelenítése a felületen",
-	
+    card_inputs_h: "Bemenetek",
+    card_inputs_1: "Szobalevegő: DHT (ESP32)",
+    card_inputs_2: "Kazánoldal: DS18x20 (ESP-01)",
+    card_inputs_3: "Kültéri: opcionális / számított",
+    card_decision_h: "Döntés",
+    card_dec_1: "Célhőmérséklet (időrend/kézi)",
+    card_dec_2: "Szenzorforrás kiválasztása",
+    card_dec_3: "Okos módosítók (Előfűtés, Távol)",
+    card_dec_4: "Biztonsági feltételek (Jelvesztés)",
+    card_act_h: "Végrehajtás",
+    card_act_1: "Az ESP32 dönt a KI/BE állapotról",
+    card_act_2: "Az ESP‑01 kapcsolja a relét",
+    card_act_3: "Állapot megjelenítése a felületen",
+    
+    // --- UI ---
     ui_h: "Web felület",
     ui_p: "A UI 'mobile-first' szemlélettel készült. Cél: egyértelmű állapotok, gyors beavatkozás, és diagnosztika egy helyen.",
     ui_tabs_h: "Fülek",
@@ -92,6 +103,7 @@ const I18N = {
     ui_themes_h: "Témák összehasonlítása",
     ui_themes_p: "Apple az alap téma, de Siemens és Nest stílus is elérhető. A működés ugyanaz, csak a megjelenés változik.",
 
+    // --- Logika ---
     logic_h: "Vezérlési logika (A+B: érthető + mérnöki)",
     logic_p: "Ebben a részben végigmegyünk azon, hogyan dönt a rendszer: mikor fűt, mikor nem, és mi történik speciális helyzetekben.",
     logic_auto_h: "Auto vs Manual",
@@ -105,6 +117,7 @@ const I18N = {
     logic_src_h: "Vezérlő szenzor kiválasztása",
     logic_src_p: "Fő szenzor (kazán), DHT (szoba), Átlag, vagy Auto (nappal DHT, éjjel fő). Ezzel a szabályozás valóban a kívánt térhez igazítható.",
 
+    // --- Biztonság ---
     safety_h: "Biztonság és LoS (Sensor Loss) védelem",
     safety_p: "Gázkazán vezérlésnél a legfontosabb: hiba esetén is legyen kiszámítható és biztonságos működés.",
     safety_los_h: "LoS lépések (vizuálisan)",
@@ -112,14 +125,31 @@ const I18N = {
     safety_why_h: "Miért így?",
     safety_why_p: "A cél nem a 'maximális fűtés', hanem hogy a rendszer ne hagyja elfagyni a házat, és ne fűtsön kontroll nélkül, amíg a hiba javításra nem kerül.",
     safety_fig_los: "LoS (jelvesztés) biztonsági folyamat",
-	
+    
+    // --- Energia & Gáz (HIÁNYZÓ MAGYAR RÉSZEK PÓTOLVA) ---
     energy_h: "Gáz & energia becslés",
     energy_p: "A rendszer gáz MJ és költség számítást is támogat. Ez becslés: a relé be/ki idők és a beállított paraméterek alapján ad napi összképet.",
     energy_mj_h: "MJ logika",
     energy_mj_p: "A fűtőérték (MJ/m³) és az ár (Ft/m³) paraméterezhető. A napi összegzés segít követni a trendeket (időjárás, szokások, beállítások hatása).",
     energy_cycles_h: "Ciklusok és fűtési idő",
     energy_cycles_p: "A ciklusszámláló és fűtési idő együtt jól jelzi, hogy a szabályozás mennyire 'darabolja' a kazánt, és segít finomhangolni a hiszterézist / TPI jellegű működést.",
+    
+    // Ezek hiányoztak:
+    gas_h: "Gáz & Energia Részletek",
+    gas_h_p: "Hogyan számolja a rendszer a fogyasztást és hogyan segít a diagnosztikában.",
+    gas_logic_h: "Számítási logika",
+    gas_logic_p: "A kazán bekapcsolt állapotának idejét szorozza a konfigurált égőteljesítménnyel vagy átalányértékkel.",
+    gas_today_h: "Mai adatok",
+    gas_today_p: "Az aktuális nap (éjféltől éjfélig) összesített adatai azonnali visszajelzést adnak a módosítások hatásáról.",
+    gas_limits_h: "Korlátok és Beállítások",
+    gas_limits_p: "A pontos méréshez kalibrálni kell a fűtőértéket és a gáz árát a 'System' fülön.",
+    gas_practical_h: "Gyakorlati tippek",
+    gas_compare_h: "Összehasonlítás",
+    gas_compare_p: "Használd a MJ/HUF becslést 'hasonló időjárású' napok összehasonlítására. Így validálhatod a preheat vagy hiszterézis beállításokat.",
+    gas_detect_h: "Hibakeresés",
+    gas_detect_p: "Egy hirtelen ugrás a napi energiában beragadt relét, szenzor elcsúszást vagy rossz ütemezést is jelezhet.",
 
+    // --- Telepítés ---
     install_h: "GitHub Pages beállítás (lépésről lépésre)",
     install_p: "A dokumentáció statikus HTML/CSS/JS. Nem kell semmilyen build, csak a /docs mappa.",
     install_steps: [
@@ -133,7 +163,7 @@ const I18N = {
     install_template_p: "Ha szeretnél, használhatsz Jekyll template-et (pl. Cayman), de ennél a projektnél a statikus site előnye: teljes kontroll és 0 függőség.",
     install_opt_title: "Opcionális: GitHub sablon út",
     install_opt_desc: "Ha kész GitHub Pages „témát” szeretnél, a Beállítások → Pages menüben választhatsz (pl. Cayman).<br>Viszont ez a projekt statikus HTML, így nincs szükség Jekyll-re. Statikus = kevesebb meglepetés.",
-	
+    
     footer: "Készült GitHub Pages-hez. A bemutató oldal csak dokumentáció; az éles vezérlő UI az ESP32-n fut."
   },
 
@@ -143,6 +173,8 @@ const I18N = {
     badge_static: "Static Docs",
     badge_no_cloud: "No forced cloud",
     badge_dual: "ESP32 + ESP-01",
+    
+    // Navigation
     nav_home: "Overview",
     nav_arch: "Architecture",
     nav_ui: "UI",
@@ -150,8 +182,13 @@ const I18N = {
     nav_safety: "Safety",
     nav_energy: "Gas & Energy",
     nav_install: "GitHub Pages",
-	nav_learn: "Learning",
+    nav_learn: "Learning",
 
+    // Navigation Buttons (NEW)
+    lbl_prev: "Previous page",
+    lbl_next: "Next page",
+
+    // --- Diagnostics ---
     diag_h: "Diagnostics",
     diag_h_p: "The system continuously monitors its own health and environmental variables.",
     diag_conn_h: "Connectivity",
@@ -162,18 +199,20 @@ const I18N = {
     diag_cap_1: "Diagnostics – connection, resources, learning",
     diag_cap_2: "Live console log & analytics",
 
+    // --- Learning ---
     learn_h: "Smart Learning",
     learn_h_p: "The thermostat learns the building physics over time.",
     learn_gain_h: "Heat-up Rate (°C/h)",
     learn_gain_p: "How fast temperature rises when boiler is ON. Used for Preheat calculations.",
     learn_loss_h: "Heat Loss (Efficiency)",
     learn_loss_p: "How fast the house cools down. Helps avoid overshoot.",
-	learn_practical_h: "Practical effects",
+    learn_practical_h: "Practical effects",
     learn_preheat_h: "Preheat",
     learn_stability_h: "Stability",
     learn_ui_h: "UI Integration",
     learn_ui_p: "Learned parameters (slope, efficiency) and weather data are visible on the Diagnostics and Weather tabs.",
-	
+    
+    // --- Themes & Lang ---
     theme_apple: "Apple",
     theme_siemens: "Siemens",
     theme_nest: "Nest",
@@ -182,6 +221,7 @@ const I18N = {
     theme_cap_nest: "Nest (round / minimal)",
     lang: "HU",
 
+    // --- Home ---
     home_h: "Overview",
     home_p1: "This site explains the <b>ESP Thermostat Pro</b> system with real screenshots and step-by-step reasoning. The design matches your setup: an <b>ESP32 Dev Module</b> as the main controller + web UI (with a <b>DHT</b> sensor), and an <b>ESP-01 (ESP8266)</b> remote relay module switching the boiler, with a <b>DS18x20</b> sensor near the boiler.",
     home_p2: "The purpose is clarity: what each feature does, why it exists, and how the decision logic works (Auto/Manual, Preheat, Away, Advanced schedule, LoS fallback).",
@@ -195,6 +235,7 @@ const I18N = {
     shots_h: "Screenshots (real UI)",
     shots_p: "All pages below are based on your project's actual UI screenshots.",
 
+    // --- Architecture ---
     arch_h: "System architecture",
     arch_p: "Two devices, two roles. The ESP32 is the 'brain' (UI + logic), and the ESP‑01 is the 'hand' (relay to the boiler).",
     arch_hw_h: "Hardware block diagram",
@@ -204,21 +245,21 @@ const I18N = {
     arch_photos_h: "Hardware photos",
     arch_cap_esp32: "ESP32 Dev Module (Main Controller)",
     arch_cap_esp01: "ESP-01 Relay Module (Boiler side)",
-	
-	"card_inputs_h": "Inputs",
-    "card_inputs_1": "Room air: DHT (ESP32)",
-    "card_inputs_2": "Boiler-side: DS18x20 (ESP-01)",
-    "card_inputs_3": "Outdoor: optional / derived",
-    "card_decision_h": "Decision",
-    "card_dec_1": "Target temperature (schedule/manual)",
-    "card_dec_2": "Sensor source selection",
-    "card_dec_3": "Smart modifiers (Preheat, Away)",
-    "card_dec_4": "Safety gates (LoS)",
-    "card_act_h": "Actuation",
-    "card_act_1": "ESP32 decides ON/OFF",
-    "card_act_2": "ESP‑01 toggles relay",
-    "card_act_3": "Status displayed in UI",
-	
+    card_inputs_h: "Inputs",
+    card_inputs_1: "Room air: DHT (ESP32)",
+    card_inputs_2: "Boiler-side: DS18x20 (ESP-01)",
+    card_inputs_3: "Outdoor: optional / derived",
+    card_decision_h: "Decision",
+    card_dec_1: "Target temperature (schedule/manual)",
+    card_dec_2: "Sensor source selection",
+    card_dec_3: "Smart modifiers (Preheat, Away)",
+    card_dec_4: "Safety gates (LoS)",
+    card_act_h: "Actuation",
+    card_act_1: "ESP32 decides ON/OFF",
+    card_act_2: "ESP‑01 toggles relay",
+    card_act_3: "Status displayed in UI",
+    
+    // --- UI ---
     ui_h: "Web interface",
     ui_p: "The UI is designed mobile-first: clear states, quick actions, and diagnostics in one place.",
     ui_tabs_h: "Tabs",
@@ -226,6 +267,7 @@ const I18N = {
     ui_themes_h: "Theme comparison",
     ui_themes_p: "Apple is the default theme, with Siemens and Nest styles available. Behavior stays identical; only visuals change.",
 
+    // --- Logic ---
     logic_h: "Control logic (A+B: friendly + engineering)",
     logic_p: "Here we walk through how the controller decides: when to heat, when not to, and what happens in special cases.",
     logic_auto_h: "Auto vs Manual",
@@ -239,6 +281,7 @@ const I18N = {
     logic_src_h: "Control sensor source",
     logic_src_p: "Main (boiler-side), DHT (room air), Average, or Auto (day: DHT, night: main). This makes control match the real comfort zone.",
 
+    // --- Safety ---
     safety_h: "Safety & LoS (Sensor Loss) protection",
     safety_p: "With gas boiler control, the top priority is predictable and safe behavior even during faults.",
     safety_los_h: "LoS steps (visual)",
@@ -246,14 +289,31 @@ const I18N = {
     safety_why_h: "Why this approach?",
     safety_why_p: "The goal is not 'maximum heating', but preventing freeze risk without uncontrolled heating until the fault is fixed.",
     safety_fig_los: "LoS fallback flow (static diagram)",
-	
+    
+    // --- Energy & Gas ---
     energy_h: "Gas & energy estimation",
     energy_p: "The system includes gas MJ and cost estimation. It is an estimate: based on relay ON/OFF time and configured parameters, it gives a daily overview.",
     energy_mj_h: "MJ logic",
     energy_mj_p: "Heating value (MJ/m³) and price (Ft/m³) are configurable. Daily totals help track trends (weather, habits, tuning changes).",
     energy_cycles_h: "Cycles and heating time",
     energy_cycles_p: "Cycle count and heating time together show how 'choppy' the control is and help tune hysteresis / TPI-like behavior.",
+    
+    // Missing keys added here:
+    gas_h: "Gas & Energy Details",
+    gas_h_p: "How the system calculates consumption and helps with diagnostics.",
+    gas_logic_h: "Calculation Logic",
+    gas_logic_p: "Boiler ON time is multiplied by the configured burner power or flat rate.",
+    gas_today_h: "Today's Data",
+    gas_today_p: "Total data for the current day (midnight to midnight) gives immediate feedback on changes.",
+    gas_limits_h: "Limits & Settings",
+    gas_limits_p: "For accurate measurement, calibrate the heating value and gas price in the 'System' tab.",
+    gas_practical_h: "Practical Tips",
+    gas_compare_h: "Comparison",
+    gas_compare_p: "Use MJ/HUF estimate to compare “similar weather” days and validate tuning (hysteresis, pre-heat, schedule).",
+    gas_detect_h: "Troubleshooting",
+    gas_detect_p: "A sudden jump in daily energy can indicate a stuck relay, a sensor drift, or a schedule issue.",
 
+    // --- Install ---
     install_h: "GitHub Pages setup (step-by-step)",
     install_p: "This documentation is static HTML/CSS/JS. No build required—only the /docs folder.",
     install_steps: [
@@ -267,7 +327,7 @@ const I18N = {
     install_template_p: "You can use a Jekyll theme (e.g., Cayman) if you prefer, but for this project a static site keeps full control with zero dependencies.",
     install_opt_title: "Optional: GitHub template route",
     install_opt_desc: "If you want a ready-made GitHub Pages “theme”, you can enable a Jekyll theme (e.g., Cayman) in Settings → Pages.<br>However, this project ships as static HTML, so no Jekyll is required. Static = fewer surprises.",
-	
+    
     footer: "Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32."
   }
 };
@@ -275,7 +335,6 @@ const I18N = {
 function getLang(){
   const stored = localStorage.getItem("lang");
   if(stored === "hu" || stored === "en") return stored;
-  // default: English
   return "en";
 }
 
@@ -290,7 +349,7 @@ function applyLang(){
 
   document.documentElement.lang = L;
 
-  // Text nodes by data-i18n
+  // Text nodes
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key = el.getAttribute("data-i18n");
     const val = t[key];
@@ -299,13 +358,13 @@ function applyLang(){
     else el.textContent = val;
   });
 
-  // Arrays
+  // Steps list
   const stepsEl = document.getElementById("installSteps");
   if(stepsEl && Array.isArray(t.install_steps)){
     stepsEl.innerHTML = t.install_steps.map(s=>`<li>${s}</li>`).join("");
   }
 
-  // Language button label (show other language)
+  // Lang button
   const langBtn = document.getElementById("langBtn");
   if(langBtn) langBtn.textContent = t.lang;
 
@@ -330,17 +389,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     setLang(L === "en" ? "hu" : "en");
   });
 
-  // UI theme compare tabs
-  document.querySelectorAll("[data-compare]").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const group = btn.closest("[data-compare-group]");
-      if(!group) return;
-      group.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
-      btn.classList.add("active");
-      const show = btn.getAttribute("data-compare");
-      group.querySelectorAll("[data-compare-panel]").forEach(p=>{
-        p.style.display = (p.getAttribute("data-compare-panel") === show) ? "block" : "none";
-      });
-    });
-  });
+  // Mobile menu toggle logic ha szükséges
+  const navToggle = document.getElementById("navToggle");
 });
