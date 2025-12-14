@@ -43,14 +43,14 @@ a:hover{text-decoration:underline;}
 }
 .brand h1 {
   margin: 0;
-  font-size: 22px;  /* 14px-ről 22px-re növelve */
-  font-weight: 700; /* Vastagítás a hangsúlyért */
+  font-size: 22px;
+  font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em; /* Kicsit feszesebb betűköz, modernebb hatás */
+  letter-spacing: -0.02em;
 }
 .brand .sub {
-  margin: 2px 0 0; /* Pici távolság a címtől */
-  font-size: 13px; /* 12px-ről 13px-re */
+  margin: 2px 0 0;
+  font-size: 13px;
   color: var(--muted);
   font-weight: 500;
 }
@@ -156,3 +156,75 @@ a:hover{text-decoration:underline;}
 }
 .small{font-size:12px; color:var(--muted);}
 svg{max-width:100%;}
+
+/* =========================================
+   Specifikációs táblázat és kiegészítések
+   (Added features)
+   ========================================= */
+
+/* Hogy a táblázat kitöltse a rendelkezésre álló helyet */
+.full-width {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* Táblázat stílusa */
+.table-responsive {
+  overflow-x: auto; /* Mobilon görgethető legyen oldalra */
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.specs-table th, 
+.specs-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--sep);
+  text-align: left;
+}
+
+.specs-table th {
+  /* Finom háttér a fejlécnek: a muted szín nagyon halvány verziója */
+  background-color: color-mix(in srgb, var(--muted) 10%, transparent);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+
+.specs-table td {
+  color: var(--text);
+}
+
+.specs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.specs-table tr:hover td {
+  background-color: color-mix(in srgb, var(--text) 3%, transparent);
+}
+
+/* Next Step Container */
+.next-step-container {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Mobil optimalizálás a táblázathoz */
+@media (max-width: 600px) {
+  .specs-table { 
+    font-size: 0.85rem; 
+  }
+  .specs-table th, 
+  .specs-table td { 
+    padding: 8px 10px; 
+  }
+}

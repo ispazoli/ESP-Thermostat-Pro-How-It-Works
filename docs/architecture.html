@@ -79,6 +79,47 @@ ESP‑01 (ESP8266) Relay + DS18x20 ──► Gas Boiler (thermostat input)
       </div>
     </div>
 
+    <div class="card full-width" style="margin-top: 20px; margin-bottom: 30px;">
+      <h3 data-i18n="specs_h">Technical Specifications</h3>
+      <div class="table-responsive">
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th data-i18n="specs_comp">Component</th>
+              <th data-i18n="specs_main">Main Unit (UI)</th>
+              <th data-i18n="specs_remote">Remote Unit (Boiler)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="specs_mcu">Microcontroller</td>
+              <td>ESP32 Dev Module (WROOM-32)</td>
+              <td>ESP-01 / ESP-01S (ESP8266)</td>
+            </tr>
+            <tr>
+              <td data-i18n="specs_sensor">Sensor Type</td>
+              <td>DHT11 / DHT22 / BME280</td>
+              <td>DS18B20 (Waterproof)</td>
+            </tr>
+            <tr>
+              <td data-i18n="specs_conn">Connectivity</td>
+              <td colspan="2" style="text-align:center;">Wi-Fi 802.11 b/g/n (2.4 GHz)</td>
+            </tr>
+            <tr>
+              <td data-i18n="specs_power">Power Supply</td>
+              <td>5V USB (Micro-USB)</td>
+              <td>5V / 3.3V DC (via Relay Module)</td>
+            </tr>
+            <tr>
+              <td data-i18n="specs_io">I/O Usage</td>
+              <td data-i18n="specs_io_main">GPIO: Sensor (Input)</td>
+              <td data-i18n="specs_io_remote">GPIO 0/2: Relay (Out), Sensor (In)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <section class="section">
       <h3 data-i18n="arch_flow_h">Data flow</h3>
       <p data-i18n="arch_flow_p"></p>
@@ -111,6 +152,11 @@ ESP‑01 (ESP8266) Relay + DS18x20 ──► Gas Boiler (thermostat input)
       </div>
     </section>
 
+    <div class="next-step-container" style="text-align: right; margin: 40px 0;">
+      <a href="ui.html" class="btn" style="text-decoration: none; padding: 10px 20px;">
+        <span data-i18n="nav_next_ui">Next: User Interface →</span>
+      </a>
+    </div>
 
     <div class="footer" data-i18n="footer">
       Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32.
