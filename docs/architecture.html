@@ -19,9 +19,11 @@
 
       <nav class="nav" aria-label="Primary">
         <a href="index.html" data-i18n="nav_home">Overview</a>
-        <a href="architecture.html" data-i18n="nav_arch">Architecture</a>
+        <a href="architecture.html" data-i18n="nav_arch" class="active">Architecture</a>
         <a href="ui.html" data-i18n="nav_ui">UI</a>
         <a href="control-logic.html" data-i18n="nav_logic">Control Logic</a>
+        <a href="learning.html" data-i18n="nav_learn">Learning</a>
+        <a href="diagnostics.html" data-i18n="nav_diag">Diagnostics</a>
         <a href="safety.html" data-i18n="nav_safety">Safety</a>
         <a href="energy.html" data-i18n="nav_energy">Gas & Energy</a>
         <a href="pages.html" data-i18n="nav_install">GitHub Pages</a>
@@ -37,74 +39,77 @@
 
   <main class="wrap">
     
-<section class="hero">
-  <h2 data-i18n="arch_h">System architecture</h2>
-  <p data-i18n="arch_p"></p>
-</section>
+    <section class="hero">
+      <h2 data-i18n="arch_h">System architecture</h2>
+      <p data-i18n="arch_p"></p>
+    </section>
 
-<div class="grid cols2">
-  <div class="card">
-    <h3 data-i18n="arch_hw_h">Hardware block diagram</h3>
-    <p data-i18n="arch_hw_p"></p>
-    <div class="code" aria-label="Block diagram">
+    <div class="grid cols2">
+      <div class="card">
+        <h3 data-i18n="arch_hw_h">Hardware block diagram</h3>
+        <p data-i18n="arch_hw_p"></p>
+        <div class="code" aria-label="Block diagram">
 ESP32 Dev Module (UI + logic + DHT)
         │  Wi‑Fi (commands/status)
         ▼
 ESP‑01 (ESP8266) Relay + DS18x20 ──► Gas Boiler (thermostat input)
-    </div>
-    <div class="small">Tip: Replace the placeholder esp01.jpg with your real photo (same filename).</div>
-  </div>
-
-  <div class="card">
-    <h3>Hardware photos</h3>
-    <div class="two">
-      <div class="figure">
-        <img src="assets/screenshots/Thermostat2.jpg" alt="UI detail">
-        <div class="figcap">Web UI (Thermostat tab)</div>
-      </div>
-      <div class="figure" id="esp01Figure">
-        <img src="assets/screenshots/esp01.jpg" alt="ESP-01 relay module"
-             onerror="this.style.display='none'; document.getElementById('esp01Fallback').style.display='block';">
-        <div id="esp01Fallback" class="figcap" style="display:none; opacity:.75;">
-          ESP‑01 relay module image missing (place esp01.jpg in /docs/assets/screenshots)
         </div>
-        <div class="figcap" style="border-top:0; opacity:.75;">ESP‑01 relay module (photo)</div>
+        <div class="small" data-i18n="arch_tip_img">Tip: Replace the placeholder esp01.jpg with your real photo.</div>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="arch_photos_h">Hardware photos</h3>
+        <div class="two">
+          
+          <div class="figure">
+            <img src="assets/screenshots/ESP32.jpg" alt="ESP32 Dev Module">
+            <div class="figcap" data-i18n="arch_cap_esp32">ESP32 Dev Module</div>
+          </div>
+          
+          <div class="figure" id="esp01Figure">
+            <img src="assets/screenshots/esp01.jpg" alt="ESP-01 relay module"
+                 onerror="this.style.display='none'; document.getElementById('esp01Fallback').style.display='block';">
+            <div id="esp01Fallback" class="figcap" style="display:none; opacity:.75;">
+              ESP‑01 relay module image missing
+            </div>
+            <div class="figcap" style="border-top:0; opacity:.75;" data-i18n="arch_cap_esp01">ESP‑01 relay module</div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<section class="section">
-  <h3 data-i18n="arch_flow_h">Data flow</h3>
-  <p data-i18n="arch_flow_p"></p>
-  <div class="grid cols3">
-    <div class="card">
-      <h3>Inputs</h3>
-      <ul class="list">
-        <li>Room air: DHT (ESP32)</li>
-        <li>Boiler-side: DS18x20 (ESP-01)</li>
-        <li>Outdoor: optional / derived (UI screenshots show weather module)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Decision</h3>
-      <ul class="list">
-        <li>Target temperature (schedule/manual)</li>
-        <li>Sensor source selection</li>
-        <li>Smart modifiers (Preheat, Away)</li>
-        <li>Safety gates (LoS)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Actuation</h3>
-      <ul class="list">
-        <li>ESP32 decides ON/OFF</li>
-        <li>ESP‑01 toggles relay</li>
-        <li>Status displayed in UI</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <section class="section">
+      <h3 data-i18n="arch_flow_h">Data flow</h3>
+      <p data-i18n="arch_flow_p"></p>
+      <div class="grid cols3">
+        <div class="card">
+          <h3>Inputs</h3>
+          <ul class="list">
+            <li>Room air: DHT (ESP32)</li>
+            <li>Boiler-side: DS18x20 (ESP-01)</li>
+            <li>Outdoor: optional / derived (UI screenshots show weather module)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Decision</h3>
+          <ul class="list">
+            <li>Target temperature (schedule/manual)</li>
+            <li>Sensor source selection</li>
+            <li>Smart modifiers (Preheat, Away)</li>
+            <li>Safety gates (LoS)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Actuation</h3>
+          <ul class="list">
+            <li>ESP32 decides ON/OFF</li>
+            <li>ESP‑01 toggles relay</li>
+            <li>Status displayed in UI</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
 
     <div class="footer" data-i18n="footer">
