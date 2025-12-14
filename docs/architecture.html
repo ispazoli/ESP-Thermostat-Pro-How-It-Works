@@ -84,28 +84,28 @@ ESP‑01 (ESP8266) Relay + DS18x20 ──► Gas Boiler (thermostat input)
       <p data-i18n="arch_flow_p"></p>
       <div class="grid cols3">
         <div class="card">
-          <h3>Inputs</h3>
+          <h3 data-i18n="card_inputs_h">Inputs</h3>
           <ul class="list">
-            <li>Room air: DHT (ESP32)</li>
-            <li>Boiler-side: DS18x20 (ESP-01)</li>
-            <li>Outdoor: optional / derived (UI screenshots show weather module)</li>
+            <li data-i18n="card_inputs_1">Room air: DHT (ESP32)</li>
+            <li data-i18n="card_inputs_2">Boiler-side: DS18x20 (ESP-01)</li>
+            <li data-i18n="card_inputs_3">Outdoor: optional / derived</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Decision</h3>
+          <h3 data-i18n="card_decision_h">Decision</h3>
           <ul class="list">
-            <li>Target temperature (schedule/manual)</li>
-            <li>Sensor source selection</li>
-            <li>Smart modifiers (Preheat, Away)</li>
-            <li>Safety gates (LoS)</li>
+            <li data-i18n="card_dec_1">Target temperature (schedule/manual)</li>
+            <li data-i18n="card_dec_2">Sensor source selection</li>
+            <li data-i18n="card_dec_3">Smart modifiers (Preheat, Away)</li>
+            <li data-i18n="card_dec_4">Safety gates (LoS)</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Actuation</h3>
+          <h3 data-i18n="card_act_h">Actuation</h3>
           <ul class="list">
-            <li>ESP32 decides ON/OFF</li>
-            <li>ESP‑01 toggles relay</li>
-            <li>Status displayed in UI</li>
+            <li data-i18n="card_act_1">ESP32 decides ON/OFF</li>
+            <li data-i18n="card_act_2">ESP‑01 toggles relay</li>
+            <li data-i18n="card_act_3">Status displayed in UI</li>
           </ul>
         </div>
       </div>
