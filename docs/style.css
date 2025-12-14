@@ -130,9 +130,9 @@ a:hover{text-decoration:underline;}
   .nav {
     flex: 1; /* A menü kitölti a középső teret */
     order: 0; /* Vissza a helyére (középre) */
-    justify-content: flex-end; /* Középre igazít */
+    justify-content: flex-end;
     margin-top: 0;
-    padding-right: 20px;
+    padding-right: 0px;
     border-top: none;
     overflow-x: visible; /* PC-n nincs görgetés, elfér */
   }
