@@ -64,27 +64,27 @@
   </defs>
 
   <rect x="20" y="30" width="260" height="110" class="b"/>
-  <text x="44" y="62" class="t">1) Soft timeout</text>
-  <text x="44" y="88" class="m">Keep last valid temp</text>
-  <text x="44" y="108" class="m">for a limited time</text>
+  <text x="44" y="62" class="t" data-i18n="svg_step1">1) Soft timeout</text>
+  <text x="44" y="88" class="m" data-i18n="svg_step1_sub1">Keep last valid temp</text>
+  <text x="44" y="108" class="m" data-i18n="svg_step1_sub2">for a limited time</text>
 
   <line x1="280" y1="85" x2="340" y2="85" class="a"/>
 
   <rect x="340" y="30" width="260" height="110" class="b"/>
-  <text x="364" y="62" class="t">2) Safe‑Heat cycle</text>
-  <text x="364" y="88" class="m">Duty control (ON/OFF)</text>
-  <text x="364" y="108" class="m">to avoid freeze risk</text>
+  <text x="364" y="62" class="t" data-i18n="svg_step2">2) Safe‑Heat cycle</text>
+  <text x="364" y="88" class="m" data-i18n="svg_step2_sub1">Duty control (ON/OFF)</text>
+  <text x="364" y="108" class="m" data-i18n="svg_step2_sub2">to avoid freeze risk</text>
 
   <line x1="600" y1="85" x2="660" y2="85" class="a"/>
 
   <rect x="660" y="30" width="240" height="110" class="b"/>
-  <text x="684" y="62" class="t">3) Freeze target</text>
-  <text x="684" y="88" class="m">Hold a safe minimum</text>
-  <text x="684" y="108" class="m">temperature</text>
+  <text x="684" y="62" class="t" data-i18n="svg_step3">3) Freeze target</text>
+  <text x="684" y="88" class="m" data-i18n="svg_step3_sub1">Hold a safe minimum</text>
+  <text x="684" y="108" class="m" data-i18n="svg_step3_sub2">temperature</text>
 
   <rect x="20" y="180" width="880" height="110" class="tag"/>
-  <text x="44" y="214" class="t">Always: predictable behavior + visible badge in UI</text>
-  <text x="44" y="242" class="m">Goal: safe operation during sensor faults until repair. Not maximum heating.</text>
+  <text x="44" y="214" class="t" data-i18n="svg_note_main">Always: predictable behavior + visible badge in UI</text>
+  <text x="44" y="242" class="m" data-i18n="svg_note_sub">Goal: safe operation during sensor faults until repair. Not maximum heating.</text>
 </svg>
 
     <div class="figcap">LoS fallback flow (static diagram)</div>
@@ -107,6 +107,20 @@
   </div>
 </div>
 
+<div class="page-nav">
+  <a href="diagnostics.html" class="nav-card prev-link">
+    <span class="nav-label" data-i18n="lbl_prev">Previous</span>
+    <span class="nav-title">
+      <span class="arrow">←</span> <span data-i18n="nav_diag">Diagnostics</span>
+    </span>
+  </a>
+  <a href="energy.html" class="nav-card next-link">
+    <span class="nav-label" data-i18n="lbl_next">Next</span>
+    <span class="nav-title">
+      <span data-i18n="nav_energy">Gas & Energy</span> <span class="arrow">→</span>
+    </span>
+  </a>
+</div>
 
     <div class="footer" data-i18n="footer">
       Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32.

@@ -20,7 +20,7 @@ const I18N = {
     nav_install: "GitHub Pages",
     nav_learn: "Tanulás",
 
-    // Lapozó gombok (ÚJ)
+    // Lapozó gombok
     lbl_prev: "Előző oldal",
     lbl_next: "Következő oldal",
 
@@ -126,7 +126,20 @@ const I18N = {
     safety_why_p: "A cél nem a 'maximális fűtés', hanem hogy a rendszer ne hagyja elfagyni a házat, és ne fűtsön kontroll nélkül, amíg a hiba javításra nem kerül.",
     safety_fig_los: "LoS (jelvesztés) biztonsági folyamat",
     
-    // --- Energia & Gáz (HIÁNYZÓ MAGYAR RÉSZEK PÓTOLVA) ---
+    // --- BIZTONSÁG ÁBRA SZÖVEGEI (SVG) ---
+    svg_step1: "1) Átmeneti türelem",
+    svg_step1_sub1: "Utolsó érvényes adat",
+    svg_step1_sub2: "tartása rövid ideig",
+    svg_step2: "2) Biztonsági ciklus",
+    svg_step2_sub1: "Szakaszos üzem (BE/KI)",
+    svg_step2_sub2: "a fagyás elkerülésére",
+    svg_step3: "3) Fagyvédelem",
+    svg_step3_sub1: "Biztonsági minimum",
+    svg_step3_sub2: "hőfok tartása",
+    svg_note_main: "Mindig: kiszámítható működés + látható jelzés a felületen",
+    svg_note_sub: "Cél: biztonságos üzem szenzorhiba esetén a javításig. Nem a maximális fűtés.",
+
+    // --- Energia & Gáz ---
     energy_h: "Gáz & energia becslés",
     energy_p: "A rendszer gáz MJ és költség számítást is támogat. Ez becslés: a relé be/ki idők és a beállított paraméterek alapján ad napi összképet.",
     energy_mj_h: "MJ logika",
@@ -134,7 +147,10 @@ const I18N = {
     energy_cycles_h: "Ciklusok és fűtési idő",
     energy_cycles_p: "A ciklusszámláló és fűtési idő együtt jól jelzi, hogy a szabályozás mennyire 'darabolja' a kazánt, és segít finomhangolni a hiszterézist / TPI jellegű működést.",
     
-    // Ezek hiányoztak:
+    // --- GÁZOS TIPPEK (Lista elemek) ---
+    energy_tip_1: "A magas ciklusszám gyakran túl szűk hiszterézist (vagy nagyon érzékeny rendszert) jelent.",
+    energy_tip_2: "A hosszú fűtési idő alacsony komfort mellett nagy hőveszteségre (szigetelés hiánya) vagy alacsony kazánteljesítményre utalhat.",
+    
     gas_h: "Gáz & Energia Részletek",
     gas_h_p: "Hogyan számolja a rendszer a fogyasztást és hogyan segít a diagnosztikában.",
     gas_logic_h: "Számítási logika",
@@ -184,7 +200,7 @@ const I18N = {
     nav_install: "GitHub Pages",
     nav_learn: "Learning",
 
-    // Navigation Buttons (NEW)
+    // Navigation Buttons
     lbl_prev: "Previous page",
     lbl_next: "Next page",
 
@@ -290,6 +306,19 @@ const I18N = {
     safety_why_p: "The goal is not 'maximum heating', but preventing freeze risk without uncontrolled heating until the fault is fixed.",
     safety_fig_los: "LoS fallback flow (static diagram)",
     
+    // --- SAFETY DIAGRAM TEXTS (SVG) ---
+    svg_step1: "1) Soft timeout",
+    svg_step1_sub1: "Keep last valid temp",
+    svg_step1_sub2: "for a limited time",
+    svg_step2: "2) Safe‑Heat cycle",
+    svg_step2_sub1: "Duty control (ON/OFF)",
+    svg_step2_sub2: "to avoid freeze risk",
+    svg_step3: "3) Freeze target",
+    svg_step3_sub1: "Hold a safe minimum",
+    svg_step3_sub2: "temperature",
+    svg_note_main: "Always: predictable behavior + visible badge in UI",
+    svg_note_sub: "Goal: safe operation during sensor faults until repair. Not maximum heating.",
+
     // --- Energy & Gas ---
     energy_h: "Gas & energy estimation",
     energy_p: "The system includes gas MJ and cost estimation. It is an estimate: based on relay ON/OFF time and configured parameters, it gives a daily overview.",
@@ -298,7 +327,10 @@ const I18N = {
     energy_cycles_h: "Cycles and heating time",
     energy_cycles_p: "Cycle count and heating time together show how 'choppy' the control is and help tune hysteresis / TPI-like behavior.",
     
-    // Missing keys added here:
+    // --- ENERGY TIPS (List items) ---
+    energy_tip_1: "High cycle count often means hysteresis too tight (or very responsive system).",
+    energy_tip_2: "Long heating time with low comfort can indicate building heat loss (insulation) or low boiler power.",
+
     gas_h: "Gas & Energy Details",
     gas_h_p: "How the system calculates consumption and helps with diagnostics.",
     gas_logic_h: "Calculation Logic",
@@ -312,8 +344,7 @@ const I18N = {
     gas_compare_p: "Use MJ/HUF estimate to compare “similar weather” days and validate tuning (hysteresis, pre-heat, schedule).",
     gas_detect_h: "Troubleshooting",
     gas_detect_p: "A sudden jump in daily energy can indicate a stuck relay, a sensor drift, or a schedule issue.",
-
-    // --- Install ---
+    
     install_h: "GitHub Pages setup (step-by-step)",
     install_p: "This documentation is static HTML/CSS/JS. No build required—only the /docs folder.",
     install_steps: [
@@ -349,7 +380,7 @@ function applyLang(){
 
   document.documentElement.lang = L;
 
-  // Text nodes
+  // Text nodes by data-i18n
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key = el.getAttribute("data-i18n");
     const val = t[key];
@@ -358,13 +389,13 @@ function applyLang(){
     else el.textContent = val;
   });
 
-  // Steps list
+  // Steps list (Install page)
   const stepsEl = document.getElementById("installSteps");
   if(stepsEl && Array.isArray(t.install_steps)){
     stepsEl.innerHTML = t.install_steps.map(s=>`<li>${s}</li>`).join("");
   }
 
-  // Lang button
+  // Language button label
   const langBtn = document.getElementById("langBtn");
   if(langBtn) langBtn.textContent = t.lang;
 
@@ -389,6 +420,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     setLang(L === "en" ? "hu" : "en");
   });
 
-  // Mobile menu toggle logic ha szükséges
+  // Mobile menu toggle logic (ha szükséges, bár a HTML-ben a topbar fix)
   const navToggle = document.getElementById("navToggle");
 });
