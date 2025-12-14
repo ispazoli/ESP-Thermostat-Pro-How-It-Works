@@ -60,7 +60,7 @@
       <div class="grid cols2">
         <div class="card">
           <h3 data-i18n="learn_preheat_h">Preheat</h3>
-          <p>
+          <p data-i18n="learn_preheat_desc">
             Without learning, the schedule time means “start heating at 07:00”.
             With learning, schedule time means “be warm at 07:00”.
             The controller uses heat-up rate to compute an optimal start time.
@@ -68,7 +68,7 @@
         </div>
         <div class="card">
           <h3 data-i18n="learn_stability_h">Stability</h3>
-          <p>
+          <p data-i18n="learn_stability_desc">
             Heat loss estimation helps avoid overshoot/undershoot and makes the control smoother across weather changes.
             It also makes the system more predictable after big setpoint jumps.
           </p>
@@ -91,6 +91,21 @@
         </div>
       </div>
     </section>
+
+    <div class="page-nav">
+      <a href="control-logic.html" class="nav-card prev-link">
+        <span class="nav-label" data-i18n="lbl_prev">Previous</span>
+        <span class="nav-title">
+          <span class="arrow">←</span> <span data-i18n="nav_logic">Control Logic</span>
+        </span>
+      </a>
+      <a href="diagnostics.html" class="nav-card next-link">
+        <span class="nav-label" data-i18n="lbl_next">Next</span>
+        <span class="nav-title">
+          <span data-i18n="nav_diag">Diagnostics</span> <span class="arrow">→</span>
+        </span>
+      </a>
+    </div>
 
     <div class="footer" data-i18n="footer">
       Made for GitHub Pages. This site is documentation only; the live control UI runs on the ESP32.

@@ -35,7 +35,7 @@ const I18N = {
     diag_cap_1: "Diagnosztika – kapcsolat, erőforrások, tanulás",
     diag_cap_2: "Élő konzol log és analitika",
 
-    // --- Tanulás ---
+    // --- Tanulás (KIEGÉSZÍTVE) ---
     learn_h: "Okos tanulás",
     learn_h_p: "A termosztát idővel megtanulja az épület fizikáját, hogy pontosabb és takarékosabb legyen.",
     learn_gain_h: "Felfűtési sebesség (°C/h)",
@@ -44,7 +44,11 @@ const I18N = {
     learn_loss_p: "Milyen gyorsan hűl a ház? Ez segít elkerülni a túllendülést és simábbá teszi a vezérlést.",
     learn_practical_h: "Gyakorlati hatások",
     learn_preheat_h: "Preheat (Előfűtés)",
+    // ÚJ:
+    learn_preheat_desc: "Tanulás nélkül az ütemezés azt jelenti: „fűtés indítása 07:00-kor”. Tanulással azt jelenti: „legyen meleg 07:00-ra”. A vezérlő a felfűtési sebesség alapján számolja ki az optimális indítást.",
     learn_stability_h: "Stabilitás",
+    // ÚJ:
+    learn_stability_desc: "A hőveszteség becslése segít elkerülni a túllendülést, és simábbá teszi a vezérlést változó időjárás mellett. Nagy hőfok-ugrások után is kiszámíthatóbbá teszi a rendszert.",
     learn_ui_h: "Megjelenés a felületen",
     learn_ui_p: "A tanult paraméterek (meredek, hőveszteség) és az időjárási adatok nyomon követhetők a Diagnosztika és Időjárás füleken.",
 
@@ -103,17 +107,29 @@ const I18N = {
     ui_themes_h: "Témák összehasonlítása",
     ui_themes_p: "Apple az alap téma, de Siemens és Nest stílus is elérhető. A működés ugyanaz, csak a megjelenés változik.",
 
-    // --- Logika ---
+    // --- Logika (KIEGÉSZÍTVE) ---
     logic_h: "Vezérlési logika (A+B: érthető + mérnöki)",
     logic_p: "Ebben a részben végigmegyünk azon, hogyan dönt a rendszer: mikor fűt, mikor nem, és mi történik speciális helyzetekben.",
     logic_auto_h: "Auto vs Manual",
     logic_auto_p: "<b>Auto:</b> az ütemezés (simple vagy advanced) és az okos módok adják a célhőmérsékletet. <b>Manual:</b> a felhasználó beállít egy célt (és opcionálisan eco/boost módot).",
     logic_preheat_h: "Preheat (előfűtés)",
     logic_preheat_p: "A preheat célja, hogy <i>ne késve</i> érje el a ház a célhőmérsékletet. Ehhez a rendszer a korábbi felfűtési sebességből (tanult slope) becsül, és a fűtést korábban indíthatja.",
+    // ÚJ LISTA ELEMEK:
+    logic_preheat_list1: "<b>Emberi nézet:</b> „Kezdj fűteni kicsit korábban, hogy 06:00-ra meleg legyen.”",
+    logic_preheat_list2: "<b>Mérnöki nézet:</b> a felfűtési becslés a tanult meredekséget (°C/h) és a célhőmérsékletig lévő különbséget használja.",
+    
     logic_away_h: "Away (jelenlét alapú takarék)",
     logic_away_p: "Az Away mód IP-címek pingelésével becsli, van‑e valaki otthon. Ha nincs elérhető eszköz az időtúllépésen túl, a célhőmérséklet eco értékre csökken.",
+    // ÚJ LISTA ELEMEK:
+    logic_away_list1: "Az IP lista konfigurálható.",
+    logic_away_list2: "Az időtúllépés megakadályozza a kapcsolgatást, ha a Wi-Fi rövid időre megszakad.",
+    logic_away_list3: "A kézi Távol mód explicit felülbírálásként elérhető.",
+
     logic_adv_h: "Advanced Schedule (7 napos pontok)",
     logic_adv_p: "A haladó ütemezés legfeljebb 21 pontot kezel. A termosztát mindig a legutóbbi <i>múltbeli</i> pontot használja. Így stabil és jól követhető a viselkedés.",
+    // ÚJ CODE:
+    logic_adv_code: "Szabály: mindig a legutóbbi (múltbeli) ütemezési pont érvényes.\nEz teszi a célhőmérsékletet determinisztikussá és stabillá.",
+
     logic_src_h: "Vezérlő szenzor kiválasztása",
     logic_src_p: "Fő szenzor (kazán), DHT (szoba), Átlag, vagy Auto (nappal DHT, éjjel fő). Ezzel a szabályozás valóban a kívánt térhez igazítható.",
 
@@ -224,7 +240,11 @@ const I18N = {
     learn_loss_p: "How fast the house cools down. Helps avoid overshoot.",
     learn_practical_h: "Practical effects",
     learn_preheat_h: "Preheat",
+    // NEW:
+    learn_preheat_desc: "Without learning, the schedule time means “start heating at 07:00”. With learning, schedule time means “be warm at 07:00”. The controller uses heat-up rate to compute an optimal start time.",
     learn_stability_h: "Stability",
+    // NEW:
+    learn_stability_desc: "Heat loss estimation helps avoid overshoot/undershoot and makes the control smoother across weather changes. It also makes the system more predictable after big setpoint jumps.",
     learn_ui_h: "UI Integration",
     learn_ui_p: "Learned parameters (slope, efficiency) and weather data are visible on the Diagnostics and Weather tabs.",
     
@@ -290,10 +310,22 @@ const I18N = {
     logic_auto_p: "<b>Auto:</b> schedule (simple or advanced) defines targets, smart modes may adjust them. <b>Manual:</b> user sets a target (optionally eco/boost).",
     logic_preheat_h: "Preheat",
     logic_preheat_p: "Preheat prevents arriving late to the target temperature. The system estimates warm-up time using learned heat-up rate (slope) and may start heating earlier.",
+    // NEW:
+    logic_preheat_list1: "<b>Human view:</b> “Start a bit earlier so it’s warm by 06:00.”",
+    logic_preheat_list2: "<b>Engineering view:</b> warm-up estimate uses learned slope (°C/h) + current delta to target.",
+    
     logic_away_h: "Away (presence-based eco)",
     logic_away_p: "Away mode pings configured IP addresses. If nobody is reachable beyond the timeout, target temperature drops to an eco value.",
+    // NEW:
+    logic_away_list1: "IP list is configurable.",
+    logic_away_list2: "Timeout prevents flicker when Wi‑Fi briefly drops.",
+    logic_away_list3: "Manual Away is available as an explicit override.",
+
     logic_adv_h: "Advanced Schedule (7-day points)",
     logic_adv_p: "Advanced schedule supports up to 21 points. The thermostat uses the last point that has already passed, which keeps behavior stable and predictable.",
+    // NEW:
+    logic_adv_code: "Rule: use the last schedule point that is in the past.\nThis makes target temperature deterministic and stable.",
+
     logic_src_h: "Control sensor source",
     logic_src_p: "Main (boiler-side), DHT (room air), Average, or Auto (day: DHT, night: main). This makes control match the real comfort zone.",
 
@@ -420,6 +452,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     setLang(L === "en" ? "hu" : "en");
   });
 
-  // Mobile menu toggle logic (ha szükséges, bár a HTML-ben a topbar fix)
+  // Mobile menu toggle logic
   const navToggle = document.getElementById("navToggle");
 });
