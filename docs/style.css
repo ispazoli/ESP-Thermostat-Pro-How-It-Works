@@ -28,6 +28,7 @@ html,body{margin:0; padding:0; background:var(--bg); color:var(--text); font-fam
 a{color:var(--accent); text-decoration:none;}
 a:hover{text-decoration:underline;}
 .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+
 /* --- FEJLÉC ÉS NAVIGÁCIÓ (Mobile-First Fix) --- */
 
 .topbar {
@@ -71,15 +72,15 @@ a:hover{text-decoration:underline;}
   align-items: center;
   gap: 6px;
   
-  /* Alapértelmezés (Asztali gép): középen van, egy sorban a logóval */
-  flex: 100%; /* Mobilon viszont 100% széles legyen (új sor) */
-  order: 3;   /* Mobilon kerüljön a 3. helyre (a Logo és a Gombok alá) */
+  /* Alapértelmezés (Mobil): 100% széles, új sorban */
+  flex: 100%; 
+  order: 3;   /* A Logo és a Gombok alá kerül */
   
-  /* Görgetés beállításai */
+  /* Görgetés beállításai mobilon */
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  scrollbar-width: none; /* Firefox görgetősáv elrejtés */
+  scrollbar-width: none; 
   -webkit-overflow-scrolling: touch;
   
   /* Kis térköz mobilon a felső sortól */
@@ -100,8 +101,8 @@ a:hover{text-decoration:underline;}
   font-weight: 600;
   background: transparent;
   border: none;
-  white-space: nowrap; /* Tilos tördelni a szöveget! */
-  flex-shrink: 0;      /* Tilos összenyomni a gombot! */
+  white-space: nowrap; 
+  flex-shrink: 0;      
   transition: all 0.2s ease;
 }
 
@@ -117,32 +118,45 @@ a:hover{text-decoration:underline;}
 }
 
 /* --- ASZTALI NÉZET (PC/Laptop) --- 
-   Itt visszaállítjuk az egysoros elrendezést */
+   Itt megcsináljuk a "Magazinos" elrendezést:
+   1. sor: Logo balra, Gombok jobbra
+   2. sor: Menü középen, vonallal elválasztva */
+   
 @media (min-width: 900px) {
   .topbar .inner {
-    flex-wrap: nowrap; /* PC-n minden egy sorban */
+    flex-wrap: wrap;       /* PC-n is marad a többsoros elrendezés! */
+    justify-content: space-between; /* Széthúzzuk a logót és a gombokat */
+    padding-bottom: 15px;  /* Kicsit több hely alul */
   }
   
   .brand {
-    flex: 0 0 auto; /* A logó csak akkora, amekkora kell */
-  }
-  
-  .nav {
-    flex: 1; /* A menü kitölti a középső teret */
-    order: 0; /* Vissza a helyére (középre) */
-    justify-content: flex-end;
-    margin-top: 0;
-    padding-right: 0px;
-    border-top: none;
-    overflow-x: visible; /* PC-n nincs görgetés, elfér */
+    flex: 0 0 auto;        /* A logó csak akkora, amekkora kell */
   }
   
   .controls {
     flex: 0 0 auto;
+    margin-left: auto;     /* Jobbra toljuk a gombokat */
+  }
+  
+  .nav {
+    flex: 100%;            /* Új sorba kényszerítjük */
+    order: 3;              /* Biztosan alulra */
+    
+    justify-content: center; /* KÖZÉPRE igazítjuk a menüt */
+    
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--sep); /* Ez a profi elválasztó vonal */
+    overflow-x: visible;   /* Nincs görgetés */
+  }
+  
+  /* PC-n kicsit növelhetjük a kattintási területet */
+  .nav a {
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }
 
-.controls{display:flex; gap:8px; align-items:center;}
 .btn{
   border:1px solid var(--sep);
   background: color-mix(in srgb, var(--card) 85%, transparent);
@@ -234,18 +248,15 @@ svg{max-width:100%;}
 
 /* =========================================
    Specifikációs táblázat és kiegészítések
-   (Added features)
    ========================================= */
 
-/* Hogy a táblázat kitöltse a rendelkezésre álló helyet */
 .full-width {
   grid-column: 1 / -1;
   width: 100%;
 }
 
-/* Táblázat stílusa */
 .table-responsive {
-  overflow-x: auto; /* Mobilon görgethető legyen oldalra */
+  overflow-x: auto; 
 }
 
 .specs-table {
@@ -264,7 +275,6 @@ svg{max-width:100%;}
 }
 
 .specs-table th {
-  /* Finom háttér a fejlécnek: a muted szín nagyon halvány verziója */
   background-color: color-mix(in srgb, var(--muted) 10%, transparent);
   font-weight: 600;
   text-transform: uppercase;
@@ -285,7 +295,6 @@ svg{max-width:100%;}
   background-color: color-mix(in srgb, var(--text) 3%, transparent);
 }
 
-/* Next Step Container */
 .next-step-container {
   margin-top: 40px;
   margin-bottom: 20px;
@@ -293,7 +302,6 @@ svg{max-width:100%;}
   justify-content: flex-end;
 }
 
-/* Mobil optimalizálás a táblázathoz */
 @media (max-width: 600px) {
   .specs-table { 
     font-size: 0.85rem; 
