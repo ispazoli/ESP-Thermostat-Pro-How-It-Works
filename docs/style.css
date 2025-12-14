@@ -55,16 +55,74 @@ a:hover{text-decoration:underline;}
   font-weight: 500;
 }
 
-.nav{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center; flex:1;}
-.nav a{
-  padding:8px 10px; border-radius:999px;
-  color:var(--muted); border:1px solid transparent;
-  font-size:13px;
+/* --- MODERN NAVIGÁCIÓ (Scroll & Soft UI) --- */
+
+.nav {
+  display: flex;
+  gap: 6px; 
+  align-items: center;
+  /* Mobilon görgethető legyen, ne tördeljen sorba: */
+  overflow-x: auto; 
+  flex-wrap: nowrap;
+  /* Görgetősáv elrejtése (esztétika): */
+  scrollbar-width: none; 
+  -webkit-overflow-scrolling: touch;
+  
+  /* Balra igazítás mobilon, hogy látszódjon az eleje */
+  justify-content: flex-start; 
+  padding: 4px 0;
+  margin: 0 10px;
+  flex: 1;
 }
-.nav a.active{
-  color:var(--text);
-  border-color:var(--sep);
-  background: color-mix(in srgb, var(--card) 70%, transparent);
+
+/* Asztali nézeten középre igazítjuk */
+@media (min-width: 900px) {
+  .nav { justify-content: center; }
+}
+
+/* Görgetősáv elrejtése Chrome/Safari alatt */
+.nav::-webkit-scrollbar { display: none; }
+
+/* A gombok alapállapota */
+.nav a {
+  padding: 8px 14px;
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  white-space: nowrap; /* Ne törjön meg a szöveg */
+  position: relative;
+}
+
+/* Hover (rámutatás) */
+.nav a:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  transform: translateY(-1px);
+}
+
+/* Aktív állapot (Kiemelés) */
+.nav a.active {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Opcionális: Pötty az aktív elem alatt (Apple stílus) */
+.nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.6;
 }
 
 .controls{display:flex; gap:8px; align-items:center;}
