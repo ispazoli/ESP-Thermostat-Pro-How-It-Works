@@ -28,73 +28,70 @@ html,body{margin:0; padding:0; background:var(--bg); color:var(--text); font-fam
 a{color:var(--accent); text-decoration:none;}
 a:hover{text-decoration:underline;}
 .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
-.topbar{
-  position:sticky; top:0; z-index:20;
+/* --- FEJLÉC ÉS NAVIGÁCIÓ (Mobile-First Fix) --- */
+
+.topbar {
+  position: sticky; top: 0; z-index: 20;
   backdrop-filter: blur(10px);
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  border-bottom:1px solid var(--sep);
-}
-.topbar .inner{max-width:var(--max); margin:0 auto; padding:12px 18px; display:flex; align-items:center; gap:14px;}
-.brand{display:flex; align-items:center; gap:10px; min-width:260px;}
-.logo{
-  width:34px; height:34px; border-radius:10px;
-  background: linear-gradient(135deg, var(--accent), #6ae4ff);
-  box-shadow: var(--shadow);
-}
-.brand h1 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-.brand .sub {
-  margin: 2px 0 0;
-  font-size: 13px;
-  color: var(--muted);
-  font-weight: 500;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  border-bottom: 1px solid var(--sep);
 }
 
-/* --- JAVÍTOTT HIBRID NAVIGÁCIÓ (Mobile fix) --- */
+.topbar .inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* FONTOS: Engedjük többsorossá válni mobilon */
+  gap: 10px;
+}
 
+/* 1. BRAND (Logo + Cím) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Mobilon a cím foglalja el a bal oldalt, de ne vegye el az egész sort */
+  flex: 1; 
+  min-width: 140px; 
+}
+
+/* 2. CONTROLS (Gombok: HU, Static badge) */
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  /* Mobilon ez legyen a jobb oldalon, a Logo mellett */
+}
+
+/* 3. NAVIGÁCIÓ (A menü) */
 .nav {
   display: flex;
-  flex-direction: row; /* Biztosítjuk, hogy sorban legyenek */
   align-items: center;
-  gap: 8px 6px;
+  gap: 6px;
   
-  /* MOBIL NÉZET: Görgetés kényszerítése */
-  overflow-x: auto; 
-  overflow-y: hidden; /* Függőlegesen ne ugráljon */
-  flex-wrap: nowrap; /* Tilos tördelni mobilon! */
-  justify-content: flex-start; /* Balra igazítás fontos a görgetéshez */
+  /* Alapértelmezés (Asztali gép): középen van, egy sorban a logóval */
+  flex: 100%; /* Mobilon viszont 100% széles legyen (új sor) */
+  order: 3;   /* Mobilon kerüljön a 3. helyre (a Logo és a Gombok alá) */
   
-  /* Fontos: Szélesség kényszerítése, hogy legyen miben görgetni */
-  max-width: 100vw; /* A teljes képernyő szélessége */
-  width: 100%; 
-  padding: 4px 10px; /* Oldalt legyen egy kis hely */
-  box-sizing: border-box; /* A padding ne nyomja szét az oldalt */
+  /* Görgetés beállításai */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox görgetősáv elrejtés */
+  -webkit-overflow-scrolling: touch;
   
-  /* Esztétika - görgetősáv elrejtése */
-  scrollbar-width: none; 
-  -webkit-overflow-scrolling: touch; /* Sima görgetés iOS-en */
+  /* Kis térköz mobilon a felső sortól */
+  padding-top: 4px;
+  margin-top: 2px;
+  border-top: 1px solid transparent; /* Helyfenntartó */
 }
 
-/* Görgetősáv elrejtése Webkiten (Chrome/Safari) */
+/* Görgetősáv elrejtése Chrome/Safari */
 .nav::-webkit-scrollbar { display: none; }
 
-/* ASZTALI NÉZET (900px felett) */
-@media (min-width: 900px) {
-  .nav {
-    flex-wrap: wrap; /* Itt már törhet sorba */
-    justify-content: center; /* Középre rendezés */
-    overflow-x: visible;
-    max-width: 100%;
-    margin: 0;
-  }
-}
-
-/* Gombok stílusa (Változatlan) */
+/* Menü gombok stílusa */
 .nav a {
   padding: 6px 12px;
   border-radius: 10px;
@@ -102,21 +99,47 @@ a:hover{text-decoration:underline;}
   font-size: 13px;
   font-weight: 600;
   background: transparent;
+  border: none;
+  white-space: nowrap; /* Tilos tördelni a szöveget! */
+  flex-shrink: 0;      /* Tilos összenyomni a gombot! */
   transition: all 0.2s ease;
-  white-space: nowrap; /* Ez nagyon fontos: ne törjön meg a szöveg a gombon belül! */
-  flex-shrink: 0; /* Ez a legfontosabb! Ne nyomja össze a gombokat a böngésző */
 }
 
 .nav a:hover {
   color: var(--text);
-  background: color-mix(in srgb, var(--text) 6%, transparent);
-  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--text) 5%, transparent);
 }
 
 .nav a.active {
   color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
   box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+/* --- ASZTALI NÉZET (PC/Laptop) --- 
+   Itt visszaállítjuk az egysoros elrendezést */
+@media (min-width: 900px) {
+  .topbar .inner {
+    flex-wrap: nowrap; /* PC-n minden egy sorban */
+  }
+  
+  .brand {
+    flex: 0 0 auto; /* A logó csak akkora, amekkora kell */
+  }
+  
+  .nav {
+    flex: 1; /* A menü kitölti a középső teret */
+    order: 0; /* Vissza a helyére (középre) */
+    justify-content: center; /* Középre igazít */
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    overflow-x: visible; /* PC-n nincs görgetés, elfér */
+  }
+  
+  .controls {
+    flex: 0 0 auto;
+  }
 }
 
 .controls{display:flex; gap:8px; align-items:center;}
